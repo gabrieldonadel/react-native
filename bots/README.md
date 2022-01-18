@@ -1,4 +1,4 @@
-## Danger
+## Danger test
 
 [Danger](http://danger.systems/js/) is a JavaScript runtime which helps you provide continuous feedback inside GitHub. It's used by @pull-bot to analyze the contents of a GitHub pull request.
 
