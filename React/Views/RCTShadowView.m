@@ -30,6 +30,7 @@ typedef NS_ENUM(unsigned int, meta_prop_t) {
   META_PROP_VERTICAL,
   META_PROP_ALL,
   META_PROP_COUNT,
+  // META_PROP_BLOCK_START
 };
 
 @implementation RCTShadowView {
@@ -133,11 +134,17 @@ static void RCTProcessMetaPropsMargin(const YGValue metaProps[META_PROP_COUNT], 
     RCT_SET_YGVALUE_AUTO(start, YGNodeStyleSetMargin, node, YGEdgeStart);
     RCT_SET_YGVALUE_AUTO(end, YGNodeStyleSetMargin, node, YGEdgeEnd);
   }
+
+    NSLog(@"testee");
+//  if(metaProps[META_PROP_BLOCK_START].unit == YGUnitUndefined){
+//      NSLog(@"Caraiiiii");
+//  }
   RCT_SET_YGVALUE_AUTO(metaProps[META_PROP_TOP], YGNodeStyleSetMargin, node, YGEdgeTop);
   RCT_SET_YGVALUE_AUTO(metaProps[META_PROP_BOTTOM], YGNodeStyleSetMargin, node, YGEdgeBottom);
   RCT_SET_YGVALUE_AUTO(metaProps[META_PROP_HORIZONTAL], YGNodeStyleSetMargin, node, YGEdgeHorizontal);
   RCT_SET_YGVALUE_AUTO(metaProps[META_PROP_VERTICAL], YGNodeStyleSetMargin, node, YGEdgeVertical);
   RCT_SET_YGVALUE_AUTO(metaProps[META_PROP_ALL], YGNodeStyleSetMargin, node, YGEdgeAll);
+//  RCT_SET_YGVALUE_AUTO(metaProps[META_PROP_BLOCK_START], YGNodeStyleSetMargin, node, YGEdgeTop);
 }
 
 static void RCTProcessMetaPropsBorder(const YGValue metaProps[META_PROP_COUNT], YGNodeRef node)
@@ -436,6 +443,7 @@ RCT_MARGIN_PROPERTY(Left, LEFT)
 RCT_MARGIN_PROPERTY(Bottom, BOTTOM)
 RCT_MARGIN_PROPERTY(Right, RIGHT)
 RCT_MARGIN_PROPERTY(Start, START)
+// RCT_MARGIN_PROPERTY(BlockStart, BLOCK_START)
 RCT_MARGIN_PROPERTY(End, END)
 
 // Padding

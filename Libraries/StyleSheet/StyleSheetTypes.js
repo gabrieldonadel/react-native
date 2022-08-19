@@ -189,6 +189,12 @@ type ____LayoutStyle_Internal = $ReadOnly<{
    */
   marginBottom?: DimensionValue,
 
+  /** `marginBlockStart` works like `margin-bottom` in CSS.
+   *  See https://developer.mozilla.org/en-US/docs/Web/CSS/margin-bottom
+   *  for more details.
+   */
+  marginBlockStart?: DimensionValue,
+
   /**
    * When direction is `ltr`, `marginEnd` is equivalent to `marginRight`.
    * When direction is `rtl`, `marginEnd` is equivalent to `marginLeft`.

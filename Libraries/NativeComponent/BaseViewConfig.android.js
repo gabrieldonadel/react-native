@@ -212,6 +212,7 @@ const validAttributesForNonEventProps = {
   marginStart: true,
   marginEnd: true,
   marginTop: true,
+  // marginBlockStart: true,
   marginBottom: true,
   marginLeft: true,
   marginRight: true,
