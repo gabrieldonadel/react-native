@@ -96,6 +96,16 @@ export type AccessibilityInfoType = {
   prefersCrossFadeTransitions: () => Promise<boolean>,
 
   /**
+   * Query whether reduce motion and prefer cross-fade transitions settings are currently enabled.
+   *
+   * Returns a promise which resolves to a boolean.
+   * The result is `true` when prefer cross-fade transitions is enabled and `false` otherwise.
+   *
+   * See https://reactnative.dev/docs/accessibilityinfo#prefersCrossFadeTransitions
+   */
+  prefersCrossFadeTransitions: () => Promise<boolean>;
+
+  /**
    * Query whether reduced transparency is currently enabled.
    *
    * Returns a promise which resolves to a boolean.
