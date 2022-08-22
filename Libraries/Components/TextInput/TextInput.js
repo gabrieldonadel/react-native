@@ -156,6 +156,7 @@ export type KeyboardType =
   | 'visible-password';
 
 export type InputMode =
+  | 'none'
   | 'text'
   | 'decimal'
   | 'numeric'
@@ -551,6 +552,7 @@ export type Props = $ReadOnly<{|
    *
    * Support the following values:
    *
+   * - `none`
    * - `text`
    * - `decimal`
    * - `numeric`
@@ -1399,6 +1401,7 @@ function InternalTextInput(props: Props): React.Node {
 }
 
 const inputModeToKeyboardTypeMap = {
+  none: 'default',
   text: 'default',
   decimal: 'decimal-pad',
   numeric: 'number-pad',
