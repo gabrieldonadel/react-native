@@ -69,6 +69,12 @@ static TextInputTraits convertRawProp(
       "spellCheck",
       sourceTraits.spellCheck,
       defaultTraits.spellCheck);
+  traits.numberOfLines = convertRawProp(
+      context,
+      rawProps,
+      "numberOfLines",
+      sourceTraits.numberOfLines,
+      defaultTraits.numberOfLines);
   traits.caretHidden = convertRawProp(
       context,
       rawProps,

@@ -121,6 +121,8 @@ class TextInputTraits final {
    */
   bool contextMenuHidden{false};
 
+  std::optional<int> numberOfLines{0};
+
   /*
    * iOS & Android
    * Default value: `true`.
