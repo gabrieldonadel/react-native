@@ -26,13 +26,19 @@ export type Props = ViewProps;
 const View: React.AbstractComponent<
   ViewProps,
   React.ElementRef<typeof ViewNativeComponent>,
-> = React.forwardRef((props: ViewProps, forwardedRef) => {
-  return (
-    <TextAncestor.Provider value={false}>
-      <ViewNativeComponent {...props} ref={forwardedRef} />
-    </TextAncestor.Provider>
-  );
-});
+> = React.forwardRef(
+  ({id, nativeID, ...otherProps}: ViewProps, forwardedRef) => {
+    return (
+      <TextAncestor.Provider value={false}>
+        <ViewNativeComponent
+          nativeID={id ?? nativeID}
+          {...otherProps}
+          ref={forwardedRef}
+        />
+      </TextAncestor.Provider>
+    );
+  },
+);
 
 View.displayName = 'View';
 
