@@ -49,6 +49,7 @@ type Props = $ReadOnly<{|
   disabled?: ?boolean,
   focusable?: ?boolean,
   hitSlop?: ?EdgeInsetsProp,
+  id?: ?string,
   importantForAccessibility?: ?('auto' | 'yes' | 'no' | 'no-hide-descendants'),
   nativeID?: ?string,
   onAccessibilityAction?: ?(event: AccessibilityActionEvent) => mixed,
@@ -82,7 +83,6 @@ const PASSTHROUGH_PROPS = [
   'accessibilityViewIsModal',
   'hitSlop',
   'importantForAccessibility',
-  'nativeID',
   'onAccessibilityAction',
   'onBlur',
   'onFocus',
@@ -123,6 +123,7 @@ class TouchableWithoutFeedback extends React.Component<Props, State> {
           : this.props.accessibilityState,
       focusable:
         this.props.focusable !== false && this.props.onPress !== undefined,
+      nativeID: this.props.id ?? this.props.nativeID,
     };
     for (const prop of PASSTHROUGH_PROPS) {
       if (this.props[prop] !== undefined) {
