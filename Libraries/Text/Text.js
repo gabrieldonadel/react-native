@@ -34,6 +34,8 @@ const Text: React.AbstractComponent<
     accessible,
     allowFontScaling,
     ellipsizeMode,
+    id,
+    nativeID,
     onLongPress,
     onPress,
     onPressIn,
@@ -182,6 +184,7 @@ const Text: React.AbstractComponent<
       {...eventHandlersForText}
       isHighlighted={isHighlighted}
       isPressable={isPressable}
+      nativeID={id ?? nativeID}
       numberOfLines={numberOfLines}
       selectionColor={selectionColor}
       style={style}
@@ -198,6 +201,7 @@ const Text: React.AbstractComponent<
         allowFontScaling={allowFontScaling !== false}
         ellipsizeMode={ellipsizeMode ?? 'tail'}
         isHighlighted={isHighlighted}
+        nativeID={id ?? nativeID}
         numberOfLines={numberOfLines}
         selectionColor={selectionColor}
         style={style}
