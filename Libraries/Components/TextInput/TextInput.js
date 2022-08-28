@@ -210,6 +210,11 @@ export type TextContentType =
 type PasswordRules = string;
 
 type IOSProps = $ReadOnly<{|
+  /**
+   * Give the keyboard and the system information about the
+   * expected semantic meaning for the content that users enter.
+   * @platform ios
+   */
   autoComplete?: ?(
     | 'address-line1'
     | 'address-line2'
