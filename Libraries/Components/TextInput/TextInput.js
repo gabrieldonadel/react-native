@@ -1480,6 +1480,15 @@ const ExportedForwardRef: React.AbstractComponent<
     React.ElementRef<HostComponent<mixed>> & ImperativeMethods,
   >,
 ) {
+  let style = restProps.style;
+  if (style && style.verticalAlign !== undefined) {
+    style = StyleSheet.compose(style, {
+      textAlignVertical:
+        // $FlowFixMe
+        verticalAlignToTextAlignVerticalMap[style.verticalAlign],
+    });
+  }
+
   return (
     <InternalTextInput
       allowFontScaling={allowFontScaling}
@@ -1494,6 +1503,7 @@ const ExportedForwardRef: React.AbstractComponent<
       }
       {...restProps}
       forwardedRef={forwardedRef}
+      style={style}
     />
   );
 });
@@ -1524,6 +1534,13 @@ const styles = StyleSheet.create({
     paddingTop: 5,
   },
 });
+
+const verticalAlignToTextAlignVerticalMap = {
+  auto: 'auto',
+  top: 'top',
+  bottom: 'bottom',
+  middle: 'center',
+};
 
 // $FlowFixMe[unclear-type] Unclear type. Using `any` type is not safe.
 module.exports = ((ExportedForwardRef: any): React.AbstractComponent<

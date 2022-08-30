@@ -153,6 +153,15 @@ const Text: React.AbstractComponent<
       : processColor(restProps.selectionColor);
 
   let style = restProps.style;
+
+  if (style && style.verticalAlign !== undefined) {
+    style = StyleSheet.compose(style, {
+      textAlignVertical:
+        // $FlowFixMe
+        verticalAlignToTextAlignVerticalMap[style.verticalAlign],
+    });
+  }
+
   if (__DEV__) {
     if (PressabilityDebug.isEnabled() && onPress != null) {
       style = StyleSheet.compose(restProps.style, {
@@ -221,5 +230,12 @@ function useLazyInitialization(newValue: boolean): boolean {
   }
   return oldValue;
 }
+
+const verticalAlignToTextAlignVerticalMap = {
+  auto: 'auto',
+  top: 'top',
+  bottom: 'bottom',
+  middle: 'center',
+};
 
 module.exports = Text;
