@@ -10,16 +10,18 @@
 
 'use strict';
 
+import typeof AnimatedNodeType from './AnimatedNode';
 import type {PlatformConfig} from '../AnimatedPlatformConfig';
 
-const ReactNative = require('../../Renderer/shims/ReactNative');
-const {AnimatedEvent} = require('../AnimatedEvent');
-const NativeAnimatedHelper = require('../NativeAnimatedHelper');
-const AnimatedNode = require('./AnimatedNode');
-const AnimatedStyle = require('./AnimatedStyle');
-const invariant = require('invariant');
+import ReactNative from '../../Renderer/shims/ReactNative';
+import {AnimatedEvent} from '../AnimatedEvent';
+import * as NativeAnimatedHelper from '../NativeAnimatedHelper';
+import invariant from 'invariant';
 
-class AnimatedProps extends AnimatedNode {
+const AnimatedNode: AnimatedNodeType = require('./AnimatedNode').default;
+const AnimatedStyle = require('./AnimatedStyle').default;
+
+export default class AnimatedProps extends AnimatedNode {
   _props: Object;
   _animatedView: any;
   _callback: () => void;
@@ -187,5 +189,3 @@ class AnimatedProps extends AnimatedNode {
     };
   }
 }
-
-module.exports = AnimatedProps;
