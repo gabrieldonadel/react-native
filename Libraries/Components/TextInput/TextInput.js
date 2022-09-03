@@ -32,6 +32,7 @@ import type {
   PressEvent,
 } from '../../Types/CoreEventTypes';
 import type {HostComponent} from '../../Renderer/shims/ReactNativeTypes';
+import flattenStyle from '../../StyleSheet/flattenStyle';
 
 const {useLayoutEffect, useRef, useState} = React;
 
@@ -1480,13 +1481,12 @@ const ExportedForwardRef: React.AbstractComponent<
     React.ElementRef<HostComponent<mixed>> & ImperativeMethods,
   >,
 ) {
-  let style = restProps.style;
+  let style = flattenStyle(restProps.style);
+
   if (style && style.verticalAlign !== undefined) {
-    style = StyleSheet.compose(style, {
-      textAlignVertical:
-        // $FlowFixMe
-        verticalAlignToTextAlignVerticalMap[style.verticalAlign],
-    });
+    // $FlowFixMe
+    style.textAlignVertical =
+      verticalAlignToTextAlignVerticalMap[style.verticalAlign];
   }
 
   return (

@@ -20,6 +20,7 @@ import {NativeText, NativeVirtualText} from './TextNativeComponent';
 import {type TextProps} from './TextProps';
 import * as React from 'react';
 import {useContext, useMemo, useState} from 'react';
+import flattenStyle from '../StyleSheet/flattenStyle';
 
 /**
  * Text is the fundamental component for displaying text.
@@ -152,14 +153,12 @@ const Text: React.AbstractComponent<
       ? null
       : processColor(restProps.selectionColor);
 
-  let style = restProps.style;
+  let style = flattenStyle(restProps.style);
 
   if (style && style.verticalAlign !== undefined) {
-    style = StyleSheet.compose(style, {
-      textAlignVertical:
-        // $FlowFixMe
-        verticalAlignToTextAlignVerticalMap[style.verticalAlign],
-    });
+    // $FlowFixMe
+    style.textAlignVertical =
+      verticalAlignToTextAlignVerticalMap[style.verticalAlign];
   }
 
   if (__DEV__) {
