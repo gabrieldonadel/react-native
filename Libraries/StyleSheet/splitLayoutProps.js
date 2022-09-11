@@ -30,6 +30,7 @@ export default function splitLayoutProps(props: ?____ViewStyle_Internal): {
         case 'marginVertical':
         case 'marginBottom':
         case 'marginTop':
+        // case 'marginBlockStart':
         case 'marginLeft':
         case 'marginRight':
         case 'flex':

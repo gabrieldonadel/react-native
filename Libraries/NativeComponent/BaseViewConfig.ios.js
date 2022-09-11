@@ -248,6 +248,7 @@ const validAttributesForNonEventProps = {
   // borderEndWidth: true,
   // borderWidth: true,
 
+  // marginBlockStart: true,
   marginTop: true,
   marginRight: true,
   marginBottom: true,

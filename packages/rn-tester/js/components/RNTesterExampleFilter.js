@@ -185,6 +185,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
     right: 10,
+    // backgroundColor: 'green',
+    // marginBlockStart: 100,
   },
   searchIcon: {
     width: 20,
