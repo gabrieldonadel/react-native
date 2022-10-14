@@ -73,6 +73,12 @@ module.exports = {
       },
     },
     {
+      files: ['packages/rn-tester/**/*.js'],
+      rules: {
+        'react-native/no-inline-styles': 0,
+      },
+    },
+    {
       files: ['**/__tests__/**/*-test.js'],
       env: {
         jasmine: true,
