@@ -13,7 +13,27 @@
 import type {ParserType} from '../errors';
 import type {Parser} from '../parser';
 
+const {
+  UnsupportedObjectPropertyTypeAnnotationParserError,
+} = require('../errors');
+
 class TypeScriptParser implements Parser {
+  getKeyName(propertyOrIndex: $FlowFixMe, hasteModuleName: string): string {
+    switch (propertyOrIndex.type) {
+      case 'TSPropertySignature':
+        return propertyOrIndex.key.name;
+      case 'TSIndexSignature':
+        return propertyOrIndex.parameters[0].name;
+      default:
+        throw new UnsupportedObjectPropertyTypeAnnotationParserError(
+          hasteModuleName,
+          propertyOrIndex,
+          propertyOrIndex.type,
+          this.language(),
+        );
+    }
+  }
+
   getMaybeEnumMemberType(maybeEnumDeclaration: $FlowFixMe): string {
     if (maybeEnumDeclaration.members[0].initializer) {
       return maybeEnumDeclaration.members[0].initializer.type

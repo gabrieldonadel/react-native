@@ -78,7 +78,6 @@ const {
 } = require('../../error-utils');
 
 const {FlowParser} = require('../parser.js');
-const {getKeyName} = require('../../parsers-commons');
 
 const language = 'Flow';
 const parser = new FlowParser();
@@ -279,7 +278,7 @@ function translateTypeAnnotation(
                 }
 
                 const {optional = false} = property;
-                const name = getKeyName(property, hasteModuleName, language);
+                const name = parser.getKeyName(property, hasteModuleName);
                 if (property.type === 'ObjectTypeIndexer') {
                   return {
                     name,

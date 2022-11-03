@@ -80,7 +80,6 @@ const {
 } = require('../../error-utils');
 
 const {TypeScriptParser} = require('../parser');
-const {getKeyName} = require('../../parsers-commons');
 
 const language = 'TypeScript';
 const parser = new TypeScriptParser();
@@ -291,7 +290,7 @@ function translateTypeAnnotation(
                 }
 
                 const {optional = false} = property;
-                const name = getKeyName(property, hasteModuleName, language);
+                const name = parser.getKeyName(property, hasteModuleName);
                 if (property.type === 'TSIndexSignature') {
                   return {
                     name,
