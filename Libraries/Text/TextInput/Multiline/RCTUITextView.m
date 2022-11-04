@@ -50,6 +50,7 @@ static UIColor *defaultPlaceholderColor()
     self.textColor = [UIColor blackColor];
     // This line actually removes 5pt (default value) left and right padding in UITextView.
     self.textContainer.lineFragmentPadding = 0;
+    self.textContainer.maximumNumberOfLines = 2;
     self.scrollsToTop = NO;
     self.scrollEnabled = YES;
   }
