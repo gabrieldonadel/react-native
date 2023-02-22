@@ -50,6 +50,13 @@ export const __INTERNAL_VIEW_CONFIG: PartialViewConfig =
           borderStartEndRadius: true,
           borderStartStartRadius: true,
           borderStyle: true,
+          borderBlockEndStyle: true,
+          borderBlockStartStyle: true,
+          borderBlockStyle: true,
+          borderInlineStyle: true,
+          borderInlineEndStyle: true,
+          borderInlineStartStyle: true,
+
           hitSlop: true,
           pointerEvents: true,
           nativeBackgroundAndroid: true,
@@ -92,6 +99,15 @@ export const __INTERNAL_VIEW_CONFIG: PartialViewConfig =
             process: require('../../StyleSheet/processColor').default,
           },
           borderBlockStartColor: {
+            process: require('../../StyleSheet/processColor').default,
+          },
+          borderInlineColor: {
+            process: require('../../StyleSheet/processColor').default,
+          },
+          borderInlineEndColor: {
+            process: require('../../StyleSheet/processColor').default,
+          },
+          borderInlineStartColor: {
             process: require('../../StyleSheet/processColor').default,
           },
 
