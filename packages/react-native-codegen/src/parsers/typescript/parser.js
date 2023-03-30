@@ -31,7 +31,7 @@ const {typeScriptTranslateTypeAnnotation} = require('./modules');
 const babelParser = require('@babel/parser');
 
 const {buildSchema} = require('../parsers-commons');
-const {Visitor} = require('./Visitor');
+const {Visitor} = require('../parsers-primitives');
 const {buildComponentSchema} = require('./components');
 const {wrapComponentSchema} = require('../schema.js');
 const {buildModuleSchema} = require('../parsers-commons.js');
@@ -210,6 +210,10 @@ class TypeScriptParser implements Parser {
     );
   }
 
+  isGenericTypeAnnotation(type: $FlowFixMe): boolean {
+    return type === 'TSTypeReference';
+  }
+
   extractAnnotatedElement(
     typeAnnotation: $FlowFixMe,
     types: TypeDeclarationMap,
@@ -276,6 +280,36 @@ class TypeScriptParser implements Parser {
         ),
       };
     });
+  }
+
+  functionTypeAnnotation(propertyValueType: string): boolean {
+    return (
+      propertyValueType === 'TSFunctionType' ||
+      propertyValueType === 'TSMethodSignature'
+    );
+  }
+
+  getTypeArgumentParamsFromDeclaration(declaration: $FlowFixMe): $FlowFixMe {
+    return declaration.typeParameters.params;
+  }
+
+  // This FlowFixMe is supposed to refer to typeArgumentParams and funcArgumentParams of generated AST.
+  getNativeComponentType(
+    typeArgumentParams: $FlowFixMe,
+    funcArgumentParams: $FlowFixMe,
+  ): {[string]: string} {
+    return {
+      propsTypeName: typeArgumentParams[0].typeName.name,
+      componentName: funcArgumentParams[0].value,
+    };
+  }
+
+  getAnnotatedElementProperties(annotatedElement: $FlowFixMe): $FlowFixMe {
+    return annotatedElement.typeAnnotation.members;
+  }
+
+  bodyProperties(typeAlias: TypeDeclarationMap): $ReadOnlyArray<$FlowFixMe> {
+    return typeAlias.body.body;
   }
 }
 
