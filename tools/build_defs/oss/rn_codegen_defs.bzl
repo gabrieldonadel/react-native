@@ -31,7 +31,8 @@ def rn_codegen(
         codegen_components = False,
         codegen_modules = False,
         library_labels = [],
-        src_prefix = ""):
+        codegen_src_prefix = "",
+        external_spec_target = None):
     if codegen_modules:
         error_header = "rn_codegen(name=\"{}\")".format(name)
         if not native_module_spec_name:
@@ -42,10 +43,11 @@ def rn_codegen(
 
         spec_srcs = native.glob(
             [
-                src_prefix + "**/Native*.js",
+                codegen_src_prefix + "**/Native*.js",
+                codegen_src_prefix + "**/Native*.ts",
             ],
             exclude = [
-                src_prefix + "**/nativeImageSource.js",
+                codegen_src_prefix + "**/nativeImageSource.js",
                 "**/__*__/**",
             ],
         )
@@ -80,7 +82,8 @@ def rn_codegen(
             name = "codegen_rn_components_schema_{}".format(component_spec_name),
             srcs = native.glob(
                 [
-                    src_prefix + "**/*NativeComponent.js",
+                    codegen_src_prefix + "**/*NativeComponent.js",
+                    codegen_src_prefix + "**/*NativeComponent.ts",
                 ],
                 exclude = [
                     "**/__*__/**",
@@ -96,3 +99,32 @@ def rn_codegen(
             schema_target = ":codegen_rn_components_schema_{}".format(component_spec_name),
             library_labels = library_labels,
         )
+
+# Given the codegenConfig defined inside package.json, convert it to the Buck specific configs.
+# Specification: https://reactnative.dev/docs/next/new-architecture-library-intro#configure-codegen
+def buck_codegen_config_from_package_codegen_config(package_codegen_config):
+    configs = {}
+
+    name = package_codegen_config["name"]
+    android_package_name = "com.facebook.fbreact.specs"
+    if "android" in package_codegen_config:
+        android_config = package_codegen_config["android"]
+        if "javaPackageName" in android_config:
+            # Note: assume Kotlin will use the same package name
+            android_package_name = android_config["javaPackageName"]
+
+    codegen_type = package_codegen_config["type"]
+    if codegen_type == "modules" or codegen_type == "all":
+        configs["codegen_modules"] = True
+        configs["native_module_spec_name"] = name
+        configs["android_package_name"] = android_package_name
+
+    if codegen_type == "components" or codegen_type == "all":
+        configs["codegen_components"] = True
+        configs["native_component_spec_name"] = name
+        configs["android_package_name"] = android_package_name
+
+    js_srcs_dir = package_codegen_config["jsSrcsDir"]
+    configs["codegen_src_prefix"] = (js_srcs_dir + "/") if js_srcs_dir else ""
+
+    return configs

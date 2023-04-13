@@ -74,7 +74,7 @@ JNI_TARGET = "//packages/react-native/ReactAndroid/src/main/jni/first-party/jni-
 KEYSTORE_TARGET = "//keystores:debug"
 
 # Minimum supported iOS version for RN
-REACT_NATIVE_TARGET_IOS_SDK = "12.4"
+REACT_NATIVE_TARGET_IOS_SDK = "13.4"
 
 def get_apple_inspector_flags():
     return []
@@ -167,6 +167,12 @@ def react_native_xplat_shared_library_target(path):
 
 def react_native_desktop_root_target(path):
     return "//packages/react-native/" + path
+
+def is_rn_desktop():
+    return False
+
+def is_catalyst_build():
+    return False
 
 # Example: react_native_tests_target('java/com/facebook/react/modules:modules')
 def react_native_tests_target(path):

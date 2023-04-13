@@ -20,6 +20,8 @@ load(
     "get_apple_compiler_flags",
     "get_apple_inspector_flags",
     "get_preprocessor_flags_for_build_mode",
+    "is_catalyst_build",
+    "is_rn_desktop",
     "react_native_dep",
     "react_native_desktop_root_target",
     "react_native_root_target",
@@ -229,6 +231,11 @@ def rn_codegen_modules(
             labels = ["codegen_rule"],
         )
 
+        MOBILE_DEPS = [
+            "//xplat/js/react-native-github:RCTTypeSafety",
+            "//xplat/js/react-native-github/packages/react-native/Libraries/RCTRequired:RCTRequired",
+            react_native_xplat_target_apple("react/nativemodule/core:core"),
+        ]
         rn_apple_library(
             name = "{}Apple".format(name),
             srcs = [
@@ -246,13 +253,9 @@ def rn_codegen_modules(
                 "-Wno-unused-private-field",
             ],
             extension_api_only = True,
-            ios_exported_deps = [
-                "//xplat/js/react-native-github:RCTTypeSafety",
-                "//xplat/js/react-native-github/packages/react-native/Libraries/RCTRequired:RCTRequired",
-                react_native_xplat_target_apple("react/nativemodule/core:core"),
-            ],
+            ios_exported_deps = MOBILE_DEPS,
             labels = library_labels + ["codegen_rule"],
-            macosx_exported_deps = [
+            macosx_exported_deps = MOBILE_DEPS if is_catalyst_build() else [
                 react_native_desktop_root_target(":RCTTypeSafetyAppleMac"),
                 react_native_desktop_root_target(":RCTRequiredAppleMac"),
                 react_native_desktop_root_target(":nativemoduleAppleMac"),
@@ -408,6 +411,14 @@ def rn_codegen_components(
         if is_running_buck_project():
             rn_xplat_cxx_library(name = "generated_components-{}".format(name), visibility = ["PUBLIC"])
         else:
+            MOBILE_DEPS = [
+                react_native_xplat_target("react/renderer/debug:debug"),
+                react_native_xplat_target("react/renderer/core:core"),
+                react_native_xplat_target("react/renderer/graphics:graphics"),
+                react_native_xplat_target("react/renderer/components/image:image"),
+                react_native_xplat_target("react/renderer/imagemanager:imagemanager"),
+                react_native_xplat_target("react/renderer/components/view:view"),
+            ]
             rn_xplat_cxx_library(
                 name = "generated_components-{}".format(name),
                 srcs = [
@@ -448,14 +459,9 @@ def rn_codegen_components(
                 ],
                 tests = [":generated_tests-{}".format(name)],
                 visibility = ["PUBLIC"],
-                deps = [
-                    react_native_xplat_target("react/renderer/debug:debug"),
-                    react_native_xplat_target("react/renderer/core:core"),
-                    react_native_xplat_target("react/renderer/graphics:graphics"),
-                    react_native_xplat_target("react/renderer/components/image:image"),
-                    react_native_xplat_target("react/renderer/imagemanager:imagemanager"),
-                    react_native_xplat_target("react/renderer/components/view:view"),
-                ],
+                fbandroid_deps = MOBILE_DEPS,
+                ios_deps = MOBILE_DEPS,
+                macosx_deps = [react_native_desktop_root_target(":renderer_headers")] if is_rn_desktop() else MOBILE_DEPS,
             )
 
         # Tests
@@ -476,9 +482,15 @@ def rn_codegen_components(
             fbandroid_use_instrumentation_test = True,
             labels = library_labels + ["codegen_rule"],
             platforms = (ANDROID, APPLE, CXX),
+            fbandroid_deps = [react_native_xplat_target("react/renderer/core:core")],
+            ios_deps = [
+                react_native_xplat_target("react/renderer/core:core"),
+            ],
+            macosx_deps = ([react_native_desktop_root_target(":renderer_headers")] if is_rn_desktop() else [
+                react_native_xplat_target("react/renderer/core:core"),
+            ]),
             deps = [
                 YOGA_CXX_TARGET,
-                react_native_xplat_target("react/renderer/core:core"),
                 "//xplat/third-party/gmock:gtest",
                 ":generated_components-{}".format(name),
             ],
@@ -581,9 +593,7 @@ def rn_codegen_cxx_modules(
                 react_native_xplat_target("react/nativemodule/core:core"),
             ],
             labels = library_labels + ["codegen_rule"],
-            macosx_exported_deps = [
-                react_native_desktop_root_target(":bridging"),
-            ],
+            macosx_exported_deps = [react_native_xplat_target("react/nativemodule/core:core")] if is_catalyst_build() else [react_native_desktop_root_target(":bridging")],
             platforms = (ANDROID, APPLE, CXX, WINDOWS),
             preprocessor_flags = [
                 "-DLOG_TAG=\"ReactNative\"",

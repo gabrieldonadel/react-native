@@ -9,7 +9,6 @@
  */
 
 'use strict';
-import type {ExtendsPropsShape} from '../../../CodegenSchema.js';
 import type {Parser} from '../../parser';
 import type {ComponentSchemaBuilderConfig} from '../../schema.js';
 
@@ -27,6 +26,10 @@ const {
   getOptions,
   getCommandTypeNameAndOptionsExpression,
 } = require('../../parsers-commons');
+const {
+  throwIfConfigNotfound,
+  throwIfMoreThanOneConfig,
+} = require('../../error-utils');
 
 // $FlowFixMe[signature-verification-failure] TODO(T108222691): Use flow-types for @babel/parser
 function findComponentConfig(ast: $FlowFixMe, parser: Parser) {
@@ -40,12 +43,8 @@ function findComponentConfig(ast: $FlowFixMe, parser: Parser) {
     findNativeComponentType(statement, foundConfigs, parser),
   );
 
-  if (foundConfigs.length === 0) {
-    throw new Error('Could not find component config for native component');
-  }
-  if (foundConfigs.length > 1) {
-    throw new Error('Only one component is supported per file');
-  }
+  throwIfConfigNotfound(foundConfigs);
+  throwIfMoreThanOneConfig(foundConfigs);
 
   const foundConfig = foundConfigs[0];
 
@@ -134,17 +133,9 @@ function buildComponentSchema(
 
   const options = getOptions(optionsExpression);
 
-  const extendsProps: Array<ExtendsPropsShape> = [];
-  const componentPropAsts: Array<PropsAST> = [];
   const componentEventAsts: Array<PropsAST> = [];
-  categorizeProps(
-    propProperties,
-    types,
-    extendsProps,
-    componentPropAsts,
-    componentEventAsts,
-  );
-  const props = getProps(componentPropAsts, types);
+  categorizeProps(propProperties, types, componentEventAsts);
+  const {props, extendsProps} = getProps(propProperties, types);
   const events = getEvents(componentEventAsts, types);
   const commands = getCommands(commandProperties, types);
 
