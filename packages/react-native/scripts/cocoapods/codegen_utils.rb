@@ -51,11 +51,12 @@ class CodegenUtils
       end
 
       relative_installation_root = Pod::Config.instance.installation_root.relative_path_from(Pathname.pwd)
+      base_path = Pathname.new(react_native_path).absolute? ? react_native_path : File.join(relative_installation_root, react_native_path)
 
       out = Pod::Executable.execute_command(
         'node',
         [
-          "#{relative_installation_root}/#{react_native_path}/scripts/generate-codegen-artifacts.js",
+          "#{base_path}/scripts/generate-codegen-artifacts.js",
           "-p", "#{app_path}",
           "-o", Pod::Config.instance.installation_root,
           "-t", "ios",

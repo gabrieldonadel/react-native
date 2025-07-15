@@ -93,7 +93,8 @@ def use_react_native! (
   # We are relying on this flag also in third parties libraries to proper install dependencies.
   # Better to rely and enable this environment flag if the new architecture is turned on using flags.
   relative_path_from_current = Pod::Config.instance.installation_root.relative_path_from(Pathname.pwd)
-  react_native_version = NewArchitectureHelper.extract_react_native_version(File.join(relative_path_from_current, path))
+  react_native_path = Pathname.new(path).absolute? ? path : File.join(relative_path_from_current, path)
+  react_native_version = NewArchitectureHelper.extract_react_native_version(react_native_path)
   fabric_enabled = fabric_enabled || NewArchitectureHelper.new_arch_enabled
 
   ENV['RCT_FABRIC_ENABLED'] = fabric_enabled ? "1" : "0"
@@ -476,7 +477,8 @@ def react_native_post_install(
   ReactNativePodsUtils.fix_library_search_paths(installer)
   ReactNativePodsUtils.update_search_paths(installer)
   ReactNativePodsUtils.set_build_setting(installer, build_setting: "USE_HERMES", value: use_hermes())
-  ReactNativePodsUtils.set_build_setting(installer, build_setting: "REACT_NATIVE_PATH", value: File.join("${PODS_ROOT}", "..", react_native_path))
+  react_native_path_value = Pathname.new(react_native_path).absolute? ? react_native_path : File.join("${PODS_ROOT}", "..", react_native_path)
+  ReactNativePodsUtils.set_build_setting(installer, build_setting: "REACT_NATIVE_PATH", value: react_native_path_value)
   ReactNativePodsUtils.set_build_setting(installer, build_setting: "SWIFT_ACTIVE_COMPILATION_CONDITIONS", value: ['$(inherited)', 'DEBUG'], config_name: "Debug")
 
   ReactNativePodsUtils.set_ccache_compiler_and_linker_build_settings(installer, react_native_path, ccache_enabled)
