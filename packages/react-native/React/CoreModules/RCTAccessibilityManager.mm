@@ -12,6 +12,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTConvert.h>
 #import <React/RCTEventDispatcherProtocol.h>
+#import <React/RCTInitialAccessibilityValuesProxy.h>
 #import <React/RCTLog.h>
 #import <React/RCTUIManager.h>
 
@@ -39,7 +40,7 @@ RCT_EXPORT_MODULE()
 
 + (BOOL)requiresMainQueueSetup
 {
-  return YES;
+  return NO;
 }
 
 - (instancetype)init
@@ -104,6 +105,7 @@ RCT_EXPORT_MODULE()
                                                    object:nil];
 #endif // macOS]
 
+<<<<<<< HEAD
 #if !TARGET_OS_OSX // [macOS]
     self.contentSizeCategory = RCTSharedApplication().preferredContentSizeCategory;
     _isBoldTextEnabled = UIAccessibilityIsBoldTextEnabled();
@@ -122,6 +124,26 @@ RCT_EXPORT_MODULE()
     _isVoiceOverEnabled = [sharedWorkspace isVoiceOverEnabled];
     _isHighContrastEnabled = [sharedWorkspace accessibilityDisplayShouldIncreaseContrast];
 #endif // macOS]
+||||||| d4407d6f77a
+    self.contentSizeCategory = RCTSharedApplication().preferredContentSizeCategory;
+    _isBoldTextEnabled = UIAccessibilityIsBoldTextEnabled();
+    _isGrayscaleEnabled = UIAccessibilityIsGrayscaleEnabled();
+    _isInvertColorsEnabled = UIAccessibilityIsInvertColorsEnabled();
+    _isReduceMotionEnabled = UIAccessibilityIsReduceMotionEnabled();
+    _isDarkerSystemColorsEnabled = UIAccessibilityDarkerSystemColorsEnabled();
+    _isReduceTransparencyEnabled = UIAccessibilityIsReduceTransparencyEnabled();
+    _isVoiceOverEnabled = UIAccessibilityIsVoiceOverRunning();
+=======
+    RCTInitialAccessibilityValuesProxy *initialValuesProxy = [RCTInitialAccessibilityValuesProxy sharedInstance];
+    self.contentSizeCategory = initialValuesProxy.preferredContentSizeCategory;
+    _isBoldTextEnabled = initialValuesProxy.isBoldTextEnabled;
+    _isGrayscaleEnabled = initialValuesProxy.isGrayscaleEnabled;
+    _isInvertColorsEnabled = initialValuesProxy.isInvertColorsEnabled;
+    _isReduceMotionEnabled = initialValuesProxy.isReduceMotionEnabled;
+    _isDarkerSystemColorsEnabled = initialValuesProxy.isDarkerSystemColorsEnabled;
+    _isReduceTransparencyEnabled = initialValuesProxy.isReduceTransparencyEnabled;
+    _isVoiceOverEnabled = initialValuesProxy.isVoiceOverEnabled;
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   }
   return self;
 }

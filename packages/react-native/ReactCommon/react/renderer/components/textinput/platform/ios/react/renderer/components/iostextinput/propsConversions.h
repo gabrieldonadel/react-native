@@ -136,6 +136,7 @@ static TextInputTraits convertRawProp(
       sourceTraits.smartInsertDelete,
       defaultTraits.smartInsertDelete);
 
+<<<<<<< HEAD
 #ifdef TARGET_OS_OSX // [macOS
   traits.grammarCheck = convertRawProp(
       context,
@@ -145,6 +146,16 @@ static TextInputTraits convertRawProp(
       defaultTraits.grammarCheck);
 #endif // macOS]
 
+||||||| d4407d6f77a
+=======
+  traits.dataDetectorTypes = convertRawProp(
+      context,
+      rawProps,
+      "dataDetectorTypes",
+      sourceTraits.dataDetectorTypes,
+      defaultTraits.dataDetectorTypes);
+
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   return traits;
 }
 

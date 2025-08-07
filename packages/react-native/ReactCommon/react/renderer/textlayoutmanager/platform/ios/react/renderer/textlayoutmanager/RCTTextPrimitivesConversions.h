@@ -107,9 +107,21 @@ inline static NSUnderlineStyle RCTNSUnderlineStyleFromTextDecorationStyle(
     case facebook::react::TextDecorationStyle::Double:
       return NSUnderlineStyleDouble;
     case facebook::react::TextDecorationStyle::Dashed:
+<<<<<<< HEAD
       return NSUnderlineStylePatternDash | NSUnderlineStyleSingle; // [macOS]
+||||||| d4407d6f77a
+      return NSUnderlinePatternDash | NSUnderlineStyleSingle;
+=======
+      return NSUnderlineStylePatternDash | NSUnderlineStyleSingle;
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     case facebook::react::TextDecorationStyle::Dotted:
+<<<<<<< HEAD
       return NSUnderlineStylePatternDot | NSUnderlineStyleSingle; // [macOS]
+||||||| d4407d6f77a
+      return NSUnderlinePatternDot | NSUnderlineStyleSingle;
+=======
+      return NSUnderlineStylePatternDot | NSUnderlineStyleSingle;
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   }
 }
 

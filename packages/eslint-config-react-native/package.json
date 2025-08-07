@@ -1,7 +1,13 @@
 {
   "name": "@react-native/eslint-config",
+<<<<<<< HEAD
   "version": "0.77.0-main",
   "private": true,
+||||||| d4407d6f77a
+  "version": "0.77.0-main",
+=======
+  "version": "0.79.0-main",
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   "description": "ESLint config for React Native",
   "license": "MIT",
   "repository": {
@@ -23,7 +29,13 @@
   "dependencies": {
     "@babel/core": "^7.25.2",
     "@babel/eslint-parser": "^7.25.1",
+<<<<<<< HEAD
     "@react-native/eslint-plugin": "workspace:*",
+||||||| d4407d6f77a
+    "@react-native/eslint-plugin": "0.77.0-main",
+=======
+    "@react-native/eslint-plugin": "0.79.0-main",
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "eslint-config-prettier": "^8.5.0",

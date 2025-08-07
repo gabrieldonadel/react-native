@@ -10,7 +10,7 @@
 
 import type {EdgeInsetsProp} from '../../StyleSheet/EdgeInsetsPropType';
 import type {ColorValue} from '../../StyleSheet/StyleSheet';
-import type {PressEvent} from '../../Types/CoreEventTypes';
+import type {GestureResponderEvent} from '../../Types/CoreEventTypes';
 
 import {PressabilityDebugView} from '../../Pressability/PressabilityDebug';
 import UIManager from '../../ReactNative/UIManager';
@@ -21,10 +21,16 @@ import Position from './Position';
 import * as React from 'react';
 
 const extractSingleTouch = (nativeEvent: {
+<<<<<<< HEAD
   +altKey?: ?boolean, // [macOS]
   +button?: ?number, // [macOS]
   +changedTouches: $ReadOnlyArray<PressEvent['nativeEvent']>,
   +ctrlKey?: ?boolean, // [macOS]
+||||||| d4407d6f77a
+  +changedTouches: $ReadOnlyArray<PressEvent['nativeEvent']>,
+=======
+  +changedTouches: $ReadOnlyArray<GestureResponderEvent['nativeEvent']>,
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   +force?: number,
   +identifier: number,
   +locationX: number,
@@ -35,7 +41,7 @@ const extractSingleTouch = (nativeEvent: {
   +shiftKey?: ?boolean, // [macOS]
   +target: ?number,
   +timestamp: number,
-  +touches: $ReadOnlyArray<PressEvent['nativeEvent']>,
+  +touches: $ReadOnlyArray<GestureResponderEvent['nativeEvent']>,
 }) => {
   const touches = nativeEvent.touches;
   const changedTouches = nativeEvent.changedTouches;
@@ -375,7 +381,7 @@ const LONG_PRESS_ALLOWED_MOVEMENT = 10;
  *
  * @lends Touchable.prototype
  */
-const TouchableMixin = {
+const TouchableMixinImpl = {
   componentDidMount: function () {
     if (!Platform.isTV) {
       return;
@@ -403,7 +409,7 @@ const TouchableMixin = {
   touchableGetInitialState: function (): {
     touchable: {
       touchState: ?State,
-      responderID: ?PressEvent['currentTarget'],
+      responderID: ?GestureResponderEvent['currentTarget'],
     },
   } {
     return {
@@ -439,12 +445,12 @@ const TouchableMixin = {
 
   /**
    * Place as callback for a DOM element's `onResponderGrant` event.
-   * @param {SyntheticEvent} e Synthetic event from event system.
+   * @param {NativeSyntheticEvent} e Synthetic event from event system.
    *
    */
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  touchableHandleResponderGrant: function (e: PressEvent) {
+  touchableHandleResponderGrant: function (e: GestureResponderEvent) {
     const dispatchID = e.currentTarget;
     // Since e is used in a callback invoked on another event loop
     // (as in setTimeout etc), we need to call e.persist() on the
@@ -487,7 +493,7 @@ const TouchableMixin = {
    */
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  touchableHandleResponderRelease: function (e: PressEvent) {
+  touchableHandleResponderRelease: function (e: GestureResponderEvent) {
     this.pressInLocation = null;
     this._receiveSignal(Signals.RESPONDER_RELEASE, e);
   },
@@ -497,7 +503,7 @@ const TouchableMixin = {
    */
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  touchableHandleResponderTerminate: function (e: PressEvent) {
+  touchableHandleResponderTerminate: function (e: GestureResponderEvent) {
     this.pressInLocation = null;
     this._receiveSignal(Signals.RESPONDER_TERMINATED, e);
   },
@@ -507,7 +513,7 @@ const TouchableMixin = {
    */
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  touchableHandleResponderMove: function (e: PressEvent) {
+  touchableHandleResponderMove: function (e: GestureResponderEvent) {
     // Measurement may not have returned yet.
     if (!this.state.touchable.positionOnActivate) {
       return;
@@ -737,14 +743,14 @@ const TouchableMixin = {
 
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  _handleDelay: function (e: PressEvent) {
+  _handleDelay: function (e: GestureResponderEvent) {
     this.touchableDelayTimeout = null;
     this._receiveSignal(Signals.DELAY, e);
   },
 
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  _handleLongDelay: function (e: PressEvent) {
+  _handleLongDelay: function (e: GestureResponderEvent) {
     this.longPressDelayTimeout = null;
     const curState = this.state.touchable.touchState;
     if (
@@ -765,7 +771,7 @@ const TouchableMixin = {
    */
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  _receiveSignal: function (signal: Signal, e: PressEvent) {
+  _receiveSignal: function (signal: Signal, e: GestureResponderEvent) {
     const responderID = this.state.touchable.responderID;
     const curState = this.state.touchable.touchState;
     const nextState = Transitions[curState] && Transitions[curState][signal];
@@ -820,7 +826,7 @@ const TouchableMixin = {
 
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  _savePressInLocation: function (e: PressEvent) {
+  _savePressInLocation: function (e: GestureResponderEvent) {
     const touch = extractSingleTouch(e.nativeEvent);
     const pageX = touch && touch.pageX;
     const pageY = touch && touch.pageY;
@@ -857,7 +863,7 @@ const TouchableMixin = {
     curState: State,
     nextState: State,
     signal: Signal,
-    e: PressEvent,
+    e: GestureResponderEvent,
   ) {
     const curIsHighlight = this._isHighlight(curState);
     const newIsHighlight = this._isHighlight(nextState);
@@ -916,14 +922,14 @@ const TouchableMixin = {
 
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  _startHighlight: function (e: PressEvent) {
+  _startHighlight: function (e: GestureResponderEvent) {
     this._savePressInLocation(e);
     this.touchableHandleActivePressIn && this.touchableHandleActivePressIn(e);
   },
 
   /* $FlowFixMe[missing-this-annot] The 'this' type annotation(s) required by
    * Flow's LTI update could not be added via codemod */
-  _endHighlight: function (e: PressEvent) {
+  _endHighlight: function (e: GestureResponderEvent) {
     if (this.touchableHandleActivePressOut) {
       if (
         this.touchableGetPressOutDelayMS &&
@@ -951,12 +957,12 @@ const {
   touchableHandleFocus,
   touchableHandleBlur,
   ...TouchableMixinWithoutDefaultFocusAndBlur
-} = TouchableMixin;
-TouchableMixin.withoutDefaultFocusAndBlur =
+} = TouchableMixinImpl;
+TouchableMixinImpl.withoutDefaultFocusAndBlur =
   TouchableMixinWithoutDefaultFocusAndBlur;
 
-const Touchable = {
-  Mixin: TouchableMixin,
+const TouchableImpl = {
+  Mixin: TouchableMixinImpl,
   /**
    * Renders a debugging overlay to visualize touch target with hitSlop (might not work on Android).
    */
@@ -965,7 +971,7 @@ const Touchable = {
     hitSlop,
   }: {
     color: ColorValue,
-    hitSlop: EdgeInsetsProp,
+    hitSlop?: EdgeInsetsProp,
     ...
   }): null | React.Node => {
     if (__DEV__) {
@@ -975,4 +981,4 @@ const Touchable = {
   },
 };
 
-export default Touchable;
+export default TouchableImpl;

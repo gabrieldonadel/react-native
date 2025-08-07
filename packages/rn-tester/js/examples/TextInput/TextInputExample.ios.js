@@ -14,12 +14,18 @@ import type {
   RNTesterModule,
   RNTesterModuleExample,
 } from '../../types/RNTesterTypes';
+<<<<<<< HEAD
 import type {KeyboardType} from 'react-native/Libraries/Components/TextInput/TextInput';
 // [macOS
 import type {
   PasteEvent,
   SettingChangeEvent,
 } from 'react-native/Libraries/Components/TextInput/TextInput'; // macOS]
+||||||| d4407d6f77a
+import type {KeyboardType} from 'react-native/Libraries/Components/TextInput/TextInput';
+=======
+import type {KeyboardTypeOptions} from 'react-native/Libraries/Components/TextInput/TextInput';
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 import RNTesterText from '../../components/RNTesterText';
 import ExampleTextInput from './ExampleTextInput';
@@ -130,12 +136,12 @@ class TextInputAccessoryViewChangeKeyboardExample extends React.Component<
 }
 
 class TextInputAccessoryViewDefaultDoneButtonExample extends React.Component<
-  $ReadOnly<{|
-    keyboardType: KeyboardType,
-  |}>,
+  $ReadOnly<{
+    keyboardType: KeyboardTypeOptions,
+  }>,
   {text: string},
 > {
-  constructor(props: void | $ReadOnly<{keyboardType: KeyboardType}>) {
+  constructor(props: void | $ReadOnly<{keyboardType: KeyboardTypeOptions}>) {
     // $FlowFixMe[incompatible-call]
     super(props);
     this.state = {text: ''};
@@ -311,7 +317,6 @@ function KeyboardShortcutsExample() {
 const styles = StyleSheet.create({
   multiline: {
     height: 50,
-    marginBottom: 4,
   },
   multilinePlaceholderStyles: {
     letterSpacing: 10,
@@ -740,7 +745,7 @@ const textInputExamples: Array<RNTesterModuleExample> = [
     title: 'Multiline',
     render: function (): React.Node {
       return (
-        <View>
+        <View style={{gap: 4}}>
           <ExampleTextInput
             placeholder="multiline text input"
             multiline={true}
@@ -763,6 +768,11 @@ const textInputExamples: Array<RNTesterModuleExample> = [
             style={styles.multiline}
           />
           <ExampleTextInput
+            placeholder="multiline text input with max 4 lines"
+            numberOfLines={4}
+            multiline={true}
+          />
+          <ExampleTextInput
             placeholder="uneditable multiline text input"
             editable={false}
             multiline={true}
@@ -775,6 +785,7 @@ const textInputExamples: Array<RNTesterModuleExample> = [
             style={styles.multiline}
             dataDetectorTypes="phoneNumber"
           />
+<<<<<<< HEAD
           {/* [macOS */}
           <ExampleTextInput
             placeholder="multiline text input with scroll disabled"
@@ -789,6 +800,17 @@ const textInputExamples: Array<RNTesterModuleExample> = [
             hideVerticalScrollIndicator={true}
           />
           {/* macOS] */}
+||||||| d4407d6f77a
+=======
+          <ExampleTextInput
+            dataDetectorTypes={['link', 'phoneNumber']}
+            defaultValue={
+              'link: http://reactnative.dev, photo number: 88888888'
+            }
+            multiline
+            editable={false}
+          />
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
         </View>
       );
     },
@@ -882,6 +904,61 @@ const textInputExamples: Array<RNTesterModuleExample> = [
               placeholder="Placeholder defines intrinsic size"
             />
           </View>
+        </View>
+      );
+    },
+  },
+  {
+    title: 'allowFontScaling attribute',
+    render: function (): React.Node {
+      return (
+        <View>
+          <Text>
+            By default, text will respect Text Size accessibility setting on
+            iOS. It means that all font sizes will be increased or decreased
+            depending on the value of Text Size setting in{' '}
+            <Text style={{fontWeight: 'bold'}}>
+              Settings.app - Display & Brightness - Text Size
+            </Text>
+          </Text>
+          <ExampleTextInput
+            placeholder="allowFontScaling = false"
+            allowFontScaling={false}
+          />
+          <ExampleTextInput
+            style={{marginTop: 10}}
+            placeholder="allowFontScaling = false"
+            allowFontScaling={true}
+          />
+        </View>
+      );
+    },
+  },
+  {
+    title: 'maxFontSizeMultiplier attribute',
+    name: 'maxFontSizeMultiplier',
+    render(): React.Node {
+      return (
+        <View testID={'max-font-size-multiplier'}>
+          <Text>
+            When allowFontScaling is enabled, you can use the
+            maxFontSizeMultiplier prop to set an upper limit on how much the
+            font size will be scaled.
+          </Text>
+          <ExampleTextInput
+            allowFontScaling={true}
+            maxFontSizeMultiplier={1}
+            placeholder="This text will not scale up (max 1x)"
+            style={{marginTop: 10}}
+            testID={'non-scalable-text-input'}
+          />
+          <ExampleTextInput
+            allowFontScaling={true}
+            maxFontSizeMultiplier={1.5}
+            placeholder="This text will scale up (max 1.5x)"
+            style={{marginTop: 10}}
+            testID={'scalable-text-input'}
+          />
         </View>
       );
     },

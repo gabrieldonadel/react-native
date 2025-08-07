@@ -6,4 +6,15 @@ ruby ">= 2.6.10"
 gem 'cocoapods', '~> 1.13', '!= 1.15.0', '!= 1.15.1'
 gem 'activesupport', '>= 6.1.7.5', '< 7.1.0'
 gem 'xcodeproj', '< 1.26.0'
+<<<<<<< HEAD
 gem 'concurrent-ruby', '< 1.3.4'
+||||||| d4407d6f77a
+=======
+gem 'concurrent-ruby', '<= 1.3.4'
+
+# Ruby 3.4.0 has removed some libraries from the standard library.
+gem 'bigdecimal'
+gem 'logger'
+gem 'benchmark'
+gem 'mutex_m'
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2

@@ -8,7 +8,14 @@
 #import "RCTPlatformColorUtils.h"
 
 #import <Foundation/Foundation.h>
+<<<<<<< HEAD
 #import <React/RCTUIKit.h> // [macOS]
+||||||| d4407d6f77a
+#import <UIKit/UIKit.h>
+=======
+#import <UIKit/UIKit.h>
+#import <react/renderer/graphics/HostPlatformColor.h>
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 #import <react/utils/ManagedObjectWrapper.h>
 
 #include <string>

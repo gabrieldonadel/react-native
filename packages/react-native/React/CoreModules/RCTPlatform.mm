@@ -10,6 +10,7 @@
 #import <React/RCTUIKit.h> // [macOS]
 
 #import <FBReactNativeSpec/FBReactNativeSpec.h>
+#import <React/RCTTraitCollectionProxy.h>
 #import <React/RCTUtils.h>
 #import <React/RCTVersion.h>
 
@@ -54,7 +55,7 @@ RCT_EXPORT_MODULE(PlatformConstants)
 
 + (BOOL)requiresMainQueueSetup
 {
-  return YES;
+  return NO;
 }
 
 - (dispatch_queue_t)methodQueue
@@ -70,6 +71,7 @@ RCT_EXPORT_MODULE(PlatformConstants)
 
 - (ModuleConstants<JS::NativePlatformConstantsIOS::Constants>)getConstants
 {
+<<<<<<< HEAD
   __block ModuleConstants<JS::NativePlatformConstantsIOS::Constants> constants;
   RCTUnsafeExecuteOnMainQueueSync(^{
 #if !TARGET_OS_OSX // [macOS]
@@ -96,15 +98,45 @@ RCT_EXPORT_MODULE(PlatformConstants)
              .major = [versions[@"major"] doubleValue],
              .patch = [versions[@"patch"] doubleValue],
              .prerelease = [versions[@"prerelease"] isKindOfClass:[NSNull class]] ? nullptr : versions[@"prerelease"]}),
+||||||| d4407d6f77a
+  __block ModuleConstants<JS::NativePlatformConstantsIOS::Constants> constants;
+  RCTUnsafeExecuteOnMainQueueSync(^{
+    UIDevice *device = [UIDevice currentDevice];
+    auto versions = RCTGetReactNativeVersion();
+    constants = typedConstants<JS::NativePlatformConstantsIOS::Constants>({
+        .forceTouchAvailable = RCTForceTouchAvailable() ? true : false,
+        .osVersion = [device systemVersion],
+        .systemName = [device systemName],
+        .interfaceIdiom = interfaceIdiom([device userInterfaceIdiom]),
+        .isTesting = RCTRunningInTestEnvironment() ? true : false,
+        .reactNativeVersion = JS::NativePlatformConstantsIOS::ConstantsReactNativeVersion::Builder(
+            {.minor = [versions[@"minor"] doubleValue],
+             .major = [versions[@"major"] doubleValue],
+             .patch = [versions[@"patch"] doubleValue],
+             .prerelease = [versions[@"prerelease"] isKindOfClass:[NSNull class]] ? nullptr : versions[@"prerelease"]}),
+=======
+  UIDevice *device = [UIDevice currentDevice];
+  bool isForceTouchAvailable = [RCTTraitCollectionProxy sharedInstance].currentTraitCollection.forceTouchCapability ==
+      UIForceTouchCapabilityAvailable;
+  auto versions = RCTGetReactNativeVersion();
+  return typedConstants<JS::NativePlatformConstantsIOS::Constants>({
+      .forceTouchAvailable = isForceTouchAvailable,
+      .osVersion = [device systemVersion],
+      .systemName = [device systemName],
+      .interfaceIdiom = interfaceIdiom([device userInterfaceIdiom]),
+      .isTesting = RCTRunningInTestEnvironment() ? true : false,
+      .reactNativeVersion = JS::NativePlatformConstantsIOS::ConstantsReactNativeVersion::Builder(
+          {.minor = [versions[@"minor"] doubleValue],
+           .major = [versions[@"major"] doubleValue],
+           .patch = [versions[@"patch"] doubleValue],
+           .prerelease = [versions[@"prerelease"] isKindOfClass:[NSNull class]] ? nullptr : versions[@"prerelease"]}),
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 #if TARGET_OS_MACCATALYST
-        .isMacCatalyst = true,
+      .isMacCatalyst = true,
 #else
-        .isMacCatalyst = false,
+      .isMacCatalyst = false,
 #endif
-    });
   });
-
-  return constants;
 }
 
 - (std::shared_ptr<TurboModule>)getTurboModule:(const ObjCTurboModule::InitParams &)params

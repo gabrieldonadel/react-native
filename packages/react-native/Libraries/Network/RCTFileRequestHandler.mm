@@ -7,7 +7,13 @@
 
 #import <React/RCTFileRequestHandler.h>
 
+<<<<<<< HEAD
 #if !TARGET_OS_OSX // [macOS]
+||||||| d4407d6f77a
+=======
+#import <mutex>
+
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 #import <MobileCoreServices/MobileCoreServices.h>
 #else // [macOS
 #import <CoreServices/CoreServices.h>
@@ -23,14 +29,22 @@
 
 @implementation RCTFileRequestHandler {
   NSOperationQueue *_fileQueue;
+  std::mutex _operationHandlerMutexLock;
 }
 
 RCT_EXPORT_MODULE()
 
 - (void)invalidate
 {
-  [_fileQueue cancelAllOperations];
-  _fileQueue = nil;
+  std::lock_guard<std::mutex> lock(_operationHandlerMutexLock);
+  if (_fileQueue) {
+    for (NSOperation *operation in _fileQueue.operations) {
+      if (!operation.isCancelled && !operation.isFinished) {
+        [operation cancel];
+      }
+    }
+    _fileQueue = nil;
+  }
 }
 
 - (BOOL)canHandleRequest:(NSURLRequest *)request
@@ -40,12 +54,14 @@ RCT_EXPORT_MODULE()
 
 - (NSOperation *)sendRequest:(NSURLRequest *)request withDelegate:(id<RCTURLRequestDelegate>)delegate
 {
+  std::lock_guard<std::mutex> lock(_operationHandlerMutexLock);
   // Lazy setup
   if (!_fileQueue) {
     _fileQueue = [NSOperationQueue new];
     _fileQueue.maxConcurrentOperationCount = 4;
   }
 
+<<<<<<< HEAD
   NSBlockOperation *op = [NSBlockOperation new];
   __weak NSBlockOperation *weakOp = op;
   [op addExecutionBlock:^{
@@ -53,6 +69,18 @@ RCT_EXPORT_MODULE()
     if (strongOp == nil || [strongOp isCancelled]) {
       return;
     }
+||||||| d4407d6f77a
+  __weak __block NSBlockOperation *weakOp;
+  __block NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+=======
+  __weak NSBlockOperation *weakOp;
+  NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+    NSBlockOperation *strongOp = weakOp; // Strong reference to avoid deallocation during execution
+    if (strongOp == nil || [strongOp isCancelled]) {
+      return;
+    }
+
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     // Get content length
     NSError *error = nil;
     NSFileManager *fileManager = [NSFileManager new];
@@ -91,7 +119,10 @@ RCT_EXPORT_MODULE()
 
 - (void)cancelRequest:(NSOperation *)op
 {
-  [op cancel];
+  std::lock_guard<std::mutex> lock(_operationHandlerMutexLock);
+  if (!op.isCancelled && !op.isFinished) {
+    [op cancel];
+  }
 }
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:

@@ -288,4 +288,36 @@ UITextSmartInsertDeleteType RCTUITextSmartInsertDeleteTypeFromOptionalBool(std::
       ? (*smartInsertDelete ? UITextSmartInsertDeleteTypeYes : UITextSmartInsertDeleteTypeNo)
       : UITextSmartInsertDeleteTypeDefault;
 }
+<<<<<<< HEAD
 #endif // [macOS]
+||||||| d4407d6f77a
+=======
+
+UIDataDetectorTypes RCTUITextViewDataDetectorTypesFromStringVector(const std::vector<std::string> &dataDetectorTypes)
+{
+  static dispatch_once_t onceToken;
+  static NSDictionary<NSString *, NSNumber *> *dataDetectorTypesMap = nil;
+
+  dispatch_once(&onceToken, ^{
+    dataDetectorTypesMap = @{
+      @"link" : @(UIDataDetectorTypeLink),
+      @"phoneNumber" : @(UIDataDetectorTypePhoneNumber),
+      @"address" : @(UIDataDetectorTypeAddress),
+      @"calendarEvent" : @(UIDataDetectorTypeCalendarEvent),
+      @"trackingNumber" : @(UIDataDetectorTypeShipmentTrackingNumber),
+      @"flightNumber" : @(UIDataDetectorTypeFlightNumber),
+      @"lookupSuggestion" : @(UIDataDetectorTypeLookupSuggestion),
+      @"all" : @(UIDataDetectorTypeAll)
+    };
+  });
+
+  UIDataDetectorTypes ret = UIDataDetectorTypeNone;
+  for (const auto &dataType : dataDetectorTypes) {
+    NSNumber *val = dataDetectorTypesMap[RCTNSStringFromString(dataType)];
+    if (val) {
+      ret |= (UIDataDetectorTypes)val.unsignedIntValue;
+    }
+  }
+  return ret;
+}
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2

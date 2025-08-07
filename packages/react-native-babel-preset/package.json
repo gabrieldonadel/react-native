@@ -1,7 +1,13 @@
 {
   "name": "@react-native/babel-preset",
+<<<<<<< HEAD
   "version": "0.77.0-main",
   "private": true,
+||||||| d4407d6f77a
+  "version": "0.77.0-main",
+=======
+  "version": "0.79.0-main",
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   "description": "Babel preset for React Native applications",
   "main": "src/index.js",
   "repository": {
@@ -56,7 +62,13 @@
     "@babel/plugin-transform-typescript": "^7.25.2",
     "@babel/plugin-transform-unicode-regex": "^7.24.7",
     "@babel/template": "^7.25.0",
+<<<<<<< HEAD
     "@react-native/babel-plugin-codegen": "workspace:*",
+||||||| d4407d6f77a
+    "@react-native/babel-plugin-codegen": "0.77.0-main",
+=======
+    "@react-native/babel-plugin-codegen": "0.79.0-main",
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "babel-plugin-syntax-hermes-parser": "0.25.1",
     "babel-plugin-transform-flow-enums": "^0.0.2",
     "react-refresh": "^0.14.0"

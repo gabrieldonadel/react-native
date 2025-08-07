@@ -8,10 +8,25 @@
   <a href="https://github.com/microsoft/react-native-macos/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="React Native for macOS is released under the MIT license." />
   </a>
+<<<<<<< HEAD
   <a href="https://www.npmjs.org/package/react-native-macos">
     <img src="https://img.shields.io/npm/v/react-native-macos?color=e80441&label=react-native-macos" alt="Current npm package version." />
   </a>
   <a href="https://github.com/microsoft/react-native-macos/blob/master/CONTRIBUTING.md">
+||||||| d4407d6f77a
+  <a href="https://circleci.com/gh/facebook/react-native">
+    <img src="https://circleci.com/gh/facebook/react-native.svg?style=shield" alt="Current CircleCI build status." />
+  </a>
+  <a href="https://www.npmjs.org/package/react-native">
+    <img src="https://img.shields.io/npm/v/react-native?color=brightgreen&label=npm%20package" alt="Current npm package version." />
+  </a>
+  <a href="https://reactnative.dev/docs/contributing">
+=======
+  <a href="https://www.npmjs.org/package/react-native">
+    <img src="https://img.shields.io/npm/v/react-native?color=brightgreen&label=npm%20package" alt="Current npm package version." />
+  </a>
+  <a href="https://reactnative.dev/docs/contributing">
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
   </a>
 </p>

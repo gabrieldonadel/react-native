@@ -387,7 +387,16 @@ Class<RCTComponentViewProtocol> RCTParagraphCls(void)
 #endif // macOS]
 }
 
+<<<<<<< HEAD
 
+||||||| d4407d6f77a
+=======
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
+{
+  return nil;
+}
+
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 - (void)drawRect:(CGRect)rect
 {
   if (!_state) {

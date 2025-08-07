@@ -47,21 +47,31 @@ NSString *kBundlePath = @"js/RNTesterApp.macos";
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 #endif // macOS]
 {
-  self.moduleName = @"RNTesterApp";
+  self.reactNativeFactory = [[RCTReactNativeFactory alloc] initWithDelegate:self];
 #if USE_OSS_CODEGEN
   self.dependencyProvider = [RCTAppDependencyProvider new];
 #endif
-  // You can add your custom initial props in the dictionary below.
-  // They will be passed down to the ViewController used by React Native.
-  self.initialProps = [self prepareInitialProps];
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+  [self.reactNativeFactory startReactNativeWithModuleName:@"RNTesterApp"
+                                                 inWindow:self.window
+                                        initialProperties:[self prepareInitialProps]
+                                            launchOptions:launchOptions];
 
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
 
+<<<<<<< HEAD
 #if !TARGET_OS_OSX // [macOS]
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
 #else // [macOS
   [super applicationDidFinishLaunching:notification];
 #endif // macOS]
+||||||| d4407d6f77a
+  return [super application:application didFinishLaunchingWithOptions:launchOptions];
+=======
+  return YES;
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 }
 
 - (NSDictionary *)prepareInitialProps

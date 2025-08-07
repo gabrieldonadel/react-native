@@ -137,7 +137,12 @@ inline static CGFloat RCTBaseSizeForDynamicTypeRamp(const DynamicTypeRamp &dynam
 inline static CGFloat RCTEffectiveFontSizeMultiplierFromTextAttributes(const TextAttributes &textAttributes)
 {
   if (textAttributes.allowFontScaling.value_or(true)) {
+<<<<<<< HEAD
 #if !TARGET_OS_OSX // [macOS]
+||||||| d4407d6f77a
+=======
+    CGFloat fontSizeMultiplier = !isnan(textAttributes.fontSizeMultiplier) ? textAttributes.fontSizeMultiplier : 1.0;
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     if (textAttributes.dynamicTypeRamp.has_value()) {
       DynamicTypeRamp dynamicTypeRamp = textAttributes.dynamicTypeRamp.value();
       UIFontMetrics *fontMetrics =
@@ -145,13 +150,18 @@ inline static CGFloat RCTEffectiveFontSizeMultiplierFromTextAttributes(const Tex
       // Using a specific font size reduces rounding errors from -scaledValueForValue:
       CGFloat requestedSize =
           isnan(textAttributes.fontSize) ? RCTBaseSizeForDynamicTypeRamp(dynamicTypeRamp) : textAttributes.fontSize;
-      return [fontMetrics scaledValueForValue:requestedSize] / requestedSize;
-    } else {
-      return textAttributes.fontSizeMultiplier;
+      fontSizeMultiplier = [fontMetrics scaledValueForValue:requestedSize] / requestedSize;
     }
+<<<<<<< HEAD
 #else // [macOS
     return textAttributes.fontSizeMultiplier;
 #endif // macOS]
+||||||| d4407d6f77a
+=======
+    CGFloat maxFontSizeMultiplier =
+        !isnan(textAttributes.maxFontSizeMultiplier) ? textAttributes.maxFontSizeMultiplier : 0.0;
+    return maxFontSizeMultiplier >= 1.0 ? fminf(maxFontSizeMultiplier, fontSizeMultiplier) : fontSizeMultiplier;
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   } else {
     return 1.0;
   }

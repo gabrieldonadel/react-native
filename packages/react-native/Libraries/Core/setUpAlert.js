@@ -18,7 +18,13 @@ if (!global.alert) {
   global.alert = function (text: string) {
     // Require Alert on demand. Requiring it too early can lead to issues
     // with things like Platform not being fully initialized.
+<<<<<<< HEAD
     // @flow // [macOS]
     require('../Alert/Alert').alert('Alert', '' + text);
+||||||| d4407d6f77a
+    require('../Alert/Alert').alert('Alert', '' + text);
+=======
+    require('../Alert/Alert').default.alert('Alert', '' + text);
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   };
 }

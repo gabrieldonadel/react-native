@@ -102,10 +102,18 @@
 #endif // macOS]
 }
 
+<<<<<<< HEAD
 #if TARGET_OS_OSX // [macOS
 @dynamic delegate;
 #endif // macOS]
 
+||||||| d4407d6f77a
+=======
+// This should not be needed but internal build were failing without it.
+// This variable is unused.
+@synthesize dataDetectorTypes;
+
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if (self = [super initWithFrame:frame]) {

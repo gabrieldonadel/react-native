@@ -8,6 +8,8 @@
 #import <React/RCTDataRequestHandler.h>
 #import <ReactCommon/RCTTurboModule.h>
 
+#import <mutex>
+
 #import "RCTNetworkPlugins.h"
 
 @interface RCTDataRequestHandler () <RCTTurboModule>
@@ -15,14 +17,22 @@
 
 @implementation RCTDataRequestHandler {
   NSOperationQueue *_queue;
+  std::mutex _operationHandlerMutexLock;
 }
 
 RCT_EXPORT_MODULE()
 
 - (void)invalidate
 {
-  [_queue cancelAllOperations];
-  _queue = nil;
+  std::lock_guard<std::mutex> lock(_operationHandlerMutexLock);
+  if (_queue) {
+    for (NSOperation *operation in _queue.operations) {
+      if (!operation.isCancelled && !operation.isFinished) {
+        [operation cancel];
+      }
+    }
+    _queue = nil;
+  }
 }
 
 - (BOOL)canHandleRequest:(NSURLRequest *)request
@@ -32,12 +42,14 @@ RCT_EXPORT_MODULE()
 
 - (NSOperation *)sendRequest:(NSURLRequest *)request withDelegate:(id<RCTURLRequestDelegate>)delegate
 {
+  std::lock_guard<std::mutex> lock(_operationHandlerMutexLock);
   // Lazy setup
   if (!_queue) {
     _queue = [NSOperationQueue new];
     _queue.maxConcurrentOperationCount = 2;
   }
 
+<<<<<<< HEAD
   NSBlockOperation *op = [NSBlockOperation new];
   __weak NSBlockOperation *weakOp = op;
   [op addExecutionBlock:^{
@@ -45,6 +57,18 @@ RCT_EXPORT_MODULE()
     if (strongOp == nil || [strongOp isCancelled]) {
       return;
     }
+||||||| d4407d6f77a
+  __weak __block NSBlockOperation *weakOp;
+  __block NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+=======
+  __weak NSBlockOperation *weakOp;
+  NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
+    NSBlockOperation *strongOp = weakOp; // Strong reference to avoid deallocation during execution
+    if (strongOp == nil || [strongOp isCancelled]) {
+      return;
+    }
+
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     // Get mime type
     NSRange firstSemicolon = [request.URL.resourceSpecifier rangeOfString:@";"];
     NSString *mimeType =
@@ -73,7 +97,10 @@ RCT_EXPORT_MODULE()
 
 - (void)cancelRequest:(NSOperation *)op
 {
-  [op cancel];
+  std::lock_guard<std::mutex> lock(_operationHandlerMutexLock);
+  if (!op.isCancelled && !op.isFinished) {
+    [op cancel];
+  }
 }
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:

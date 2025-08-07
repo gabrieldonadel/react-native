@@ -1,7 +1,13 @@
 {
   "name": "@react-native/community-cli-plugin",
+<<<<<<< HEAD
   "version": "0.77.0-main",
   "private": true,
+||||||| d4407d6f77a
+  "version": "0.77.0-main",
+=======
+  "version": "0.79.0-main",
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   "description": "Core CLI commands for React Native",
   "keywords": [
     "react-native",
@@ -23,25 +29,31 @@
     "dist"
   ],
   "dependencies": {
+<<<<<<< HEAD
     "@react-native/dev-middleware": "workspace:*",
     "@react-native/metro-babel-transformer": "workspace:*",
+||||||| d4407d6f77a
+    "@react-native/dev-middleware": "0.77.0-main",
+    "@react-native/metro-babel-transformer": "0.77.0-main",
+=======
+    "@react-native/dev-middleware": "0.79.0-main",
+>>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "chalk": "^4.0.0",
     "debug": "^2.2.0",
     "invariant": "^2.2.4",
     "metro": "^0.81.0",
     "metro-config": "^0.81.0",
     "metro-core": "^0.81.0",
-    "readline": "^1.3.0",
     "semver": "^7.1.3"
   },
   "devDependencies": {
     "metro-resolver": "^0.81.0"
   },
   "peerDependencies": {
-    "@react-native-community/cli-server-api": "*"
+    "@react-native-community/cli": "*"
   },
   "peerDependenciesMeta": {
-    "@react-native-community/cli-server-api": {
+    "@react-native-community/cli": {
       "optional": true
     }
   },
