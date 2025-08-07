@@ -10,17 +10,11 @@
 
 import * as React from 'react';
 
-<<<<<<< HEAD
 // [macOS] useful since RNTesterModuleExample.platform can either be
 // one of these strings or an array of said strings
 type RNTesterPlatform = 'ios' | 'android' | 'macos';
 
-export type RNTesterModuleExample = $ReadOnly<{|
-||||||| d4407d6f77a
-export type RNTesterModuleExample = $ReadOnly<{|
-=======
 export type RNTesterModuleExample = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   name?: string,
   title: string,
   platform?: RNTesterPlatform | Array<RNTesterPlatform>, // [macOS]

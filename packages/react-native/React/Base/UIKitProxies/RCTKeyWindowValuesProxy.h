@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#import <UIKit/UIKit.h>
+#import <React/RCTUIKit.h> // [macOS]
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sharedInstance;
 
 @property (assign, readonly) CGSize windowSize;
+#if !TARGET_OS_OSX // [macOS]
 @property (assign, readonly) UIInterfaceOrientation currentInterfaceOrientation;
+#endif // [macOS]
 
 - (void)startObservingWindowSizeIfNecessary;
 

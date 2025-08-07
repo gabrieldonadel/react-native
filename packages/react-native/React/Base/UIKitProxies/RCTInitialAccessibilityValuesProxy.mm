@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#if !TARGET_OS_OSX // [macOS]
 #import "RCTInitialAccessibilityValuesProxy.h"
 #import <React/RCTUtils.h>
 #import <mutex>
@@ -183,3 +184,4 @@
 }
 
 @end
+#endif // [macOS]

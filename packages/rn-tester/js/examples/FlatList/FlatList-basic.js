@@ -76,18 +76,12 @@ type State = {
   maintainVisibleContentPosition: boolean,
   previousLoading: boolean,
   nextLoading: boolean,
-<<<<<<< HEAD
   // [macOS
   enableSelectionOnKeyPress: boolean,
   focusable: boolean,
   enableFocusRing: boolean,
   // macOS]
-|};
-||||||| d4407d6f77a
-|};
-=======
 };
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 const IS_RTL = I18nManager.isRTL;
 
@@ -396,17 +390,11 @@ class FlatListExample extends React.PureComponent<Props, State> {
   _onRefresh = () => Alert.alert('onRefresh: nothing to refresh :P');
   // $FlowFixMe[missing-local-annot]
   _renderItemComponent = () => {
-<<<<<<< HEAD
     const renderProp = ({
       item,
       separators,
       isSelected, // [macOS]
-    }: RenderItemProps<Item>) => {
-||||||| d4407d6f77a
-    const renderProp = ({item, separators}: RenderItemProps<Item>) => {
-=======
-    const renderProp = ({item, separators}: ListRenderItemInfo<Item>) => {
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+    }: ListRenderItemInfo<Item>) => {
       return (
         <ItemComponent
           testID={`item_${item.key}`}

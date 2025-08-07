@@ -33,8 +33,8 @@ export type AlertButton = {
   isPreferred?: boolean,
   style?: AlertButtonStyle,
   ...
-<<<<<<< HEAD
-}>;
+};
+
 // [macOS
 export type DefaultInputsArray = Array<{
   default?: string,
@@ -42,11 +42,6 @@ export type DefaultInputsArray = Array<{
   style?: AlertButtonStyle,
 }>;
 // macOS]
-||||||| d4407d6f77a
-}>;
-=======
-};
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 export type AlertButtons = Array<AlertButton>;
 

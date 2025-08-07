@@ -1,13 +1,7 @@
 {
   "name": "@react-native/popup-menu-android",
-<<<<<<< HEAD
-  "version": "0.77.0-main",
-  "private": true,
-||||||| d4407d6f77a
-  "version": "0.77.0-main",
-=======
   "version": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  "private": true,
   "description": "PopupMenu for the Android platform",
   "main": "index.js",
   "files": [
@@ -28,13 +22,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-<<<<<<< HEAD
     "@react-native/codegen": "workspace:*"
-||||||| d4407d6f77a
-    "@react-native/codegen": "0.77.0-main"
-=======
-    "@react-native/codegen": "0.79.0-main"
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   },
   "peerDependencies": {
     "@types/react": "^19.0.0",

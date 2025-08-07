@@ -110,8 +110,7 @@
     }
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@jest/create-cache-key-function": "^29.6.3",
+    "@jest/create-cache-key-function": "^29.7.0",
     "@react-native-macos/virtualized-lists": "workspace:*",
     "@react-native/assets-registry": "workspace:*",
     "@react-native/codegen": "workspace:*",
@@ -119,25 +118,6 @@
     "@react-native/gradle-plugin": "workspace:*",
     "@react-native/js-polyfills": "workspace:*",
     "@react-native/normalize-colors": "workspace:*",
-||||||| d4407d6f77a
-    "@jest/create-cache-key-function": "^29.6.3",
-    "@react-native/assets-registry": "0.77.0-main",
-    "@react-native/codegen": "0.77.0-main",
-    "@react-native/community-cli-plugin": "0.77.0-main",
-    "@react-native/gradle-plugin": "0.77.0-main",
-    "@react-native/js-polyfills": "0.77.0-main",
-    "@react-native/normalize-colors": "0.77.0-main",
-    "@react-native/virtualized-lists": "0.77.0-main",
-=======
-    "@jest/create-cache-key-function": "^29.7.0",
-    "@react-native/assets-registry": "0.79.0-main",
-    "@react-native/codegen": "0.79.0-main",
-    "@react-native/community-cli-plugin": "0.79.0-main",
-    "@react-native/gradle-plugin": "0.79.0-main",
-    "@react-native/js-polyfills": "0.79.0-main",
-    "@react-native/normalize-colors": "0.79.0-main",
-    "@react-native/virtualized-lists": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "abort-controller": "^3.0.0",
     "anser": "^1.4.9",
     "ansi-regex": "^5.0.0",

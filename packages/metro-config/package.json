@@ -1,13 +1,7 @@
 {
   "name": "@react-native/metro-config",
-<<<<<<< HEAD
-  "version": "0.77.0-main",
-  "private": true,
-||||||| d4407d6f77a
-  "version": "0.77.0-main",
-=======
   "version": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  "private": true,
   "description": "Metro configuration for React Native.",
   "license": "MIT",
   "repository": {
@@ -33,16 +27,8 @@
     "dist"
   ],
   "dependencies": {
-<<<<<<< HEAD
     "@react-native/js-polyfills": "workspace:*",
     "@react-native/metro-babel-transformer": "workspace:*",
-||||||| d4407d6f77a
-    "@react-native/js-polyfills": "0.77.0-main",
-    "@react-native/metro-babel-transformer": "0.77.0-main",
-=======
-    "@react-native/js-polyfills": "0.79.0-main",
-    "@react-native/metro-babel-transformer": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "metro-config": "^0.81.0",
     "metro-runtime": "^0.81.0"
   }

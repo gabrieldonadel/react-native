@@ -16,22 +16,10 @@ export type {
   ViewabilityConfigCallbackPair,
 } from '@react-native-macos/virtualized-lists'; // [macOS]
 
-<<<<<<< HEAD
-import {typeof ViewabilityHelper as ViewabilityHelperType} from '@react-native-macos/virtualized-lists'; // [macOS]
-||||||| d4407d6f77a
-import {typeof ViewabilityHelper as ViewabilityHelperType} from '@react-native/virtualized-lists';
-=======
-import VirtualizedLists from '@react-native/virtualized-lists';
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+import VirtualizedLists from '@react-native-macos/virtualized-lists'; // [macOS]
 
 type ViewabilityHelperType = typeof VirtualizedLists.ViewabilityHelper;
 const ViewabilityHelper: ViewabilityHelperType =
-<<<<<<< HEAD
-  require('@react-native-macos/virtualized-lists').ViewabilityHelper; // [macOS]
-||||||| d4407d6f77a
-  require('@react-native/virtualized-lists').ViewabilityHelper;
-=======
   VirtualizedLists.ViewabilityHelper;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 export default ViewabilityHelper;

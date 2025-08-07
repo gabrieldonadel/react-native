@@ -19,20 +19,8 @@ import type {
 
 import * as ReactNativeFeatureFlags from '../../src/private/featureflags/ReactNativeFeatureFlags';
 import {type ScrollResponderType} from '../Components/ScrollView/ScrollView';
-<<<<<<< HEAD
-import {
-  VirtualizedList,
-  keyExtractor as defaultKeyExtractor,
-} from '@react-native-macos/virtualized-lists'; // [macOS]
-||||||| d4407d6f77a
-import {
-  VirtualizedList,
-  keyExtractor as defaultKeyExtractor,
-} from '@react-native/virtualized-lists';
-=======
 import View from '../Components/View/View';
-import VirtualizedLists from '@react-native/virtualized-lists';
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+import VirtualizedLists from '@react-native-macos/virtualized-lists'; // [macOS]
 import memoizeOne from 'memoize-one';
 import React from 'react';
 
@@ -78,15 +66,8 @@ type OptionalProps<ItemT> = {
    * `highlight` and `unhighlight` (which set the `highlighted: boolean` prop) are insufficient for
    * your use-case.
    */
-<<<<<<< HEAD
-  renderItem?: ?RenderItemType<ItemT>,
-||||||| d4407d6f77a
-  renderItem?: ?RenderItemType<ItemT>,
-
-=======
   renderItem?: ?ListRenderItem<ItemT>,
 
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   /**
    * Optional custom style for multi-item rows generated when numColumns > 1.
    */

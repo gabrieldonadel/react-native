@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#if !TARGET_OS_OSX // [macOS]
 #import "RCTTraitCollectionProxy.h"
 #import <React/RCTUtils.h>
 #import <mutex>
@@ -78,3 +79,4 @@
 }
 
 @end
+#endif // [macOS]

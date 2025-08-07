@@ -165,10 +165,12 @@ fix_*.patch
 
 # Jest Integration
 /packages/react-native-fantom/build/
-<<<<<<< HEAD
+
+# [Experimental] Generated TS type definitions
+/packages/**/types_generated/
 
 #[macOS
-# Yarn 
+# Yarn
 .yarn/*
 !.yarn/patches/
 !.yarn/plugins/
@@ -188,10 +190,3 @@ fix_*.patch
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 # macOS]
-||||||| d4407d6f77a
-=======
-/packages/react-native-fantom/tester/build/
-
-# [Experimental] Generated TS type definitions
-/packages/**/types_generated/
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2

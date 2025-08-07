@@ -326,18 +326,12 @@ export type ImagePropsBase = $ReadOnly<{
    */
   srcSet?: ?string,
   children?: empty,
-<<<<<<< HEAD
 
   /**
    * Specifies the Tooltip for the view
    */
   tooltip?: ?string,
-|}>;
-||||||| d4407d6f77a
-|}>;
-=======
 }>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 export type ImageProps = $ReadOnly<{
   ...ImagePropsIOS,

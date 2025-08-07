@@ -86,14 +86,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDelegate:(id<RCTReactNativeFactoryDelegate>)delegate;
 
-- (void)startReactNativeWithModuleName:(NSString *)moduleName inWindow:(UIWindow *_Nullable)window;
+- (void)startReactNativeWithModuleName:(NSString *)moduleName inWindow:(RCTPlatformWindow *_Nullable)window; // [macOS]
 
 - (void)startReactNativeWithModuleName:(NSString *)moduleName
-                              inWindow:(UIWindow *_Nullable)window
+                              inWindow:(RCTPlatformWindow *_Nullable)window // [macOS]
                          launchOptions:(NSDictionary *_Nullable)launchOptions;
 
 - (void)startReactNativeWithModuleName:(NSString *)moduleName
-                              inWindow:(UIWindow *_Nullable)window
+                              inWindow:(RCTPlatformWindow *_Nullable)window // [macOS]
                      initialProperties:(NSDictionary *_Nullable)initialProperties
                          launchOptions:(NSDictionary *_Nullable)launchOptions;
 

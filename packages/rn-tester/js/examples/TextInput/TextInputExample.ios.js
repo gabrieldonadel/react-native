@@ -14,18 +14,12 @@ import type {
   RNTesterModule,
   RNTesterModuleExample,
 } from '../../types/RNTesterTypes';
-<<<<<<< HEAD
-import type {KeyboardType} from 'react-native/Libraries/Components/TextInput/TextInput';
+import type {KeyboardTypeOptions} from 'react-native/Libraries/Components/TextInput/TextInput';
 // [macOS
 import type {
   PasteEvent,
   SettingChangeEvent,
 } from 'react-native/Libraries/Components/TextInput/TextInput'; // macOS]
-||||||| d4407d6f77a
-import type {KeyboardType} from 'react-native/Libraries/Components/TextInput/TextInput';
-=======
-import type {KeyboardTypeOptions} from 'react-native/Libraries/Components/TextInput/TextInput';
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 import RNTesterText from '../../components/RNTesterText';
 import ExampleTextInput from './ExampleTextInput';
@@ -785,7 +779,6 @@ const textInputExamples: Array<RNTesterModuleExample> = [
             style={styles.multiline}
             dataDetectorTypes="phoneNumber"
           />
-<<<<<<< HEAD
           {/* [macOS */}
           <ExampleTextInput
             placeholder="multiline text input with scroll disabled"
@@ -800,8 +793,6 @@ const textInputExamples: Array<RNTesterModuleExample> = [
             hideVerticalScrollIndicator={true}
           />
           {/* macOS] */}
-||||||| d4407d6f77a
-=======
           <ExampleTextInput
             dataDetectorTypes={['link', 'phoneNumber']}
             defaultValue={
@@ -810,7 +801,6 @@ const textInputExamples: Array<RNTesterModuleExample> = [
             multiline
             editable={false}
           />
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
         </View>
       );
     },

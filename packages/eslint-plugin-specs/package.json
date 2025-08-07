@@ -1,13 +1,7 @@
 {
   "name": "@react-native/eslint-plugin-specs",
-<<<<<<< HEAD
-  "version": "0.77.0-main",
-  "private": true,
-||||||| d4407d6f77a
-  "version": "0.77.0-main",
-=======
   "version": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  "private": true,
   "description": "ESLint rules to validate NativeModule and Component Specs",
   "license": "MIT",
   "repository": {
@@ -33,13 +27,7 @@
   "dependencies": {
     "@babel/core": "^7.25.2",
     "@babel/plugin-transform-flow-strip-types": "^7.25.2",
-<<<<<<< HEAD
     "@react-native/codegen": "workspace:*",
-||||||| d4407d6f77a
-    "@react-native/codegen": "0.77.0-main",
-=======
-    "@react-native/codegen": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "make-dir": "^2.1.0",
     "pirates": "^4.0.1",
     "source-map-support": "0.5.0"

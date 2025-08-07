@@ -16,8 +16,10 @@ void RCTInitializeUIKitProxies(void)
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     [[RCTWindowSafeAreaProxy sharedInstance] startObservingSafeArea];
+#if !TARGET_OS_OSX // [macOS]
     [[RCTTraitCollectionProxy sharedInstance] startObservingTraitCollection];
     [[RCTInitialAccessibilityValuesProxy sharedInstance] recordAccessibilityValues];
+#endif // [macOS]
     [[RCTKeyWindowValuesProxy sharedInstance] startObservingWindowSizeIfNecessary];
   });
 }

@@ -53,19 +53,13 @@ export type ListRenderItem<ItemT> = (
   info: ListRenderItemInfo<ItemT>,
 ) => React.Node;
 
-<<<<<<< HEAD
 // [macOS
 export type SelectedRowIndexPathType = {
   sectionIndex: number,
   rowIndex: number,
 }; // macOS]
 
-type RequiredProps = {|
-||||||| d4407d6f77a
-type RequiredProps = {|
-=======
 type RequiredProps = {
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   /**
    * The default accessor functions assume this is an Array<{key: string} | {id: string}> but you can override
    * getItem, getItemCount, and keyExtractor to handle any type of index-based data.
@@ -294,14 +288,9 @@ type OptionalProps = {
    * chance that fast scrolling may reveal momentary blank areas of unrendered content.
    */
   windowSize?: ?number,
-<<<<<<< HEAD
-  /**
-   * The legacy implementation is no longer supported.
-   */
-  legacyImplementation?: empty,
-|};
+};
 // [macOS
-type MacOSProps = {|
+type MacOSProps = {
   /**
    * Allows you to 'select' a row using arrow keys. The selected row will have the prop `isSelected`
    * passed in as true to it's renderItem / ListItemComponent. You can also imperatively select a row
@@ -342,30 +331,15 @@ type MacOSProps = {|
 
   sectionIndex?: number,
   rowIndex?: number,
-|};
-// macOS]
-||||||| d4407d6f77a
-  /**
-   * The legacy implementation is no longer supported.
-   */
-  legacyImplementation?: empty,
-|};
-=======
 };
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+// macOS]
 
 export type VirtualizedListProps = {
   ...React.ElementConfig<ScrollView>,
   ...RequiredProps,
   ...OptionalProps,
-<<<<<<< HEAD
   ...MacOSProps, // [macOS]
-|};
-||||||| d4407d6f77a
-|};
-=======
 };
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 /**
  * Default Props Helper Functions

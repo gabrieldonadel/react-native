@@ -63,30 +63,37 @@ using namespace facebook::react;
   return self;
 }
 
-- (void)startReactNativeWithModuleName:(NSString *)moduleName inWindow:(UIWindow *_Nullable)window
+- (void)startReactNativeWithModuleName:(NSString *)moduleName inWindow:(RCTPlatformWindow *_Nullable)window // [macOS]
 {
   [self startReactNativeWithModuleName:moduleName inWindow:window initialProperties:nil launchOptions:nil];
 }
 
 - (void)startReactNativeWithModuleName:(NSString *)moduleName
-                              inWindow:(UIWindow *_Nullable)window
+                              inWindow:(RCTPlatformWindow *_Nullable)window // [macOS]
                          launchOptions:(NSDictionary *_Nullable)launchOptions
 {
   [self startReactNativeWithModuleName:moduleName inWindow:window initialProperties:nil launchOptions:launchOptions];
 }
 
 - (void)startReactNativeWithModuleName:(NSString *)moduleName
-                              inWindow:(UIWindow *_Nullable)window
+                              inWindow:(RCTPlatformWindow *_Nullable)window
                      initialProperties:(NSDictionary *_Nullable)initialProperties
                          launchOptions:(NSDictionary *_Nullable)launchOptions
 {
-  UIView *rootView = [self.rootViewFactory viewWithModuleName:moduleName
+  RCTUIView *rootView = [self.rootViewFactory viewWithModuleName:moduleName  // [macOS]
                                             initialProperties:initialProperties
                                                 launchOptions:launchOptions];
   UIViewController *rootViewController = [_delegate createRootViewController];
   [_delegate setRootView:rootView toRootViewController:rootViewController];
+#if !TARGET_OS_OSX // [macOS]
   window.rootViewController = rootViewController;
   [window makeKeyAndVisible];
+#else // [macOS
+  rootViewController.view.frame = window.frame;
+  window.contentViewController = rootViewController;
+  [window makeKeyAndOrderFront:self];
+  [window center];
+#endif // macOS]
 }
 
 #pragma mark - RCTUIConfiguratorProtocol

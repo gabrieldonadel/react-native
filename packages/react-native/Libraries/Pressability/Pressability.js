@@ -12,20 +12,10 @@ import type {HostInstance} from '../../src/private/types/HostInstance';
 import type {
   BlurEvent,
   FocusEvent,
-<<<<<<< HEAD
   KeyEvent,
-||||||| d4407d6f77a
-=======
   GestureResponderEvent,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   MouseEvent,
-<<<<<<< HEAD
-  PressEvent,
   // [macOS]
-||||||| d4407d6f77a
-  PressEvent,
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 } from '../Types/CoreEventTypes';
 
 import SoundManager from '../Components/Sound/SoundManager';

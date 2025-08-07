@@ -52,20 +52,9 @@
     "@babel/preset-env": "^7.25.3",
     "@babel/preset-flow": "^7.24.7",
     "@definitelytyped/dtslint": "^0.0.127",
-<<<<<<< HEAD
-    "@jest/create-cache-key-function": "^29.6.3",
-    "@nx/js": "^21.2.4",
+    "@jest/create-cache-key-function": "^29.7.0",
     "@react-native/metro-babel-transformer": "workspace:*",
     "@react-native/metro-config": "workspace:*",
-||||||| d4407d6f77a
-    "@jest/create-cache-key-function": "^29.6.3",
-    "@react-native/metro-babel-transformer": "0.77.0-main",
-    "@react-native/metro-config": "0.77.0-main",
-=======
-    "@jest/create-cache-key-function": "^29.7.0",
-    "@react-native/metro-babel-transformer": "0.79.0-main",
-    "@react-native/metro-config": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "@tsconfig/node18": "1.0.1",
     "@types/react": "^19.0.0",
     "@typescript-eslint/parser": "^7.1.1",

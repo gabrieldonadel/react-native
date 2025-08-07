@@ -668,14 +668,8 @@ export type ScrollViewProps = $ReadOnly<{
   scrollViewRef?: React.RefSetter<PublicScrollViewInstance>,
 }>;
 
-<<<<<<< HEAD
-type State = {|
-  contentKey: number, // [macOS]
-||||||| d4407d6f77a
-type State = {|
-=======
 type State = {
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  contentKey: number, // [macOS]
   layoutHeight: ?number,
 };
 

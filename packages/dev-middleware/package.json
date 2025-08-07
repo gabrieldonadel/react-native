@@ -1,13 +1,7 @@
 {
   "name": "@react-native/dev-middleware",
-<<<<<<< HEAD
-  "version": "0.77.0-main",
-  "private": true,
-||||||| d4407d6f77a
-  "version": "0.77.0-main",
-=======
   "version": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  "private": true,
   "description": "Dev server middleware for React Native",
   "keywords": [
     "react-native",
@@ -30,13 +24,7 @@
   ],
   "dependencies": {
     "@isaacs/ttlcache": "^1.4.1",
-<<<<<<< HEAD
     "@react-native/debugger-frontend": "workspace:*",
-||||||| d4407d6f77a
-    "@react-native/debugger-frontend": "0.77.0-main",
-=======
-    "@react-native/debugger-frontend": "0.79.0-main",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     "chrome-launcher": "^0.15.2",
     "chromium-edge-launcher": "^0.2.0",
     "connect": "^3.6.5",
@@ -51,16 +39,8 @@
     "node": ">=18"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "data-uri-to-buffer": "^6.0.1",
-    "undici": "^5.29.0",
-||||||| d4407d6f77a
-    "data-uri-to-buffer": "^6.0.1",
-    "undici": "^5.27.2",
-=======
     "selfsigned": "^2.4.1",
-    "undici": "^5.28.5",
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+    "undici": "^5.29.0",
     "wait-for-expect": "^3.0.2"
   }
 }

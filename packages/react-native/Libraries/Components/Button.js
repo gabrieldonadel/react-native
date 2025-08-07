@@ -11,14 +11,11 @@
 'use strict';
 
 import type {TextStyleProp, ViewStyleProp} from '../StyleSheet/StyleSheet';
-<<<<<<< HEAD
-import type {PressEvent} from '../Types/CoreEventTypes';
-import type {BlurEvent, FocusEvent} from '../Types/CoreEventTypes'; // [macOS]
-||||||| d4407d6f77a
-import type {PressEvent} from '../Types/CoreEventTypes';
-=======
-import type {GestureResponderEvent} from '../Types/CoreEventTypes';
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+import type {
+  GestureResponderEvent,
+  BlurEvent,
+  FocusEvent,
+} from '../Types/CoreEventTypes'; // [macOS]
 import type {
   AccessibilityActionEvent,
   AccessibilityActionInfo,

@@ -157,12 +157,6 @@ class NewArchitectureHelper
     end
 
     def self.new_arch_enabled
-<<<<<<< HEAD
         return ENV["RCT_NEW_ARCH_ENABLED"] == "1" # [macOS] Disable Fabric by default till macOS supports it
-||||||| d4407d6f77a
-        return ENV["RCT_NEW_ARCH_ENABLED"] == nil || ENV["RCT_NEW_ARCH_ENABLED"] == "1"
-=======
-        return ENV["RCT_NEW_ARCH_ENABLED"] == 0 ? false : true
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     end
 end
