@@ -13,18 +13,10 @@ import type {EdgeInsetsOrSizeProp} from '../../StyleSheet/EdgeInsetsPropType';
 import type {
   BlurEvent,
   FocusEvent,
-<<<<<<< HEAD
-  LayoutEvent,
   // [macOS]
   MouseEvent,
-  PressEvent,
-||||||| d4407d6f77a
-  LayoutEvent,
-  PressEvent,
-=======
   GestureResponderEvent,
   LayoutChangeEvent,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 } from '../../Types/CoreEventTypes';
 // [macOS
 import type {DraggedTypesType} from '../View/DraggedType'; // [macOS]
@@ -37,41 +29,7 @@ import {type ViewStyleProp} from '../../StyleSheet/StyleSheet';
 import * as React from 'react';
 import {useMemo} from 'react';
 
-export type TouchableWithoutFeedbackPropsIOS = {};
-
-export type TouchableWithoutFeedbackPropsAndroid = {
-  /**
-   * If true, doesn't play a system sound on touch.
-   *
-   * @platform android
-   */
-<<<<<<< HEAD
-  'aria-busy'?: ?boolean,
-  'aria-checked'?: ?boolean | 'mixed',
-  'aria-disabled'?: ?boolean,
-  'aria-expanded'?: ?boolean,
-  'aria-selected'?: ?boolean,
-  'aria-hidden'?: ?boolean,
-  'aria-live'?: ?('polite' | 'assertive' | 'off'),
-  'aria-label'?: ?Stringish,
-  children?: ?React.Node,
-  delayLongPress?: ?number,
-  delayPressIn?: ?number,
-  delayPressOut?: ?number,
-  disabled?: ?boolean,
-  focusable?: ?boolean,
-  hitSlop?: ?EdgeInsetsOrSizeProp,
-  id?: string,
-  importantForAccessibility?: ?('auto' | 'yes' | 'no' | 'no-hide-descendants'),
-  nativeID?: ?string,
-  onAccessibilityAction?: ?(event: AccessibilityActionEvent) => mixed,
-  onBlur?: ?(event: BlurEvent) => void, // [macOS]
-  onFocus?: ?(event: FocusEvent) => void, // [macOS]
-  onLayout?: ?(event: LayoutEvent) => mixed,
-  onLongPress?: ?(event: PressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
+export type TouchableWithoutFeedbackPropsIOS = {
   // [macOS
   acceptsFirstMouse?: ?boolean,
   enableFocusRing?: ?boolean,
@@ -83,41 +41,14 @@ export type TouchableWithoutFeedbackPropsAndroid = {
   onDrop?: (event: MouseEvent) => void,
   draggedTypes?: ?DraggedTypesType,
   // macOS]
-  pressRetentionOffset?: ?EdgeInsetsOrSizeProp,
-  rejectResponderTermination?: ?boolean,
-  testID?: ?string,
-||||||| d4407d6f77a
-  'aria-busy'?: ?boolean,
-  'aria-checked'?: ?boolean | 'mixed',
-  'aria-disabled'?: ?boolean,
-  'aria-expanded'?: ?boolean,
-  'aria-selected'?: ?boolean,
-  'aria-hidden'?: ?boolean,
-  'aria-live'?: ?('polite' | 'assertive' | 'off'),
-  'aria-label'?: ?Stringish,
-  children?: ?React.Node,
-  delayLongPress?: ?number,
-  delayPressIn?: ?number,
-  delayPressOut?: ?number,
-  disabled?: ?boolean,
-  focusable?: ?boolean,
-  hitSlop?: ?EdgeInsetsOrSizeProp,
-  id?: string,
-  importantForAccessibility?: ?('auto' | 'yes' | 'no' | 'no-hide-descendants'),
-  nativeID?: ?string,
-  onAccessibilityAction?: ?(event: AccessibilityActionEvent) => mixed,
-  onBlur?: ?(event: BlurEvent) => mixed,
-  onFocus?: ?(event: FocusEvent) => mixed,
-  onLayout?: ?(event: LayoutEvent) => mixed,
-  onLongPress?: ?(event: PressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  pressRetentionOffset?: ?EdgeInsetsOrSizeProp,
-  rejectResponderTermination?: ?boolean,
-  testID?: ?string,
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+};
+
+export type TouchableWithoutFeedbackPropsAndroid = {
+  /**
+   * If true, doesn't play a system sound on touch.
+   *
+   * @platform android
+   */
   touchSoundDisabled?: ?boolean,
 };
 
@@ -170,13 +101,13 @@ export type TouchableWithoutFeedbackProps = $ReadOnly<
      * the OS-specific concept of "blur" occurs, meaning the element lost focus.
      * Some platforms may not have the concept of blur.
      */
-    onBlur?: ?(event: BlurEvent) => mixed,
+    onBlur?: ?(event: BlurEvent) => void, // [macOS]
     /**
      * When `accessible` is true (which is the default) this may be called when
      * the OS-specific concept of "focus" occurs. Some platforms may not have
      * the concept of focus.
      */
-    onFocus?: ?(event: FocusEvent) => mixed,
+    onFocus?: ?(event: FocusEvent) => void, // [macOS]
     /**
      * Invoked on mount and layout changes with
      * {nativeEvent: {layout: {x, y, width, height}}}

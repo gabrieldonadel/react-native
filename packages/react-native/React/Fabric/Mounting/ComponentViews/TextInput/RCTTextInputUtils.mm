@@ -288,10 +288,6 @@ UITextSmartInsertDeleteType RCTUITextSmartInsertDeleteTypeFromOptionalBool(std::
       ? (*smartInsertDelete ? UITextSmartInsertDeleteTypeYes : UITextSmartInsertDeleteTypeNo)
       : UITextSmartInsertDeleteTypeDefault;
 }
-<<<<<<< HEAD
-#endif // [macOS]
-||||||| d4407d6f77a
-=======
 
 UIDataDetectorTypes RCTUITextViewDataDetectorTypesFromStringVector(const std::vector<std::string> &dataDetectorTypes)
 {
@@ -320,4 +316,5 @@ UIDataDetectorTypes RCTUITextViewDataDetectorTypesFromStringVector(const std::ve
   }
   return ret;
 }
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+
+#endif // [macOS]

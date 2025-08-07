@@ -96,12 +96,8 @@ RCT_EXPORT_MODULE()
          selector:@selector(applicationWillChangeStatusBarFrame:)
              name:UIApplicationWillChangeStatusBarFrameNotification
            object:nil];
-<<<<<<< HEAD
 #endif // [visionOS]
-||||||| d4407d6f77a
-=======
 #pragma clang diagnostic pop
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 }
 
 - (void)stopObserving
@@ -111,13 +107,9 @@ RCT_EXPORT_MODULE()
 
 - (void)emitEvent:(NSString *)eventName forNotification:(NSNotification *)notification
 {
-<<<<<<< HEAD
 #if TARGET_OS_IOS // [visionOS]
-||||||| d4407d6f77a
-=======
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   CGRect frame = [notification.userInfo[UIApplicationStatusBarFrameUserInfoKey] CGRectValue];
 #pragma clang diagnostic pop
   NSDictionary *event = @{

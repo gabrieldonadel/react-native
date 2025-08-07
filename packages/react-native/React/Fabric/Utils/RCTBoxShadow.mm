@@ -123,7 +123,7 @@ static void renderOutsetShadows(
     CGFloat blurRadius = it->blurRadius;
     CGFloat spreadDistance = it->spreadDistance;
     CGColorRef color = colorRefFromSharedColor(it->color);
-      
+
     #if TARGET_OS_OSX // [macOS
       // For some reason, unflipping the context gets outset shadows to (mostly) appear correctly on macOS
       CGAffineTransform flippedTransform = CGAffineTransformMake(1, 0, 0, -1, 0, boundingRect.size.height);
@@ -287,25 +287,12 @@ UIImage *RCTGetBoxShadowImage(
     UIEdgeInsets edgeInsets,
     CGSize layerSize)
 {
-<<<<<<< HEAD
-  CGRect boundingRect = RCTGetBoundingRect(shadows, layer.bounds.size);
+  CGRect boundingRect = RCTGetBoundingRect(shadows, layerSize);
   // [macOS Use RCTUIGraphicsImageRenderer shim
   RCTUIGraphicsImageRendererFormat *const rendererFormat = [RCTUIGraphicsImageRendererFormat defaultFormat];
   RCTUIGraphicsImageRenderer *const renderer = [[RCTUIGraphicsImageRenderer alloc] initWithSize:boundingRect.size
-                                                                                         format:rendererFormat];
+                                                                                   format:rendererFormat];
   // macOS]
-
-||||||| d4407d6f77a
-  CGRect boundingRect = RCTGetBoundingRect(shadows, layer.bounds.size);
-  UIGraphicsImageRendererFormat *const rendererFormat = [UIGraphicsImageRendererFormat defaultFormat];
-  UIGraphicsImageRenderer *const renderer = [[UIGraphicsImageRenderer alloc] initWithSize:boundingRect.size
-                                                                                   format:rendererFormat];
-=======
-  CGRect boundingRect = RCTGetBoundingRect(shadows, layerSize);
-  UIGraphicsImageRendererFormat *const rendererFormat = [UIGraphicsImageRendererFormat defaultFormat];
-  UIGraphicsImageRenderer *const renderer = [[UIGraphicsImageRenderer alloc] initWithSize:boundingRect.size
-                                                                                   format:rendererFormat];
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   UIImage *const boxShadowImage =
       [renderer imageWithActions:^(RCTUIGraphicsImageRendererContext *_Nonnull rendererContext) { // [macOS]
         auto [outsetShadows, insetShadows] = splitBoxShadowsByInset(shadows);

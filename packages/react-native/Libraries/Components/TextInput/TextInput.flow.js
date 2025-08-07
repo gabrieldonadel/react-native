@@ -414,7 +414,6 @@ export type TextInputIOSProps = $ReadOnly<{
   smartInsertDelete?: ?boolean,
 }>;
 
-<<<<<<< HEAD
 // [macOS
 type MacOSProps = $ReadOnly<{|
   /**
@@ -504,12 +503,7 @@ type MacOSProps = $ReadOnly<{|
 |}>;
 // macOS]
 
-type AndroidProps = $ReadOnly<{|
-||||||| d4407d6f77a
-type AndroidProps = $ReadOnly<{|
-=======
 export type TextInputAndroidProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   /**
    * When provided it will set the color of the cursor (or "caret") in the component.
    * Unlike the behavior of `selectionColor` the cursor color will be set independently
@@ -603,26 +597,14 @@ export type TextInputAndroidProps = $ReadOnly<{
   underlineColorAndroid?: ?ColorValue,
 }>;
 
-<<<<<<< HEAD
 export type PasteType = 'fileUrl' | 'image' | 'string'; // [macOS]
 export type PastedTypesType = PasteType | $ReadOnlyArray<PasteType>; // [macOS]
 
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{|style: ?ViewStyleProp|}>>,
-  ...IOSProps,
-  ...AndroidProps,
-  ...MacOSProps, // [macOS]
-||||||| d4407d6f77a
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{|style: ?ViewStyleProp|}>>,
-  ...IOSProps,
-  ...AndroidProps,
-=======
 export type TextInputProps = $ReadOnly<{
   ...$Diff<ViewProps, $ReadOnly<{style: ?ViewStyleProp}>>,
   ...TextInputIOSProps,
   ...TextInputAndroidProps,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  ...MacOSProps, // [macOS]
 
   /**
    * Can tell `TextInput` to automatically capitalize certain characters.
@@ -951,13 +933,7 @@ export type TextInputProps = $ReadOnly<{
   /**
    * Callback that is called when the text input is focused.
    */
-<<<<<<< HEAD
-  onFocus?: ?(e: FocusEvent) => void, // [macOS]
-||||||| d4407d6f77a
-  onFocus?: ?(e: FocusEvent) => mixed,
-=======
-  onFocus?: ?(e: TextInputFocusEvent) => mixed,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  onFocus?: ?(e: TextInputFocusEvent) => void, // [macOS]
 
   /**
    * Callback that is called when a key is pressed.
@@ -1159,29 +1135,13 @@ export type TextInputProps = $ReadOnly<{
   value?: ?Stringish,
 }>;
 
-<<<<<<< HEAD
-type ImperativeMethods = $ReadOnly<{|
-  clear: () => void,
-  isFocused: () => boolean,
-  getNativeRef: () => ?HostInstance,
-  setSelection: (start: number, end: number) => void,
-  setGhostText: (ghostText: ?string) => void, // [macOS]
-|}>;
-||||||| d4407d6f77a
-type ImperativeMethods = $ReadOnly<{|
-  clear: () => void,
-  isFocused: () => boolean,
-  getNativeRef: () => ?HostInstance,
-  setSelection: (start: number, end: number) => void,
-|}>;
-=======
 export interface TextInputInstance extends HostInstance {
   +clear: () => void;
   +isFocused: () => boolean;
   +getNativeRef: () => ?HostInstance;
   +setSelection: (start: number, end: number) => void;
+  +setGhostText: (ghostText: ?string) => void; // [macOS]
 }
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 /**
  * A foundational component for inputting text into the app via a
@@ -1305,17 +1265,9 @@ export type TextInputComponentStatics = $ReadOnly<{
     currentlyFocusedField: () => ?number,
     focusTextInput: (textField: ?HostInstance) => void,
     blurTextInput: (textField: ?HostInstance) => void,
-<<<<<<< HEAD
     onTextInputFocus: (textField: ?HostInstance) => void, // [macOS]
     onTextInputBlur: (textField: ?HostInstance) => void, // [macOS]
-  |}>,
-|}>;
-||||||| d4407d6f77a
-  |}>,
-|}>;
-=======
   }>,
 }>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 export type TextInputType = InternalTextInput & TextInputComponentStatics;

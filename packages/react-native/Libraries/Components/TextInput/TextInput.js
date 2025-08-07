@@ -36,27 +36,6 @@ import nullthrows from 'nullthrows';
 import * as React from 'react';
 import {useCallback, useLayoutEffect, useRef, useState} from 'react';
 
-<<<<<<< HEAD
-type ReactRefSetter<T> = {current: null | T, ...} | ((ref: null | T) => mixed);
-type TextInputInstance = HostInstance & {
-  +clear: () => void,
-  +isFocused: () => boolean,
-  +getNativeRef: () => ?HostInstance,
-  +setSelection: (start: number, end: number) => void,
-  +setGhostText: (ghostText: ?string) => void, // [macOS]
-};
-
-||||||| d4407d6f77a
-type ReactRefSetter<T> = {current: null | T, ...} | ((ref: null | T) => mixed);
-type TextInputInstance = HostInstance & {
-  +clear: () => void,
-  +isFocused: () => boolean,
-  +getNativeRef: () => ?HostInstance,
-  +setSelection: (start: number, end: number) => void,
-};
-
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 let AndroidTextInput;
 let AndroidTextInputCommands;
 let RCTSinglelineTextInputView;
@@ -473,7 +452,6 @@ export type TextInputIOSProps = $ReadOnly<{
   smartInsertDelete?: ?boolean,
 }>;
 
-<<<<<<< HEAD
 // [macOS
 type MacOSProps = $ReadOnly<{|
   /**
@@ -563,12 +541,7 @@ type MacOSProps = $ReadOnly<{|
 |}>;
 // macOS]
 
-type AndroidProps = $ReadOnly<{|
-||||||| d4407d6f77a
-type AndroidProps = $ReadOnly<{|
-=======
 export type TextInputAndroidProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   /**
    * When provided it will set the color of the cursor (or "caret") in the component.
    * Unlike the behavior of `selectionColor` the cursor color will be set independently
@@ -655,26 +628,14 @@ export type TextInputAndroidProps = $ReadOnly<{
   underlineColorAndroid?: ?ColorValue,
 }>;
 
-<<<<<<< HEAD
 export type PasteType = 'fileUrl' | 'image' | 'string'; // [macOS]
 export type PastedTypesType = PasteType | $ReadOnlyArray<PasteType>; // [macOS]
 
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{|style: ?ViewStyleProp|}>>,
-  ...IOSProps,
-  ...MacOSProps, // [macOS]
-  ...AndroidProps,
-||||||| d4407d6f77a
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{|style: ?ViewStyleProp|}>>,
-  ...IOSProps,
-  ...AndroidProps,
-=======
 export type TextInputProps = $ReadOnly<{
   ...$Diff<ViewProps, $ReadOnly<{style: ?ViewStyleProp}>>,
   ...TextInputIOSProps,
+  ...MacOSProps, // [macOS]
   ...TextInputAndroidProps,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
   /**
    * Can tell `TextInput` to automatically capitalize certain characters.
@@ -982,13 +943,7 @@ export type TextInputProps = $ReadOnly<{
   /**
    * Callback that is called when the text input is focused.
    */
-<<<<<<< HEAD
-  onFocus?: ?(e: FocusEvent) => void, // [macOS]
-||||||| d4407d6f77a
-  onFocus?: ?(e: FocusEvent) => mixed,
-=======
-  onFocus?: ?(e: TextInputFocusEvent) => mixed,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  onFocus?: ?(e: TextInputFocusEvent) =>  void, // [macOS]
 
   /**
    * Callback that is called when a key is pressed.
@@ -2102,18 +2057,10 @@ export type TextInputComponentStatics = $ReadOnly<{
     currentlyFocusedField: typeof TextInputState.currentlyFocusedField,
     focusTextInput: typeof TextInputState.focusTextInput,
     blurTextInput: typeof TextInputState.blurTextInput,
-<<<<<<< HEAD
     onTextInputFocus: typeof TextInputState.focusInput, // [macOS]
     onTextInputBlur: typeof TextInputState.blurInput, // [macOS]
-  |}>,
-|}>;
-||||||| d4407d6f77a
-  |}>,
-|}>;
-=======
   }>,
 }>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 const styles = StyleSheet.create({
   multilineDefault: {

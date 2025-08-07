@@ -323,7 +323,6 @@ RCT_EXPORT_METHOD(setIsShakeToShowDevMenuEnabled : (BOOL)enabled)
   return [[self settingForKey:kRCTDevSettingShakeToShowDevMenu] boolValue];
 }
 
-<<<<<<< HEAD
 // [macOS
 RCT_EXPORT_METHOD(setIsSecondaryClickToShowDevMenuEnabled:(BOOL)enabled)
 {
@@ -336,57 +335,6 @@ RCT_EXPORT_METHOD(setIsSecondaryClickToShowDevMenuEnabled:(BOOL)enabled)
 }
 // macOS]
 
-RCT_EXPORT_METHOD(setIsDebuggingRemotely:(BOOL)enabled)
-{
-  [self _updateSettingWithValue:@(enabled) forKey:kRCTDevSettingIsDebuggingRemotely];
-  [self _remoteDebugSettingDidChange];
-}
-
-- (BOOL)isDebuggingRemotely
-{
-  return [[self settingForKey:kRCTDevSettingIsDebuggingRemotely] boolValue];
-}
-
-- (void)_remoteDebugSettingDidChange
-{
-  // This value is passed as a command-line argument, so fall back to reading from NSUserDefaults directly
-  NSString *executorOverride = [[NSUserDefaults standardUserDefaults] stringForKey:kRCTDevSettingExecutorOverrideClass];
-  Class executorOverrideClass = executorOverride ? NSClassFromString(executorOverride) : nil;
-  if (executorOverrideClass) {
-    self.executorClass = executorOverrideClass;
-  } else {
-    BOOL enabled = self.isRemoteDebuggingAvailable && self.isDebuggingRemotely;
-    self.executorClass = enabled ? objc_getClass("RCTWebSocketExecutor") : nil;
-  }
-}
-
-||||||| d4407d6f77a
-RCT_EXPORT_METHOD(setIsDebuggingRemotely : (BOOL)enabled)
-{
-  [self _updateSettingWithValue:@(enabled) forKey:kRCTDevSettingIsDebuggingRemotely];
-  [self _remoteDebugSettingDidChange];
-}
-
-- (BOOL)isDebuggingRemotely
-{
-  return [[self settingForKey:kRCTDevSettingIsDebuggingRemotely] boolValue];
-}
-
-- (void)_remoteDebugSettingDidChange
-{
-  // This value is passed as a command-line argument, so fall back to reading from NSUserDefaults directly
-  NSString *executorOverride = [[NSUserDefaults standardUserDefaults] stringForKey:kRCTDevSettingExecutorOverrideClass];
-  Class executorOverrideClass = executorOverride ? NSClassFromString(executorOverride) : nil;
-  if (executorOverrideClass) {
-    self.executorClass = executorOverrideClass;
-  } else {
-    BOOL enabled = self.isRemoteDebuggingAvailable && self.isDebuggingRemotely;
-    self.executorClass = enabled ? objc_getClass("RCTWebSocketExecutor") : nil;
-  }
-}
-
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 RCT_EXPORT_METHOD(setProfilingEnabled : (BOOL)enabled)
 {
   [self _updateSettingWithValue:@(enabled) forKey:kRCTDevSettingProfilingEnabled];

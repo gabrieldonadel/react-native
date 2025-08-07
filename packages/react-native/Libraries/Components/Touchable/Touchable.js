@@ -21,16 +21,10 @@ import Position from './Position';
 import * as React from 'react';
 
 const extractSingleTouch = (nativeEvent: {
-<<<<<<< HEAD
   +altKey?: ?boolean, // [macOS]
   +button?: ?number, // [macOS]
-  +changedTouches: $ReadOnlyArray<PressEvent['nativeEvent']>,
-  +ctrlKey?: ?boolean, // [macOS]
-||||||| d4407d6f77a
-  +changedTouches: $ReadOnlyArray<PressEvent['nativeEvent']>,
-=======
   +changedTouches: $ReadOnlyArray<GestureResponderEvent['nativeEvent']>,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  +ctrlKey?: ?boolean, // [macOS]
   +force?: number,
   +identifier: number,
   +locationX: number,

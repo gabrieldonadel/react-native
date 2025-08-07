@@ -24,12 +24,8 @@ using namespace facebook::react;
 @end
 
 @implementation RCTPullToRefreshViewComponentView {
-<<<<<<< HEAD
-#if !TARGET_OS_OSX // [macOS]
-||||||| d4407d6f77a
-=======
   BOOL _isBeforeInitialLayout;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+#if !TARGET_OS_OSX // [macOS]
   UIRefreshControl *_refreshControl;
 #endif // [macOS]
   RCTScrollViewComponentView *__weak _scrollViewComponentView;
@@ -57,21 +53,7 @@ using namespace facebook::react;
   [_refreshControl addTarget:self
                       action:@selector(handleUIControlEventValueChanged)
             forControlEvents:UIControlEventValueChanged];
-<<<<<<< HEAD
-
-  const auto &concreteProps = static_cast<const PullToRefreshViewProps &>(*_props);
-
-  _refreshControl.tintColor = RCTUIColorFromSharedColor(concreteProps.tintColor);
-  [self _updateProgressViewOffset:concreteProps.progressViewOffset];
 #endif // [macOS]
-||||||| d4407d6f77a
-
-  const auto &concreteProps = static_cast<const PullToRefreshViewProps &>(*_props);
-
-  _refreshControl.tintColor = RCTUIColorFromSharedColor(concreteProps.tintColor);
-  [self _updateProgressViewOffset:concreteProps.progressViewOffset];
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 }
 
 #pragma mark - RCTComponentViewProtocol
@@ -92,34 +74,10 @@ using namespace facebook::react;
 
 - (void)updateProps:(const Props::Shared &)props oldProps:(const Props::Shared &)oldProps
 {
-<<<<<<< HEAD
-  const auto &oldConcreteProps = static_cast<const PullToRefreshViewProps &>(*_props);
-  const auto &newConcreteProps = static_cast<const PullToRefreshViewProps &>(*props);
-
-  if (newConcreteProps.refreshing != oldConcreteProps.refreshing) {
-#if !TARGET_OS_OSX // [macOS]
-    if (newConcreteProps.refreshing) {
-      [_refreshControl beginRefreshing];
-    } else {
-      [_refreshControl endRefreshing];
-    }
-#endif // [macOS]
-||||||| d4407d6f77a
-  const auto &oldConcreteProps = static_cast<const PullToRefreshViewProps &>(*_props);
-  const auto &newConcreteProps = static_cast<const PullToRefreshViewProps &>(*props);
-
-  if (newConcreteProps.refreshing != oldConcreteProps.refreshing) {
-    if (newConcreteProps.refreshing) {
-      [_refreshControl beginRefreshing];
-    } else {
-      [_refreshControl endRefreshing];
-    }
-=======
   // Prop updates are ignored by _refreshControl until after the initial layout, so just store them in _props until then
   if (_isBeforeInitialLayout) {
     _props = std::static_pointer_cast<const BaseViewProps>(props);
     return;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   }
 
   const auto &oldConcreteProps = static_cast<const PullToRefreshViewProps &>(*oldProps);
@@ -153,11 +111,13 @@ using namespace facebook::react;
 
   // All prop updates must happen above the call to begin refreshing, or else _refreshControl will ignore the updates
   if (newConcreteProps.refreshing != oldConcreteProps.refreshing) {
+#if !TARGET_OS_OSX // [macOS]
     if (newConcreteProps.refreshing) {
       [self beginRefreshingProgrammatically];
     } else {
       [_refreshControl endRefreshing];
     }
+#endif // [macOS]
   }
 }
 
@@ -203,10 +163,6 @@ using namespace facebook::react;
 
 #pragma mark - Attaching & Detaching
 
-<<<<<<< HEAD
-#if !TARGET_OS_OSX // [macOS]
-||||||| d4407d6f77a
-=======
 - (void)layoutSubviews
 {
   [super layoutSubviews];
@@ -220,7 +176,7 @@ using namespace facebook::react;
   }
 }
 
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+#if !TARGET_OS_OSX // [macOS]
 - (void)didMoveToSuperview
 {
   [super didMoveToSuperview];
@@ -274,6 +230,7 @@ using namespace facebook::react;
   _scrollViewComponentView = nil;
 }
 
+#if !TARGET_OS_OSX // [macOS]
 - (void)beginRefreshingProgrammatically
 {
   if (!_scrollViewComponentView) {
@@ -288,6 +245,7 @@ using namespace facebook::react;
 
   [_refreshControl beginRefreshing];
 }
+#endif // [macOS]
 
 #pragma mark - Native commands
 

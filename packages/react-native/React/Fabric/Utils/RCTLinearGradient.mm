@@ -20,43 +20,7 @@ using namespace facebook::react;
 {
   RCTUIGraphicsImageRenderer *renderer = [[RCTUIGraphicsImageRenderer alloc] initWithSize:size]; // [macOS]
   const auto &direction = gradient.direction;
-<<<<<<< HEAD
-  const auto &colorStops = gradient.colorStops;
-
   UIImage *gradientImage = [renderer imageWithActions:^(RCTUIGraphicsImageRendererContext *_Nonnull rendererContext) { // [macOS]
-    CGContextRef context = rendererContext.CGContext;
-    NSMutableArray *colors = [NSMutableArray array];
-    CGFloat locations[colorStops.size()];
-
-    for (size_t i = 0; i < colorStops.size(); ++i) {
-      const auto &colorStop = colorStops[i];
-      CGColorRef cgColor = RCTCreateCGColorRefFromSharedColor(colorStop.color);
-      [colors addObject:(__bridge id)cgColor];
-      locations[i] = colorStop.position;
-    }
-
-    CGGradientRef cgGradient = CGGradientCreateWithColors(NULL, (__bridge CFArrayRef)colors, locations);
-
-||||||| d4407d6f77a
-  const auto &colorStops = gradient.colorStops;
-
-  UIImage *gradientImage = [renderer imageWithActions:^(UIGraphicsImageRendererContext *_Nonnull rendererContext) {
-    CGContextRef context = rendererContext.CGContext;
-    NSMutableArray *colors = [NSMutableArray array];
-    CGFloat locations[colorStops.size()];
-
-    for (size_t i = 0; i < colorStops.size(); ++i) {
-      const auto &colorStop = colorStops[i];
-      CGColorRef cgColor = RCTCreateCGColorRefFromSharedColor(colorStop.color);
-      [colors addObject:(__bridge id)cgColor];
-      locations[i] = colorStop.position;
-    }
-
-    CGGradientRef cgGradient = CGGradientCreateWithColors(NULL, (__bridge CFArrayRef)colors, locations);
-
-=======
-  UIImage *gradientImage = [renderer imageWithActions:^(UIGraphicsImageRendererContext *_Nonnull rendererContext) {
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     CGPoint startPoint;
     CGPoint endPoint;
 
@@ -255,7 +219,7 @@ static std::vector<ProcessedColorStop> processColorTransitionHints(const std::ve
     auto leftColor = RCTUIColorFromSharedColor(leftSharedColor);
     auto rightColor = RCTUIColorFromSharedColor(rightSharedColor);
     NSArray<NSNumber *> *inputRange = @[ @0.0, @1.0 ];
-    NSArray<UIColor *> *outputRange = @[ leftColor, rightColor ];
+    NSArray<RCTUIColor *> *outputRange = @[ leftColor, rightColor ]; // [macOS]
 
     for (auto &newStop : newStops) {
       auto pointRelativeOffset = (newStop.position.value() - offsetLeft) / totalDist;

@@ -90,31 +90,6 @@ using namespace facebook::react;
 #endif // macOS]
 }
 
-<<<<<<< HEAD
-#pragma mark - UISceneDelegate
-#if !TARGET_OS_OSX // [macOS]
-- (void)windowScene:(UIWindowScene *)windowScene
-    didUpdateCoordinateSpace:(id<UICoordinateSpace>)previousCoordinateSpace
-        interfaceOrientation:(UIInterfaceOrientation)previousInterfaceOrientation
-             traitCollection:(UITraitCollection *)previousTraitCollection API_AVAILABLE(ios(13.0))
-{
-  [[NSNotificationCenter defaultCenter] postNotificationName:RCTWindowFrameDidChangeNotification object:self];
-}
-#endif // [macOS]
-
-||||||| d4407d6f77a
-#pragma mark - UISceneDelegate
-
-- (void)windowScene:(UIWindowScene *)windowScene
-    didUpdateCoordinateSpace:(id<UICoordinateSpace>)previousCoordinateSpace
-        interfaceOrientation:(UIInterfaceOrientation)previousInterfaceOrientation
-             traitCollection:(UITraitCollection *)previousTraitCollection API_AVAILABLE(ios(13.0))
-{
-  [[NSNotificationCenter defaultCenter] postNotificationName:RCTWindowFrameDidChangeNotification object:self];
-}
-
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 - (RCTRootViewFactory *)rootViewFactory
 {
   return self.reactNativeFactory.rootViewFactory;

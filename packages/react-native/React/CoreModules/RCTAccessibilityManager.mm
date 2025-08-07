@@ -105,35 +105,7 @@ RCT_EXPORT_MODULE()
                                                    object:nil];
 #endif // macOS]
 
-<<<<<<< HEAD
 #if !TARGET_OS_OSX // [macOS]
-    self.contentSizeCategory = RCTSharedApplication().preferredContentSizeCategory;
-    _isBoldTextEnabled = UIAccessibilityIsBoldTextEnabled();
-    _isGrayscaleEnabled = UIAccessibilityIsGrayscaleEnabled();
-    _isInvertColorsEnabled = UIAccessibilityIsInvertColorsEnabled();
-    _isReduceMotionEnabled = UIAccessibilityIsReduceMotionEnabled();
-    _isDarkerSystemColorsEnabled = UIAccessibilityDarkerSystemColorsEnabled();
-    _isReduceTransparencyEnabled = UIAccessibilityIsReduceTransparencyEnabled();
-    _isVoiceOverEnabled = UIAccessibilityIsVoiceOverRunning();
-    _isHighContrastEnabled = UIAccessibilityDarkerSystemColorsEnabled(); // [macOS] Implement high Contrast for iOS
-#else // [macOS
-    NSWorkspace *sharedWorkspace = [NSWorkspace sharedWorkspace];
-    _isInvertColorsEnabled = [sharedWorkspace accessibilityDisplayShouldInvertColors];
-    _isReduceMotionEnabled = [sharedWorkspace accessibilityDisplayShouldReduceMotion];
-    _isReduceTransparencyEnabled = [sharedWorkspace accessibilityDisplayShouldReduceTransparency];
-    _isVoiceOverEnabled = [sharedWorkspace isVoiceOverEnabled];
-    _isHighContrastEnabled = [sharedWorkspace accessibilityDisplayShouldIncreaseContrast];
-#endif // macOS]
-||||||| d4407d6f77a
-    self.contentSizeCategory = RCTSharedApplication().preferredContentSizeCategory;
-    _isBoldTextEnabled = UIAccessibilityIsBoldTextEnabled();
-    _isGrayscaleEnabled = UIAccessibilityIsGrayscaleEnabled();
-    _isInvertColorsEnabled = UIAccessibilityIsInvertColorsEnabled();
-    _isReduceMotionEnabled = UIAccessibilityIsReduceMotionEnabled();
-    _isDarkerSystemColorsEnabled = UIAccessibilityDarkerSystemColorsEnabled();
-    _isReduceTransparencyEnabled = UIAccessibilityIsReduceTransparencyEnabled();
-    _isVoiceOverEnabled = UIAccessibilityIsVoiceOverRunning();
-=======
     RCTInitialAccessibilityValuesProxy *initialValuesProxy = [RCTInitialAccessibilityValuesProxy sharedInstance];
     self.contentSizeCategory = initialValuesProxy.preferredContentSizeCategory;
     _isBoldTextEnabled = initialValuesProxy.isBoldTextEnabled;
@@ -143,7 +115,15 @@ RCT_EXPORT_MODULE()
     _isDarkerSystemColorsEnabled = initialValuesProxy.isDarkerSystemColorsEnabled;
     _isReduceTransparencyEnabled = initialValuesProxy.isReduceTransparencyEnabled;
     _isVoiceOverEnabled = initialValuesProxy.isVoiceOverEnabled;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+    _isHighContrastEnabled = UIAccessibilityDarkerSystemColorsEnabled(); // [macOS] Implement high Contrast for iOS
+#else // [macOS
+    NSWorkspace *sharedWorkspace = [NSWorkspace sharedWorkspace];
+    _isInvertColorsEnabled = [sharedWorkspace accessibilityDisplayShouldInvertColors];
+    _isReduceMotionEnabled = [sharedWorkspace accessibilityDisplayShouldReduceMotion];
+    _isReduceTransparencyEnabled = [sharedWorkspace accessibilityDisplayShouldReduceTransparency];
+    _isVoiceOverEnabled = [sharedWorkspace isVoiceOverEnabled];
+    _isHighContrastEnabled = [sharedWorkspace accessibilityDisplayShouldIncreaseContrast];
+#endif // macOS]
   }
   return self;
 }
@@ -274,7 +254,7 @@ RCT_EXPORT_MODULE()
   BOOL newReduceMotionEnabled = [[NSWorkspace sharedWorkspace] accessibilityDisplayShouldReduceMotion];
   BOOL newReduceTransparencyEnabled = [[NSWorkspace sharedWorkspace] accessibilityDisplayShouldReduceTransparency];
   BOOL newHighContrastEnabled = [[NSWorkspace sharedWorkspace] accessibilityDisplayShouldIncreaseContrast];
-  
+
 
   if (_isHighContrastEnabled != newHighContrastEnabled) {
     _isHighContrastEnabled = newHighContrastEnabled;

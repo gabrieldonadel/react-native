@@ -7,13 +7,9 @@
 
 #import <React/RCTFileRequestHandler.h>
 
-<<<<<<< HEAD
-#if !TARGET_OS_OSX // [macOS]
-||||||| d4407d6f77a
-=======
 #import <mutex>
 
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+#if !TARGET_OS_OSX // [macOS]
 #import <MobileCoreServices/MobileCoreServices.h>
 #else // [macOS
 #import <CoreServices/CoreServices.h>
@@ -61,7 +57,6 @@ RCT_EXPORT_MODULE()
     _fileQueue.maxConcurrentOperationCount = 4;
   }
 
-<<<<<<< HEAD
   NSBlockOperation *op = [NSBlockOperation new];
   __weak NSBlockOperation *weakOp = op;
   [op addExecutionBlock:^{
@@ -69,18 +64,6 @@ RCT_EXPORT_MODULE()
     if (strongOp == nil || [strongOp isCancelled]) {
       return;
     }
-||||||| d4407d6f77a
-  __weak __block NSBlockOperation *weakOp;
-  __block NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-=======
-  __weak NSBlockOperation *weakOp;
-  NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-    NSBlockOperation *strongOp = weakOp; // Strong reference to avoid deallocation during execution
-    if (strongOp == nil || [strongOp isCancelled]) {
-      return;
-    }
-
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     // Get content length
     NSError *error = nil;
     NSFileManager *fileManager = [NSFileManager new];

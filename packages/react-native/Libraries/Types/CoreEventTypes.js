@@ -220,47 +220,14 @@ export interface NativePointerEvent extends NativeMouseEvent {
 
 export type PointerEvent = NativeSyntheticEvent<NativePointerEvent>;
 
-<<<<<<< HEAD
-export type PressEvent = ResponderSyntheticEvent<
-  $ReadOnly<{|
-    altKey?: ?boolean, // [macOS]
-    button?: ?number, // [macOS]
-    changedTouches: $ReadOnlyArray<$PropertyType<PressEvent, 'nativeEvent'>>,
-    ctrlKey?: ?boolean, // [macOS]
-    force?: number,
-    identifier: number,
-    locationX: number,
-    locationY: number,
-    metaKey?: ?boolean, // [macOS]
-    pageX: number,
-    pageY: number,
-    shiftKey?: ?boolean, // [macOS]
-    target: ?number,
-    timestamp: number,
-    touches: $ReadOnlyArray<$PropertyType<PressEvent, 'nativeEvent'>>,
-  |}>,
->;
-||||||| d4407d6f77a
-export type PressEvent = ResponderSyntheticEvent<
-  $ReadOnly<{|
-    changedTouches: $ReadOnlyArray<$PropertyType<PressEvent, 'nativeEvent'>>,
-    force?: number,
-    identifier: number,
-    locationX: number,
-    locationY: number,
-    pageX: number,
-    pageY: number,
-    target: ?number,
-    timestamp: number,
-    touches: $ReadOnlyArray<$PropertyType<PressEvent, 'nativeEvent'>>,
-  |}>,
->;
-=======
 export type NativeTouchEvent = $ReadOnly<{
+  altKey?: ?boolean, // [macOS]
+  button?: ?number, // [macOS]
   /**
    * Array of all touch events that have changed since the last event
    */
   changedTouches: $ReadOnlyArray<NativeTouchEvent>,
+  ctrlKey?: ?boolean, // [macOS]
   /**
    * 3D Touch reported force
    * @platform ios
@@ -278,6 +245,7 @@ export type NativeTouchEvent = $ReadOnly<{
    * The Y position of the touch, relative to the element
    */
   locationY: number,
+  metaKey?: ?boolean, // [macOS]
   /**
    * The X position of the touch, relative to the screen
    */
@@ -286,6 +254,7 @@ export type NativeTouchEvent = $ReadOnly<{
    * The Y position of the touch, relative to the screen
    */
   pageY: number,
+  shiftKey?: ?boolean, // [macOS]
   /**
    * The node id of the element receiving the touch event
    */
@@ -299,78 +268,8 @@ export type NativeTouchEvent = $ReadOnly<{
    */
   touches: $ReadOnlyArray<NativeTouchEvent>,
 }>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
-<<<<<<< HEAD
-export type ScrollEvent = SyntheticEvent<
-  $ReadOnly<{|
-    contentInset: $ReadOnly<{|
-      bottom: number,
-      left: number,
-      right: number,
-      top: number,
-    |}>,
-    contentOffset: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    contentSize: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    layoutMeasurement: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    targetContentOffset?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    velocity?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    zoomScale?: number,
-    responderIgnoreScroll?: boolean,
-    preferredScrollerStyle?: string, // [macOS]
-  |}>,
->;
-||||||| d4407d6f77a
-export type ScrollEvent = SyntheticEvent<
-  $ReadOnly<{|
-    contentInset: $ReadOnly<{|
-      bottom: number,
-      left: number,
-      right: number,
-      top: number,
-    |}>,
-    contentOffset: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    contentSize: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    layoutMeasurement: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    targetContentOffset?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    velocity?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    zoomScale?: number,
-    responderIgnoreScroll?: boolean,
-  |}>,
->;
-=======
 export type GestureResponderEvent = ResponderSyntheticEvent<NativeTouchEvent>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 export type NativeScrollRectangle = $ReadOnly<{
   bottom: number,
@@ -384,7 +283,6 @@ export type NativeScrollPoint = $ReadOnly<{
   x: number,
 }>;
 
-<<<<<<< HEAD
 // [macOS
 export type KeyEvent = SyntheticEvent<
   $ReadOnly<{|
@@ -427,12 +325,6 @@ export type HandledKeyEvent = $ReadOnly<{|
 
 // macOS]
 
-export type MouseEvent = SyntheticEvent<
-  $ReadOnly<{|
-||||||| d4407d6f77a
-export type MouseEvent = SyntheticEvent<
-  $ReadOnly<{|
-=======
 export type NativeScrollVelocity = $ReadOnly<{
   y: number,
   x: number,
@@ -451,6 +343,7 @@ export type NativeScrollEvent = $ReadOnly<{
   velocity?: NativeScrollVelocity,
   zoomScale?: number,
   responderIgnoreScroll?: boolean,
+  preferredScrollerStyle?: string, // [macOS]
   /**
    * @platform ios
    */
@@ -470,7 +363,6 @@ export type FocusEvent = NativeSyntheticEvent<TargetedEvent>;
 
 export type MouseEvent = NativeSyntheticEvent<
   $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     clientX: number,
     clientY: number,
     pageX: number,

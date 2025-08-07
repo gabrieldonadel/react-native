@@ -16,13 +16,9 @@
 #import <React/RCTInvalidating.h>
 #import <React/RCTKeyWindowValuesProxy.h>
 #import <React/RCTUtils.h>
-<<<<<<< HEAD
-#import "UIView+React.h" // [macOS]
-||||||| d4407d6f77a
-=======
 #import <React/RCTWindowSafeAreaProxy.h>
+#import "UIView+React.h" // [macOS]
 #import <atomic>
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 #import "CoreModulesPlugins.h"
 
@@ -38,7 +34,12 @@ using namespace facebook::react;
   NSDictionary *_currentInterfaceDimensions;
   BOOL _isFullscreen;
   std::atomic<BOOL> _invalidated;
+  NSDictionary *_constants;
+
+  __weak RCTPlatformWindow *_applicationWindow; // [macOS]
 }
+
+static NSString *const kFrameKeyPath = @"frame";
 
 @synthesize moduleRegistry = _moduleRegistry;
 
@@ -154,23 +155,34 @@ static BOOL RCTIsIPhoneNotched()
 
 static NSDictionary *RCTExportedDimensions(CGFloat fontScale)
 {
+#if !TARGET_OS_OSX // [macOS]
   UIScreen *mainScreen = UIScreen.mainScreen;
   CGSize screenSize = mainScreen.bounds.size;
+#else // [macOS
+  NSScreen *mainScreen = NSScreen.mainScreen;
+  CGSize screenSize = mainScreen.frame.size;
+#endif // macOS]
 
   // We fallback to screen size if a key window is not found.
-  CGSize windowSize = [RCTKeyWindowValuesProxy sharedInstance].windowSize;
+  CGSize windowSize = mainWindow ? mainWindow.frame.size : screenSize; // [macOS]
+
+#if !TARGET_OS_OSX // [macOS
+  const CGFloat scale = mainScreen.scale
+#else //
+  const CGFloat scale = mainScreen != nil ? mainScreen.backingScaleFactor : [NSScreen mainScreen].backingScaleFactor;
+#endif // macOS]
 
   NSDictionary<NSString *, NSNumber *> *dimsWindow = @{
     @"width" : @(windowSize.width),
     @"height" : @(windowSize.height),
-    @"scale" : @(mainScreen.scale),
+    @"scale" : @(scale), // [macOS]
     @"fontScale" : @(fontScale)
   };
 
   NSDictionary<NSString *, NSNumber *> *dimsScreen = @{
     @"width" : @(screenSize.width),
     @"height" : @(screenSize.height),
-    @"scale" : @(mainScreen.scale),
+    @"scale" : @(scale), // [macOS]
     @"fontScale" : @(fontScale)
   };
   return @{@"window" : dimsWindow, @"screen" : dimsScreen};
@@ -182,13 +194,13 @@ static NSDictionary *RCTExportedDimensions(CGFloat fontScale)
   RCTAssert(_moduleRegistry, @"Failed to get exported dimensions: RCTModuleRegistry is nil");
   RCTAccessibilityManager *accessibilityManager =
       (RCTAccessibilityManager *)[_moduleRegistry moduleForName:"AccessibilityManager"];
-  RCTAssert(accessibilityManager, @"Failed to get exported dimensions: AccessibilityManager is nil");
 #if !TARGET_OS_OSX // [macOS]
+  RCTAssert(accessibilityManager, @"Failed to get exported dimensions: AccessibilityManager is nil");
   CGFloat fontScale = accessibilityManager ? accessibilityManager.multiplier : 1.0;
 #else // [macOS
   CGFloat fontScale = 1.0;
 #endif // macOS]
-  
+
   return RCTExportedDimensions(fontScale);
 }
 

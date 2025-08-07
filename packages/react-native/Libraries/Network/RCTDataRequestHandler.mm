@@ -49,7 +49,6 @@ RCT_EXPORT_MODULE()
     _queue.maxConcurrentOperationCount = 2;
   }
 
-<<<<<<< HEAD
   NSBlockOperation *op = [NSBlockOperation new];
   __weak NSBlockOperation *weakOp = op;
   [op addExecutionBlock:^{
@@ -57,18 +56,6 @@ RCT_EXPORT_MODULE()
     if (strongOp == nil || [strongOp isCancelled]) {
       return;
     }
-||||||| d4407d6f77a
-  __weak __block NSBlockOperation *weakOp;
-  __block NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-=======
-  __weak NSBlockOperation *weakOp;
-  NSBlockOperation *op = [NSBlockOperation blockOperationWithBlock:^{
-    NSBlockOperation *strongOp = weakOp; // Strong reference to avoid deallocation during execution
-    if (strongOp == nil || [strongOp isCancelled]) {
-      return;
-    }
-
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     // Get mime type
     NSRange firstSemicolon = [request.URL.resourceSpecifier rangeOfString:@";"];
     NSString *mimeType =

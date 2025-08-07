@@ -122,6 +122,47 @@ export type TextPropsAndroid = {
   minimumFontScale?: ?number,
 };
 
+// [macOS
+export type TextPropsMacOS = {
+  /**
+   * Specifies the Tooltip for the button view
+   *
+   * @platform macos
+   */
+  tooltip?: ?string,
+
+  /**
+   * When `true`, indicates that the text can be focused in key view loop
+   * By default, when `selectable={true}` the text view will be focusable unless disabled.
+   *
+   * @platform macos
+   */
+  focusable?: ?boolean,
+
+  /**
+   * Specifies whether focus ring should be drawn when the view has the first responder status.
+   * Only works when `focusable={true}`.
+   *
+   * @platform macos
+   */
+  enableFocusRing?: ?boolean,
+
+  /**
+   * This event is called when the mouse hovers over this component.
+   *
+   * @platform macos
+   */
+  onMouseEnter?: ?(event: MouseEvent) => void,
+
+  /**
+   * This event is called when the mouse moves off of this component.
+   *
+   * @platform macos
+   */
+  onMouseLeave?: ?(event: MouseEvent) => void,
+};
+// macOS]
+
 type TextBaseProps = $ReadOnly<{
   /**
    * Indicates whether the view is an accessibility element.
@@ -295,188 +336,6 @@ type TextBaseProps = $ReadOnly<{
    * See https://reactnative.dev/docs/text#testid
    */
   testID?: ?string,
-<<<<<<< HEAD
-
-  /**
-   * Android Only
-   */
-
-  /**
-   * Specifies the disabled state of the text view for testing purposes.
-   *
-   * See https://reactnative.dev/docs/text#disabled
-   */
-  disabled?: ?boolean,
-
-  /**
-   * The highlight color of the text.
-   *
-   * See https://reactnative.dev/docs/text#selectioncolor
-   */
-  selectionColor?: ?ColorValue,
-
-  dataDetectorType?: ?('phoneNumber' | 'link' | 'email' | 'none' | 'all'),
-
-  /**
-   * Set text break strategy on Android.
-   *
-   * See https://reactnative.dev/docs/text#textbreakstrategy
-   */
-  textBreakStrategy?: ?('balanced' | 'highQuality' | 'simple'),
-
-  /**
-   * iOS Only
-   */
-  adjustsFontSizeToFit?: ?boolean,
-
-  /**
-   * The Dynamic Type scale ramp to apply to this element on iOS.
-   */
-  dynamicTypeRamp?: ?(
-    | 'caption2'
-    | 'caption1'
-    | 'footnote'
-    | 'subheadline'
-    | 'callout'
-    | 'body'
-    | 'headline'
-    | 'title3'
-    | 'title2'
-    | 'title1'
-    | 'largeTitle'
-  ),
-
-  /**
-   * Smallest possible scale a font can reach.
-   *
-   * See https://reactnative.dev/docs/text#minimumfontscale
-   */
-  minimumFontScale?: ?number,
-
-  /**
-   * When `true`, no visual change is made when text is pressed down.
-   *
-   * See https://reactnative.dev/docs/text#supperhighlighting
-   */
-  suppressHighlighting?: ?boolean,
-
-  /**
-   * Set line break strategy on iOS.
-   *
-   * See https://reactnative.dev/docs/text.html#linebreakstrategyios
-   */
-  lineBreakStrategyIOS?: ?('none' | 'standard' | 'hangul-word' | 'push-out'),
-
-  // [macOS
-  /**
-   * Specifies the Tooltip for the button view
-   *
-   * @platform macos
-   */
-  tooltip?: ?string,
-
-  /**
-   * When `true`, indicates that the text can be focused in key view loop
-   * By default, when `selectable={true}` the text view will be focusable unless disabled.
-   *
-   * @platform macos
-   */
-  focusable?: ?boolean,
-
-  /**
-   * Specifies whether focus ring should be drawn when the view has the first responder status.
-   * Only works when `focusable={true}`.
-   *
-   * @platform macos
-   */
-  enableFocusRing?: ?boolean,
-
-  /**
-   * This event is called when the mouse hovers over this component.
-   *
-   * @platform macos
-   */
-  onMouseEnter?: ?(event: MouseEvent) => void,
-
-  /**
-   * This event is called when the mouse moves off of this component.
-   *
-   * @platform macos
-   */
-  onMouseLeave?: ?(event: MouseEvent) => void,
-  // macOS]
-||||||| d4407d6f77a
-
-  /**
-   * Android Only
-   */
-
-  /**
-   * Specifies the disabled state of the text view for testing purposes.
-   *
-   * See https://reactnative.dev/docs/text#disabled
-   */
-  disabled?: ?boolean,
-
-  /**
-   * The highlight color of the text.
-   *
-   * See https://reactnative.dev/docs/text#selectioncolor
-   */
-  selectionColor?: ?ColorValue,
-
-  dataDetectorType?: ?('phoneNumber' | 'link' | 'email' | 'none' | 'all'),
-
-  /**
-   * Set text break strategy on Android.
-   *
-   * See https://reactnative.dev/docs/text#textbreakstrategy
-   */
-  textBreakStrategy?: ?('balanced' | 'highQuality' | 'simple'),
-
-  /**
-   * iOS Only
-   */
-  adjustsFontSizeToFit?: ?boolean,
-
-  /**
-   * The Dynamic Type scale ramp to apply to this element on iOS.
-   */
-  dynamicTypeRamp?: ?(
-    | 'caption2'
-    | 'caption1'
-    | 'footnote'
-    | 'subheadline'
-    | 'callout'
-    | 'body'
-    | 'headline'
-    | 'title3'
-    | 'title2'
-    | 'title1'
-    | 'largeTitle'
-  ),
-
-  /**
-   * Smallest possible scale a font can reach.
-   *
-   * See https://reactnative.dev/docs/text#minimumfontscale
-   */
-  minimumFontScale?: ?number,
-
-  /**
-   * When `true`, no visual change is made when text is pressed down.
-   *
-   * See https://reactnative.dev/docs/text#supperhighlighting
-   */
-  suppressHighlighting?: ?boolean,
-
-  /**
-   * Set line break strategy on iOS.
-   *
-   * See https://reactnative.dev/docs/text.html#linebreakstrategyios
-   */
-  lineBreakStrategyIOS?: ?('none' | 'standard' | 'hangul-word' | 'push-out'),
-=======
 }>;
 
 /**
@@ -486,6 +345,6 @@ export type TextProps = $ReadOnly<{
   ...PointerEventProps,
   ...TextPropsIOS,
   ...TextPropsAndroid,
+  ...TextPropsMacOS, // [macOS]
   ...TextBaseProps,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 }>;

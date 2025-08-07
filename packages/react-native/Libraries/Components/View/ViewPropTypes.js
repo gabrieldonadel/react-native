@@ -15,30 +15,16 @@ import type {ViewStyleProp} from '../../StyleSheet/StyleSheet';
 import type {
   BlurEvent,
   FocusEvent,
-<<<<<<< HEAD
   // [macOS]
   HandledKeyEvent,
   KeyEvent,
-  Layout,
-  LayoutEvent,
-||||||| d4407d6f77a
-  Layout,
-  LayoutEvent,
-=======
   LayoutChangeEvent,
   LayoutRectangle,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   MouseEvent,
   PointerEvent,
-<<<<<<< HEAD
-  PressEvent,
+  GestureResponderEvent,
   ScrollEvent,
   // [macOS]
-||||||| d4407d6f77a
-  PressEvent,
-=======
-  GestureResponderEvent,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 } from '../../Types/CoreEventTypes';
 import type {DraggedTypesType} from '../View/DraggedType'; // [macOS]
 import type {
@@ -110,7 +96,6 @@ type DirectEventProps = $ReadOnly<{
   onAccessibilityEscape?: ?() => mixed,
 }>;
 
-<<<<<<< HEAD
 export type KeyboardEventProps = $ReadOnly<{|
   /**
    * Called after a key down event is detected.
@@ -138,12 +123,7 @@ export type KeyboardEventProps = $ReadOnly<{|
 |}>;
 // macOS]
 
-type MouseEventProps = $ReadOnly<{|
-||||||| d4407d6f77a
-type MouseEventProps = $ReadOnly<{|
-=======
 type MouseEventProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   onMouseEnter?: ?(event: MouseEvent) => void,
   onMouseLeave?: ?(event: MouseEvent) => void,
 }>;
@@ -421,7 +401,6 @@ export type ViewPropsIOS = $ReadOnly<{
    * See https://reactnative.dev/docs/view#shouldrasterizeios
    */
   shouldRasterizeIOS?: ?boolean,
-<<<<<<< HEAD
 |}>;
 
 // [macOS
@@ -506,33 +485,6 @@ type MacOSViewProps = $ReadOnly<{|
   inverted?: ?boolean,
 |}>;
 // macOS]
-
-export type ViewProps = $ReadOnly<{|
-  ...DirectEventProps,
-  ...GestureResponderEventProps,
-  ...MouseEventProps,
-  ...PointerEventProps,
-  ...FocusEventProps,
-  ...TouchEventProps,
-  ...KeyboardEventProps, // [macOS]
-  ...AndroidViewProps,
-  ...IOSViewProps,
-  ...MacOSViewProps, // [macOS]
-||||||| d4407d6f77a
-|}>;
-
-export type ViewProps = $ReadOnly<{|
-  ...DirectEventProps,
-  ...GestureResponderEventProps,
-  ...MouseEventProps,
-  ...PointerEventProps,
-  ...FocusEventProps,
-  ...TouchEventProps,
-  ...AndroidViewProps,
-  ...IOSViewProps,
-=======
-}>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 type ViewBaseProps = $ReadOnly<{
   children?: Node,
@@ -630,8 +582,10 @@ export type ViewProps = $ReadOnly<{
   ...PointerEventProps,
   ...FocusEventProps,
   ...TouchEventProps,
+  ...KeyboardEventProps, // [macOS]
   ...ViewPropsAndroid,
   ...ViewPropsIOS,
+  ...MacOSViewProps, // [macOS]
   ...AccessibilityProps,
   ...ViewBaseProps,
 }>;

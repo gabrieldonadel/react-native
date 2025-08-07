@@ -100,14 +100,10 @@ static NSString *getInspectorDeviceId()
 
 static NSURL *getInspectorDeviceUrl(NSURL *bundleURL)
 {
-<<<<<<< HEAD
-#if !TARGET_OS_OSX // [macOS]
-||||||| d4407d6f77a
-=======
   auto &inspectorFlags = facebook::react::jsinspector_modern::InspectorFlags::getInstance();
   BOOL isProfilingBuild = inspectorFlags.getIsProfilingBuild();
 
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+#if !TARGET_OS_OSX // [macOS]
   NSString *escapedDeviceName = [[[UIDevice currentDevice] name]
       stringByAddingPercentEncodingWithAllowedCharacters:NSCharacterSet.URLQueryAllowedCharacterSet];
 #else // [macOS
@@ -207,7 +203,7 @@ static void sendEventToAllConnections(NSString *event)
 
   // [macOS Add a lock around access to connection
   id<RCTInspectorPackagerConnectionProtocol> connection;
-  [connectionsLock lock]; 
+  [connectionsLock lock];
   connection = socketConnections[key];
    // macOS]
   if (!connection || !connection.isConnected) {

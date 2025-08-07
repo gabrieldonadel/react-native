@@ -18,7 +18,10 @@ static NSString *const kFrameKeyPath = @"frame";
   BOOL _isObserving;
   std::mutex _mutex;
   CGSize _currentWindowSize;
+#if !TARGET_OS_OSX // [macOS]
   UIInterfaceOrientation _currentInterfaceOrientation;
+#endif // [macOS]
+
 }
 
 + (instancetype)sharedInstance
@@ -36,8 +39,8 @@ static NSString *const kFrameKeyPath = @"frame";
   self = [super init];
   if (self) {
     _isObserving = NO;
-    UIView *mainWindow = RCTKeyWindow();
-    _currentWindowSize = mainWindow ? mainWindow.bounds.size : UIScreen.mainScreen.bounds.size;
+    RCTPlatformWindow *mainWindow = RCTKeyWindow(); // [macOS]
+    _currentWindowSize = mainWindow ? mainWindow.frame.size : NSScreen.mainScreen.frame.size; // [macOS]
   }
   return self;
 }
@@ -62,10 +65,12 @@ static NSString *const kFrameKeyPath = @"frame";
     [RCTKeyWindow() addObserver:self forKeyPath:kFrameKeyPath options:NSKeyValueObservingOptionNew context:nil];
   });
 
+#if !TARGET_OS_OSX // [macOS]
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(_interfaceOrientationDidChange)
                                                name:UIApplicationDidBecomeActiveNotification
                                              object:nil];
+#endif // [macOS]
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -77,7 +82,7 @@ static NSString *const kFrameKeyPath = @"frame";
     [[NSNotificationCenter defaultCenter] postNotificationName:RCTWindowFrameDidChangeNotification object:self];
     {
       std::lock_guard<std::mutex> lock(_mutex);
-      _currentWindowSize = RCTKeyWindow().bounds.size;
+      _currentWindowSize = RCTKeyWindow().frame.size; // [macOS]
     }
   }
 }
@@ -93,11 +98,12 @@ static NSString *const kFrameKeyPath = @"frame";
 
   __block CGSize size;
   RCTUnsafeExecuteOnMainQueueSync(^{
-    size = RCTKeyWindow().bounds.size;
+    size = RCTKeyWindow().frame.size; // [macOS]
   });
   return size;
 }
 
+#if !TARGET_OS_OSX // [macOS]
 - (UIInterfaceOrientation)currentInterfaceOrientation
 {
   {
@@ -119,5 +125,6 @@ static NSString *const kFrameKeyPath = @"frame";
   std::lock_guard<std::mutex> lock(_mutex);
   _currentInterfaceOrientation = RCTKeyWindow().windowScene.interfaceOrientation;
 }
+#endif // [macOS]
 
 @end

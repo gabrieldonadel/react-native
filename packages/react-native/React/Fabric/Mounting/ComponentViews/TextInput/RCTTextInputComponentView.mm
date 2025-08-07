@@ -209,7 +209,7 @@ static NSSet<NSNumber *> *returnKeyTypesSet;
         newTextInputProps.traits.autoCorrect.value();
   }
 #endif // macOS]
-  
+
   if (newTextInputProps.traits.contextMenuHidden != oldTextInputProps.traits.contextMenuHidden) {
     _backedTextInputView.contextMenuHidden = newTextInputProps.traits.contextMenuHidden;
   }
@@ -218,17 +218,15 @@ static NSSet<NSNumber *> *returnKeyTypesSet;
     _backedTextInputView.editable = newTextInputProps.traits.editable;
   }
 
-<<<<<<< HEAD
 #if !TARGET_OS_OSX // [macOS]
-||||||| d4407d6f77a
-=======
   if (newTextInputProps.multiline &&
       newTextInputProps.traits.dataDetectorTypes != oldTextInputProps.traits.dataDetectorTypes) {
     _backedTextInputView.dataDetectorTypes =
         RCTUITextViewDataDetectorTypesFromStringVector(newTextInputProps.traits.dataDetectorTypes);
   }
+#endif // [macOS]
 
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+#if !TARGET_OS_OSX // [macOS]
   if (newTextInputProps.traits.enablesReturnKeyAutomatically !=
       oldTextInputProps.traits.enablesReturnKeyAutomatically) {
     _backedTextInputView.enablesReturnKeyAutomatically = newTextInputProps.traits.enablesReturnKeyAutomatically;
@@ -239,7 +237,7 @@ static NSSet<NSNumber *> *returnKeyTypesSet;
         RCTUIKeyboardAppearanceFromKeyboardAppearance(newTextInputProps.traits.keyboardAppearance);
   }
 #endif // [macOS]
-  
+
 #if !TARGET_OS_OSX // [macOS]
   if (newTextInputProps.traits.spellCheck != oldTextInputProps.traits.spellCheck) {
     _backedTextInputView.spellCheckingType =
@@ -251,7 +249,7 @@ static NSSet<NSNumber *> *returnKeyTypesSet;
         newTextInputProps.traits.spellCheck.value();
   }
 #endif // macOS]
-  
+
 #if TARGET_OS_OSX // [macOS
   if (newTextInputProps.traits.grammarCheck != oldTextInputProps.traits.grammarCheck && newTextInputProps.traits.grammarCheck.has_value()) {
     _backedTextInputView.grammarCheckingEnabled =
@@ -558,7 +556,7 @@ static NSSet<NSNumber *> *returnKeyTypesSet;
   }
 }
 
-- (void)grammarCheckingDidChange:(BOOL)enabled 
+- (void)grammarCheckingDidChange:(BOOL)enabled
 {
   if (_eventEmitter) {
     std::static_pointer_cast<TextInputEventEmitter const>(_eventEmitter)->onGrammarCheckChange({.grammarCheckEnabled = static_cast<bool>(enabled)});

@@ -9,48 +9,18 @@
  */
 
 import type {
-<<<<<<< HEAD
   BlurEvent,
   // [macOS
   FocusEvent,
   HandledKeyEvent,
   KeyEvent,
-  LayoutEvent,
-||||||| d4407d6f77a
-  LayoutEvent,
-=======
   GestureResponderEvent,
   LayoutChangeEvent,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   MouseEvent,
-<<<<<<< HEAD
-  PressEvent,
   // macOS]
-||||||| d4407d6f77a
-  PressEvent,
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 } from '../../Types/CoreEventTypes';
-<<<<<<< HEAD
 import type {DraggedTypesType} from '../View/DraggedType'; // [macOS]
-import type {
-  AccessibilityActionEvent,
-  AccessibilityActionInfo,
-  AccessibilityRole,
-  AccessibilityState,
-  AccessibilityValue,
-} from '../View/ViewAccessibility';
-||||||| d4407d6f77a
-import type {
-  AccessibilityActionEvent,
-  AccessibilityActionInfo,
-  AccessibilityRole,
-  AccessibilityState,
-  AccessibilityValue,
-} from '../View/ViewAccessibility';
-=======
 import type {ViewProps} from '../View/ViewPropTypes';
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 import {PressabilityDebugView} from '../../Pressability/PressabilityDebug';
 import usePressability from '../../Pressability/usePressability';

@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-#import <UIKit/UIKit.h>
+#import <React/RCTUIKit.h> // [macOS]
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RCTViewFinder : NSObject
 
-+ (UIView *)findView:(UIView *)root withNativeId:(NSString *)nativeId;
++ (RCTUIView *)findView:(RCTUIView *)root withNativeId:(NSString *)nativeId; // [macOS]
 
 @end
 

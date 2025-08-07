@@ -71,66 +71,33 @@ RCT_EXPORT_MODULE(PlatformConstants)
 
 - (ModuleConstants<JS::NativePlatformConstantsIOS::Constants>)getConstants
 {
-<<<<<<< HEAD
-  __block ModuleConstants<JS::NativePlatformConstantsIOS::Constants> constants;
-  RCTUnsafeExecuteOnMainQueueSync(^{
 #if !TARGET_OS_OSX // [macOS]
-    UIDevice *device = [UIDevice currentDevice];
-#else // [macOS]
-    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
-    NSOperatingSystemVersion osVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
-#endif // [macOS]
-    auto versions = RCTGetReactNativeVersion();
-    constants = typedConstants<JS::NativePlatformConstantsIOS::Constants>({
-        .forceTouchAvailable = RCTForceTouchAvailable() ? true : false,
-#if !TARGET_OS_OSX // [macOS]
-        .osVersion = [device systemVersion],
-        .systemName = [device systemName],
-        .interfaceIdiom = interfaceIdiom([device userInterfaceIdiom]),
-#else // [macOS
-        .osVersion = [NSString stringWithFormat:@"%ld.%ld.%ld", osVersion.majorVersion, osVersion.minorVersion, osVersion.patchVersion],
-        .systemName = [processInfo operatingSystemVersionString],
-        .interfaceIdiom = interfaceIdiom(),
-#endif // macOS]
-        .isTesting = RCTRunningInTestEnvironment() ? true : false,
-        .reactNativeVersion = JS::NativePlatformConstantsIOS::ConstantsReactNativeVersion::Builder(
-            {.minor = [versions[@"minor"] doubleValue],
-             .major = [versions[@"major"] doubleValue],
-             .patch = [versions[@"patch"] doubleValue],
-             .prerelease = [versions[@"prerelease"] isKindOfClass:[NSNull class]] ? nullptr : versions[@"prerelease"]}),
-||||||| d4407d6f77a
-  __block ModuleConstants<JS::NativePlatformConstantsIOS::Constants> constants;
-  RCTUnsafeExecuteOnMainQueueSync(^{
-    UIDevice *device = [UIDevice currentDevice];
-    auto versions = RCTGetReactNativeVersion();
-    constants = typedConstants<JS::NativePlatformConstantsIOS::Constants>({
-        .forceTouchAvailable = RCTForceTouchAvailable() ? true : false,
-        .osVersion = [device systemVersion],
-        .systemName = [device systemName],
-        .interfaceIdiom = interfaceIdiom([device userInterfaceIdiom]),
-        .isTesting = RCTRunningInTestEnvironment() ? true : false,
-        .reactNativeVersion = JS::NativePlatformConstantsIOS::ConstantsReactNativeVersion::Builder(
-            {.minor = [versions[@"minor"] doubleValue],
-             .major = [versions[@"major"] doubleValue],
-             .patch = [versions[@"patch"] doubleValue],
-             .prerelease = [versions[@"prerelease"] isKindOfClass:[NSNull class]] ? nullptr : versions[@"prerelease"]}),
-=======
   UIDevice *device = [UIDevice currentDevice];
   bool isForceTouchAvailable = [RCTTraitCollectionProxy sharedInstance].currentTraitCollection.forceTouchCapability ==
-      UIForceTouchCapabilityAvailable;
+  UIForceTouchCapabilityAvailable;
+#else // [macOS]
+  NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+  NSOperatingSystemVersion osVersion = [[NSProcessInfo processInfo] operatingSystemVersion];
+#endif // [macOS]
   auto versions = RCTGetReactNativeVersion();
   return typedConstants<JS::NativePlatformConstantsIOS::Constants>({
+#if !TARGET_OS_OSX // [macOS]
       .forceTouchAvailable = isForceTouchAvailable,
       .osVersion = [device systemVersion],
       .systemName = [device systemName],
       .interfaceIdiom = interfaceIdiom([device userInterfaceIdiom]),
+#else // [macOS
+      .forceTouchAvailable = RCTForceTouchAvailable(),
+      .osVersion = [NSString stringWithFormat:@"%ld.%ld.%ld", osVersion.majorVersion, osVersion.minorVersion, osVersion.patchVersion],
+      .systemName = [processInfo operatingSystemVersionString],
+      .interfaceIdiom = interfaceIdiom(),
+#endif // macOS]
       .isTesting = RCTRunningInTestEnvironment() ? true : false,
       .reactNativeVersion = JS::NativePlatformConstantsIOS::ConstantsReactNativeVersion::Builder(
           {.minor = [versions[@"minor"] doubleValue],
            .major = [versions[@"major"] doubleValue],
            .patch = [versions[@"patch"] doubleValue],
            .prerelease = [versions[@"prerelease"] isKindOfClass:[NSNull class]] ? nullptr : versions[@"prerelease"]}),
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 #if TARGET_OS_MACCATALYST
       .isMacCatalyst = true,
 #else

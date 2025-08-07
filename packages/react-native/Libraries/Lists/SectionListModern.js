@@ -19,13 +19,7 @@ import type {
 import type {ElementRef} from 'react';
 
 import Platform from '../Utilities/Platform';
-<<<<<<< HEAD
-import {VirtualizedSectionList} from '@react-native-macos/virtualized-lists'; // [macOS]
-||||||| d4407d6f77a
-import {VirtualizedSectionList} from '@react-native/virtualized-lists';
-=======
-import VirtualizedLists from '@react-native/virtualized-lists';
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+import VirtualizedLists from '@react-native-macos/virtualized-lists'; // [macOS]
 import React, {forwardRef, useImperativeHandle, useRef} from 'react';
 
 const VirtualizedSectionList = VirtualizedLists.VirtualizedSectionList;

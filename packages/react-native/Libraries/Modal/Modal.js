@@ -18,14 +18,8 @@ import {type EventSubscription} from '../vendor/emitter/EventEmitter';
 import ModalInjection from './ModalInjection';
 import NativeModalManager from './NativeModalManager';
 import RCTModalHostView from './RCTModalHostViewNativeComponent';
-<<<<<<< HEAD
-import {VirtualizedListContextResetter} from '@react-native-macos/virtualized-lists'; // [macOS]
-||||||| d4407d6f77a
-import {VirtualizedListContextResetter} from '@react-native/virtualized-lists';
-=======
-import VirtualizedLists from '@react-native/virtualized-lists';
+import VirtualizedLists from '@react-native-macos/virtualized-lists'; // [macOS]
 import React from 'react';
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 
 const ScrollView = require('../Components/ScrollView/ScrollView').default;
 const View = require('../Components/View/View').default;

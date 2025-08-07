@@ -52,26 +52,27 @@ NSString *kBundlePath = @"js/RNTesterApp.macos";
   self.dependencyProvider = [RCTAppDependencyProvider new];
 #endif
 
+#if !TARGET_OS_OSX // [macOS]
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+#else // [macOS
+  self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0,0,1280,720)
+                                            styleMask:NSWindowStyleMaskTitled | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable | NSWindowStyleMaskMiniaturizable
+                                              backing:NSBackingStoreBuffered
+                                                defer:NO];
+  self.window.title = @"RNTesterApp";
+  NSDictionary *launchOptions = [notification userInfo];
+#endif // macOS]
 
   [self.reactNativeFactory startReactNativeWithModuleName:@"RNTesterApp"
                                                  inWindow:self.window
                                         initialProperties:[self prepareInitialProps]
                                             launchOptions:launchOptions];
-
+  [self.window makeKeyAndOrderFront:self];
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
 
-<<<<<<< HEAD
 #if !TARGET_OS_OSX // [macOS]
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
-#else // [macOS
-  [super applicationDidFinishLaunching:notification];
-#endif // macOS]
-||||||| d4407d6f77a
-  return [super application:application didFinishLaunchingWithOptions:launchOptions];
-=======
   return YES;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+#endif // macOS]
 }
 
 - (NSDictionary *)prepareInitialProps

@@ -66,22 +66,9 @@ export type AlertButton = {
   isPreferred?: boolean,
   style?: AlertButtonStyle,
   ...
-<<<<<<< HEAD
-}>;
-export type DefaultInputsArray = Array<{
-  default?: string,
-  placeholder?: string,
-  style?: AlertButtonStyle,
-}>;
-type Options = {
-||||||| d4407d6f77a
-}>;
-type Options = {
-=======
 };
 export type AlertButtons = Array<AlertButton>;
 export type AlertOptions = {
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   cancelable?: ?boolean,
   userInterfaceStyle?: \\"unspecified\\" | \\"light\\" | \\"dark\\",
   onDismiss?: ?() => void,
@@ -1737,34 +1724,6 @@ type PressableBaseProps = $ReadOnly<{
   onLayout?: ?(event: LayoutChangeEvent) => mixed,
   onHoverIn?: ?(event: MouseEvent) => mixed,
   onHoverOut?: ?(event: MouseEvent) => mixed,
-<<<<<<< HEAD
-  onLongPress?: ?(event: PressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  onFocus?: ?(event: FocusEvent) => void,
-  onBlur?: ?(event: BlurEvent) => void,
-  onKeyDown?: ?(event: KeyEvent) => void,
-  onKeyUp?: ?(event: KeyEvent) => void,
-  keyDownEvents?: ?Array<HandledKeyEvent>,
-  keyUpEvents?: ?Array<HandledKeyEvent>,
-  acceptsFirstMouse?: ?boolean,
-  mouseDownCanMoveWindow?: ?boolean,
-  enableFocusRing?: ?boolean,
-  allowsVibrancy?: ?boolean,
-  tooltip?: ?string,
-  onDragEnter?: (event: MouseEvent) => void,
-  onDragLeave?: (event: MouseEvent) => void,
-  onDrop?: (event: MouseEvent) => void,
-  draggedTypes?: ?DraggedTypesType,
-  style?: ViewStyleProp | ((state: StateCallbackType) => ViewStyleProp),
-||||||| d4407d6f77a
-  onLongPress?: ?(event: PressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  style?: ViewStyleProp | ((state: StateCallbackType) => ViewStyleProp),
-=======
   onLongPress?: ?(event: GestureResponderEvent) => mixed,
   onPress?: ?(event: GestureResponderEvent) => mixed,
   onPressIn?: ?(event: GestureResponderEvent) => mixed,
@@ -1772,7 +1731,6 @@ type PressableBaseProps = $ReadOnly<{
   style?:
     | ViewStyleProp
     | ((state: PressableStateCallbackType) => ViewStyleProp),
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   testID?: ?string,
   android_disableSound?: ?boolean,
   android_ripple?: ?PressableAndroidRippleConfig,
@@ -2058,17 +2016,9 @@ export type ScrollViewProps = $ReadOnly<{
   children?: React.Node,
   innerViewRef?: React.RefSetter<InnerViewInstance>,
   scrollViewRef?: React.RefSetter<PublicScrollViewInstance>,
-<<<<<<< HEAD
 |}>;
 type State = {|
   contentKey: number,
-||||||| d4407d6f77a
-|}>;
-type State = {|
-=======
-}>;
-type State = {
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   layoutHeight: ?number,
 };
 export type ScrollViewComponentStatics = $ReadOnly<{
@@ -2108,58 +2058,6 @@ declare class ScrollView extends React.Component<ScrollViewProps, State> {
     },
     animated?: boolean
   ) => void;
-<<<<<<< HEAD
-  _textInputFocusError(): void;
-  _inputMeasureAndScrollToKeyboard: (
-    left: number,
-    top: number,
-    width: number,
-    height: number
-  ) => void;
-  _getKeyForIndex(index: $FlowFixMe, childArray: $FlowFixMe): $FlowFixMe;
-  _updateAnimatedNodeAttachment(): void;
-  _setStickyHeaderRef(
-    key: string,
-    ref: ?React.ElementRef<StickyHeaderComponentType>
-  ): void;
-  _onStickyHeaderLayout(
-    index: $FlowFixMe,
-    event: $FlowFixMe,
-    key: $FlowFixMe
-  ): void;
-  _handlePreferredScrollerStyleDidChange: $FlowFixMe;
-  _handleInvertedDidChange: $FlowFixMe;
-  _handleScroll: $FlowFixMe;
-  _handleLayout: $FlowFixMe;
-  _handleContentOnLayout: $FlowFixMe;
-  _innerView: RefForwarder<InnerViewInstance, InnerViewInstance>;
-  _scrollView: RefForwarder<HostInstance, PublicScrollViewInstance | null>;
-||||||| d4407d6f77a
-  _textInputFocusError(): void;
-  _inputMeasureAndScrollToKeyboard: (
-    left: number,
-    top: number,
-    width: number,
-    height: number
-  ) => void;
-  _getKeyForIndex(index: $FlowFixMe, childArray: $FlowFixMe): $FlowFixMe;
-  _updateAnimatedNodeAttachment(): void;
-  _setStickyHeaderRef(
-    key: string,
-    ref: ?React.ElementRef<StickyHeaderComponentType>
-  ): void;
-  _onStickyHeaderLayout(
-    index: $FlowFixMe,
-    event: $FlowFixMe,
-    key: $FlowFixMe
-  ): void;
-  _handleScroll: $FlowFixMe;
-  _handleLayout: $FlowFixMe;
-  _handleContentOnLayout: $FlowFixMe;
-  _innerView: RefForwarder<InnerViewInstance, InnerViewInstance>;
-  _scrollView: RefForwarder<HostInstance, PublicScrollViewInstance | null>;
-=======
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   scrollResponderKeyboardWillShow: (e: KeyboardEvent) => void;
   scrollResponderKeyboardWillHide: (e: KeyboardEvent) => void;
   scrollResponderKeyboardDidShow: (e: KeyboardEvent) => void;
@@ -2762,28 +2660,28 @@ export type TextInputFocusEvent = NativeSyntheticEvent<TextInputFocusEventData>;
 type Selection = $ReadOnly<{
   start: number,
   end: number,
-<<<<<<< HEAD
-|}>;
-export type SelectionChangeEvent = SyntheticEvent<
-  $ReadOnly<{|
-    selection: Selection,
-    target: number,
-  |}>,
->;
-export type KeyPressEvent = SyntheticEvent<
-  $ReadOnly<{|
-    key: string,
-    target?: ?number,
-    eventCount?: ?number,
-  |}>,
->;
-export type EditingEvent = SyntheticEvent<
-  $ReadOnly<{|
-    eventCount: number,
-    text: string,
-    target: number,
-  |}>,
->;
+}>;
+export type TextInputSelectionChangeEventData = $ReadOnly<{
+  ...TargetEvent,
+  selection: Selection,
+}>;
+export type TextInputSelectionChangeEvent =
+  NativeSyntheticEvent<TextInputSelectionChangeEventData>;
+export type TextInputKeyPressEventData = $ReadOnly<{
+  ...TargetEvent,
+  key: string,
+  target?: ?number,
+  eventCount: number,
+}>;
+export type TextInputKeyPressEvent =
+  NativeSyntheticEvent<TextInputKeyPressEventData>;
+export type TextInputEndEditingEventData = $ReadOnly<{
+  ...TargetEvent,
+  eventCount: number,
+  text: string,
+}>;
+export type TextInputEditingEvent =
+  NativeSyntheticEvent<TextInputEndEditingEventData>;
 export type SettingChangeEvent = SyntheticEvent<
   $ReadOnly<{|
     autoCorrectEnabled: boolean,
@@ -2817,52 +2715,6 @@ export type SubmitKeyEvent = $ReadOnly<{|
   shiftKey?: ?boolean,
   functionKey?: ?boolean,
 |}>;
-||||||| d4407d6f77a
-|}>;
-export type SelectionChangeEvent = SyntheticEvent<
-  $ReadOnly<{|
-    selection: Selection,
-    target: number,
-  |}>,
->;
-export type KeyPressEvent = SyntheticEvent<
-  $ReadOnly<{|
-    key: string,
-    target?: ?number,
-    eventCount?: ?number,
-  |}>,
->;
-export type EditingEvent = SyntheticEvent<
-  $ReadOnly<{|
-    eventCount: number,
-    text: string,
-    target: number,
-  |}>,
->;
-=======
-}>;
-export type TextInputSelectionChangeEventData = $ReadOnly<{
-  ...TargetEvent,
-  selection: Selection,
-}>;
-export type TextInputSelectionChangeEvent =
-  NativeSyntheticEvent<TextInputSelectionChangeEventData>;
-export type TextInputKeyPressEventData = $ReadOnly<{
-  ...TargetEvent,
-  key: string,
-  target?: ?number,
-  eventCount: number,
-}>;
-export type TextInputKeyPressEvent =
-  NativeSyntheticEvent<TextInputKeyPressEventData>;
-export type TextInputEndEditingEventData = $ReadOnly<{
-  ...TargetEvent,
-  eventCount: number,
-  text: string,
-}>;
-export type TextInputEditingEvent =
-  NativeSyntheticEvent<TextInputEndEditingEventData>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 type DataDetectorTypesType =
   | \\"phoneNumber\\"
   | \\"link\\"
@@ -3007,8 +2859,7 @@ export type TextInputIOSProps = $ReadOnly<{
     | \\"tail\\"
   ),
   smartInsertDelete?: ?boolean,
-<<<<<<< HEAD
-|}>;
+}>;
 type MacOSProps = $ReadOnly<{|
   clearTextOnSubmit?: ?boolean,
   grammarCheck?: ?boolean,
@@ -3021,14 +2872,7 @@ type MacOSProps = $ReadOnly<{|
   submitKeyEvents?: ?$ReadOnlyArray<SubmitKeyEvent>,
   tooltip?: ?string,
 |}>;
-type AndroidProps = $ReadOnly<{|
-||||||| d4407d6f77a
-|}>;
-type AndroidProps = $ReadOnly<{|
-=======
-}>;
 export type TextInputAndroidProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   cursorColor?: ?ColorValue,
   selectionHandleColor?: ?ColorValue,
   disableFullscreenUI?: ?boolean,
@@ -3047,28 +2891,14 @@ export type TextInputAndroidProps = $ReadOnly<{
   showSoftInputOnFocus?: ?boolean,
   textBreakStrategy?: ?(\\"simple\\" | \\"highQuality\\" | \\"balanced\\"),
   underlineColorAndroid?: ?ColorValue,
-<<<<<<< HEAD
-|}>;
+}>;
 export type PasteType = \\"fileUrl\\" | \\"image\\" | \\"string\\";
 export type PastedTypesType = PasteType | $ReadOnlyArray<PasteType>;
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{| style: ?ViewStyleProp |}>>,
-  ...IOSProps,
-  ...AndroidProps,
-  ...MacOSProps,
-||||||| d4407d6f77a
-|}>;
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{| style: ?ViewStyleProp |}>>,
-  ...IOSProps,
-  ...AndroidProps,
-=======
-}>;
 export type TextInputProps = $ReadOnly<{
   ...$Diff<ViewProps, $ReadOnly<{ style: ?ViewStyleProp }>>,
   ...TextInputIOSProps,
   ...TextInputAndroidProps,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
+  ...MacOSProps,
   autoCapitalize?: ?AutoCapitalize,
   autoComplete?: ?(
     | \\"additional-name\\"
@@ -3148,32 +2978,9 @@ export type TextInputProps = $ReadOnly<{
   unstable_onChangeSync?: ?(e: TextInputChangeEvent) => mixed,
   onChangeText?: ?(text: string) => mixed,
   unstable_onChangeTextSync?: ?(text: string) => mixed,
-<<<<<<< HEAD
-  onContentSizeChange?: ?(e: ContentSizeChangeEvent) => mixed,
-  onEndEditing?: ?(e: EditingEvent) => mixed,
-  onFocus?: ?(e: FocusEvent) => void,
-  onKeyPress?: ?(e: KeyPressEvent) => mixed,
-  unstable_onKeyPressSync?: ?(e: KeyPressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  onSelectionChange?: ?(e: SelectionChangeEvent) => mixed,
-  onSubmitEditing?: ?(e: EditingEvent) => mixed,
-||||||| d4407d6f77a
-  onContentSizeChange?: ?(e: ContentSizeChangeEvent) => mixed,
-  onEndEditing?: ?(e: EditingEvent) => mixed,
-  onFocus?: ?(e: FocusEvent) => mixed,
-  onKeyPress?: ?(e: KeyPressEvent) => mixed,
-  unstable_onKeyPressSync?: ?(e: KeyPressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  onSelectionChange?: ?(e: SelectionChangeEvent) => mixed,
-  onSubmitEditing?: ?(e: EditingEvent) => mixed,
-=======
   onContentSizeChange?: ?(e: TextInputContentSizeChangeEvent) => mixed,
   onEndEditing?: ?(e: TextInputEditingEvent) => mixed,
-  onFocus?: ?(e: TextInputFocusEvent) => mixed,
+  onFocus?: ?(e: TextInputFocusEvent) => void,
   onKeyPress?: ?(e: TextInputKeyPressEvent) => mixed,
   unstable_onKeyPressSync?: ?(e: TextInputKeyPressEvent) => mixed,
   onPress?: ?(event: GestureResponderEvent) => mixed,
@@ -3181,7 +2988,6 @@ export type TextInputProps = $ReadOnly<{
   onPressOut?: ?(event: GestureResponderEvent) => mixed,
   onSelectionChange?: ?(e: TextInputSelectionChangeEvent) => mixed,
   onSubmitEditing?: ?(e: TextInputEditingEvent) => mixed,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   onScroll?: ?(e: ScrollEvent) => mixed,
   placeholder?: ?Stringish,
   placeholderTextColor?: ?ColorValue,
@@ -3198,32 +3004,14 @@ export type TextInputProps = $ReadOnly<{
   submitBehavior?: ?SubmitBehavior,
   style?: ?TextStyleProp,
   value?: ?Stringish,
-<<<<<<< HEAD
-|}>;
-type ImperativeMethods = $ReadOnly<{|
-  clear: () => void,
-  isFocused: () => boolean,
-  getNativeRef: () => ?HostInstance,
-  setSelection: (start: number, end: number) => void,
-  setGhostText: (ghostText: ?string) => void,
-|}>;
-||||||| d4407d6f77a
-|}>;
-type ImperativeMethods = $ReadOnly<{|
-  clear: () => void,
-  isFocused: () => boolean,
-  getNativeRef: () => ?HostInstance,
-  setSelection: (start: number, end: number) => void,
-|}>;
-=======
 }>;
 export interface TextInputInstance extends HostInstance {
   +clear: () => void;
   +isFocused: () => boolean;
   +getNativeRef: () => ?HostInstance;
   +setSelection: (start: number, end: number) => void;
+  +setGhostText: (ghostText: ?string) => void;
 }
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 type InternalTextInput = component(
   ref: React.RefSetter<TextInputInstance>,
   ...TextInputProps
@@ -3234,63 +3022,15 @@ export type TextInputComponentStatics = $ReadOnly<{
     currentlyFocusedField: () => ?number,
     focusTextInput: (textField: ?HostInstance) => void,
     blurTextInput: (textField: ?HostInstance) => void,
-<<<<<<< HEAD
     onTextInputFocus: (textField: ?HostInstance) => void,
     onTextInputBlur: (textField: ?HostInstance) => void,
-  |}>,
-|}>;
-||||||| d4407d6f77a
-  |}>,
-|}>;
-=======
   }>,
 }>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 export type TextInputType = InternalTextInput & TextInputComponentStatics;
 "
 `;
 
 exports[`public API should not change unintentionally Libraries/Components/TextInput/TextInput.js 1`] = `
-<<<<<<< HEAD
-"type ReactRefSetter<T> =
-  | { current: null | T, ... }
-  | ((ref: null | T) => mixed);
-type TextInputInstance = HostInstance & {
-  +clear: () => void,
-  +isFocused: () => boolean,
-  +getNativeRef: () => ?HostInstance,
-  +setSelection: (start: number, end: number) => void,
-  +setGhostText: (ghostText: ?string) => void,
-};
-export type ChangeEvent = SyntheticEvent<
-  $ReadOnly<{|
-    eventCount: number,
-    target: number,
-    text: string,
-  |}>,
->;
-export type TextInputEvent = SyntheticEvent<
-  $ReadOnly<{|
-||||||| d4407d6f77a
-"type ReactRefSetter<T> =
-  | { current: null | T, ... }
-  | ((ref: null | T) => mixed);
-type TextInputInstance = HostInstance & {
-  +clear: () => void,
-  +isFocused: () => boolean,
-  +getNativeRef: () => ?HostInstance,
-  +setSelection: (start: number, end: number) => void,
-};
-export type ChangeEvent = SyntheticEvent<
-  $ReadOnly<{|
-    eventCount: number,
-    target: number,
-    text: string,
-  |}>,
->;
-export type TextInputEvent = SyntheticEvent<
-  $ReadOnly<{|
-=======
 "export type TextInputChangeEventData = $ReadOnly<{
   eventCount: number,
   target: number,
@@ -3300,7 +3040,6 @@ export type TextInputChangeEvent =
   NativeSyntheticEvent<TextInputChangeEventData>;
 export type TextInputEvent = NativeSyntheticEvent<
   $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     eventCount: number,
     previousText: string,
     range: $ReadOnly<{
@@ -3329,28 +3068,28 @@ export type TextInputFocusEvent = NativeSyntheticEvent<TextInputFocusEventData>;
 type Selection = $ReadOnly<{
   start: number,
   end: number,
-<<<<<<< HEAD
-|}>;
-export type SelectionChangeEvent = SyntheticEvent<
-  $ReadOnly<{|
-    selection: Selection,
-    target: number,
-  |}>,
->;
-export type KeyPressEvent = SyntheticEvent<
-  $ReadOnly<{|
-    key: string,
-    target?: ?number,
-    eventCount?: ?number,
-  |}>,
->;
-export type EditingEvent = SyntheticEvent<
-  $ReadOnly<{|
-    eventCount: number,
-    text: string,
-    target: number,
-  |}>,
->;
+}>;
+export type TextInputSelectionChangeEventData = $ReadOnly<{
+  ...TargetEvent,
+  selection: Selection,
+}>;
+export type TextInputSelectionChangeEvent =
+  NativeSyntheticEvent<TextInputSelectionChangeEventData>;
+type TextInputKeyPressEventData = $ReadOnly<{
+  ...TargetEvent,
+  key: string,
+  target?: ?number,
+  eventCount?: ?number,
+}>;
+export type TextInputKeyPressEvent =
+  NativeSyntheticEvent<TextInputKeyPressEventData>;
+export type TextInputEndEditingEventData = $ReadOnly<{
+  ...TargetEvent,
+  eventCount: number,
+  text: string,
+}>;
+export type TextInputEditingEvent =
+  NativeSyntheticEvent<TextInputEndEditingEventData>;
 export type SettingChangeEvent = SyntheticEvent<
   $ReadOnly<{|
     autoCorrectEnabled: boolean,
@@ -3384,52 +3123,6 @@ export type SubmitKeyEvent = $ReadOnly<{|
   shiftKey?: ?boolean,
   functionKey?: ?boolean,
 |}>;
-||||||| d4407d6f77a
-|}>;
-export type SelectionChangeEvent = SyntheticEvent<
-  $ReadOnly<{|
-    selection: Selection,
-    target: number,
-  |}>,
->;
-export type KeyPressEvent = SyntheticEvent<
-  $ReadOnly<{|
-    key: string,
-    target?: ?number,
-    eventCount?: ?number,
-  |}>,
->;
-export type EditingEvent = SyntheticEvent<
-  $ReadOnly<{|
-    eventCount: number,
-    text: string,
-    target: number,
-  |}>,
->;
-=======
-}>;
-export type TextInputSelectionChangeEventData = $ReadOnly<{
-  ...TargetEvent,
-  selection: Selection,
-}>;
-export type TextInputSelectionChangeEvent =
-  NativeSyntheticEvent<TextInputSelectionChangeEventData>;
-type TextInputKeyPressEventData = $ReadOnly<{
-  ...TargetEvent,
-  key: string,
-  target?: ?number,
-  eventCount?: ?number,
-}>;
-export type TextInputKeyPressEvent =
-  NativeSyntheticEvent<TextInputKeyPressEventData>;
-export type TextInputEndEditingEventData = $ReadOnly<{
-  ...TargetEvent,
-  eventCount: number,
-  text: string,
-}>;
-export type TextInputEditingEvent =
-  NativeSyntheticEvent<TextInputEndEditingEventData>;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 type DataDetectorTypesType =
   | \\"phoneNumber\\"
   | \\"link\\"
@@ -3574,8 +3267,7 @@ export type TextInputIOSProps = $ReadOnly<{
     | \\"tail\\"
   ),
   smartInsertDelete?: ?boolean,
-<<<<<<< HEAD
-|}>;
+}>;
 type MacOSProps = $ReadOnly<{|
   clearTextOnSubmit?: ?boolean,
   grammarCheck?: ?boolean,
@@ -3588,14 +3280,7 @@ type MacOSProps = $ReadOnly<{|
   submitKeyEvents?: ?$ReadOnlyArray<SubmitKeyEvent>,
   tooltip?: ?string,
 |}>;
-type AndroidProps = $ReadOnly<{|
-||||||| d4407d6f77a
-|}>;
-type AndroidProps = $ReadOnly<{|
-=======
-}>;
 export type TextInputAndroidProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   cursorColor?: ?ColorValue,
   disableFullscreenUI?: ?boolean,
   importantForAutofill?: ?(
@@ -3613,28 +3298,14 @@ export type TextInputAndroidProps = $ReadOnly<{
   showSoftInputOnFocus?: ?boolean,
   textBreakStrategy?: ?(\\"simple\\" | \\"highQuality\\" | \\"balanced\\"),
   underlineColorAndroid?: ?ColorValue,
-<<<<<<< HEAD
-|}>;
+}>;
 export type PasteType = \\"fileUrl\\" | \\"image\\" | \\"string\\";
 export type PastedTypesType = PasteType | $ReadOnlyArray<PasteType>;
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{| style: ?ViewStyleProp |}>>,
-  ...IOSProps,
-  ...MacOSProps,
-  ...AndroidProps,
-||||||| d4407d6f77a
-|}>;
-export type Props = $ReadOnly<{|
-  ...$Diff<ViewProps, $ReadOnly<{| style: ?ViewStyleProp |}>>,
-  ...IOSProps,
-  ...AndroidProps,
-=======
-}>;
 export type TextInputProps = $ReadOnly<{
   ...$Diff<ViewProps, $ReadOnly<{ style: ?ViewStyleProp }>>,
   ...TextInputIOSProps,
+  ...MacOSProps,
   ...TextInputAndroidProps,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   autoCapitalize?: ?AutoCapitalize,
   autoComplete?: ?(
     | \\"additional-name\\"
@@ -3712,37 +3383,15 @@ export type TextInputProps = $ReadOnly<{
   onBlur?: ?(e: TextInputBlurEvent) => mixed,
   onChange?: ?(e: TextInputChangeEvent) => mixed,
   onChangeText?: ?(text: string) => mixed,
-<<<<<<< HEAD
-  onContentSizeChange?: ?(e: ContentSizeChangeEvent) => mixed,
-  onEndEditing?: ?(e: EditingEvent) => mixed,
-  onFocus?: ?(e: FocusEvent) => void,
-  onKeyPress?: ?(e: KeyPressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  onSelectionChange?: ?(e: SelectionChangeEvent) => mixed,
-  onSubmitEditing?: ?(e: EditingEvent) => mixed,
-||||||| d4407d6f77a
-  onContentSizeChange?: ?(e: ContentSizeChangeEvent) => mixed,
-  onEndEditing?: ?(e: EditingEvent) => mixed,
-  onFocus?: ?(e: FocusEvent) => mixed,
-  onKeyPress?: ?(e: KeyPressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  onSelectionChange?: ?(e: SelectionChangeEvent) => mixed,
-  onSubmitEditing?: ?(e: EditingEvent) => mixed,
-=======
   onContentSizeChange?: ?(e: TextInputContentSizeChangeEvent) => mixed,
   onEndEditing?: ?(e: TextInputEditingEvent) => mixed,
-  onFocus?: ?(e: TextInputFocusEvent) => mixed,
+  onFocus?: ?(e: TextInputFocusEvent) => void,
   onKeyPress?: ?(e: TextInputKeyPressEvent) => mixed,
   onPress?: ?(event: GestureResponderEvent) => mixed,
   onPressIn?: ?(event: GestureResponderEvent) => mixed,
   onPressOut?: ?(event: GestureResponderEvent) => mixed,
   onSelectionChange?: ?(e: TextInputSelectionChangeEvent) => mixed,
   onSubmitEditing?: ?(e: TextInputEditingEvent) => mixed,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   onScroll?: ?(e: ScrollEvent) => mixed,
   placeholder?: ?Stringish,
   placeholderTextColor?: ?ColorValue,
@@ -3767,21 +3416,11 @@ export type TextInputComponentStatics = $ReadOnly<{
     currentlyFocusedField: typeof TextInputState.currentlyFocusedField,
     focusTextInput: typeof TextInputState.focusTextInput,
     blurTextInput: typeof TextInputState.blurTextInput,
-<<<<<<< HEAD
     onTextInputFocus: typeof TextInputState.focusInput,
     onTextInputBlur: typeof TextInputState.blurInput,
-  |}>,
-|}>;
-declare module.exports: TextInputType;
-||||||| d4407d6f77a
-  |}>,
-|}>;
-declare module.exports: TextInputType;
-=======
   }>,
 }>;
 declare export default TextInputType;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 "
 `;
 
@@ -4109,51 +3748,7 @@ declare export default typeof Touchable;
 `;
 
 exports[`public API should not change unintentionally Libraries/Components/Touchable/TouchableWithoutFeedback.js 1`] = `
-<<<<<<< HEAD
-"type Props = $ReadOnly<{|
-  accessibilityActions?: ?$ReadOnlyArray<AccessibilityActionInfo>,
-  accessibilityElementsHidden?: ?boolean,
-  accessibilityHint?: ?Stringish,
-  accessibilityLanguage?: ?Stringish,
-  accessibilityIgnoresInvertColors?: ?boolean,
-  accessibilityLabel?: ?Stringish,
-  accessibilityLiveRegion?: ?(\\"none\\" | \\"polite\\" | \\"assertive\\"),
-  accessibilityRole?: ?AccessibilityRole,
-  accessibilityState?: ?AccessibilityState,
-  accessibilityValue?: ?AccessibilityValue,
-  \\"aria-valuemax\\"?: AccessibilityValue[\\"max\\"],
-  \\"aria-valuemin\\"?: AccessibilityValue[\\"min\\"],
-  \\"aria-valuenow\\"?: AccessibilityValue[\\"now\\"],
-  \\"aria-valuetext\\"?: AccessibilityValue[\\"text\\"],
-  accessibilityViewIsModal?: ?boolean,
-  \\"aria-modal\\"?: ?boolean,
-  accessible?: ?boolean,
-  \\"aria-busy\\"?: ?boolean,
-  \\"aria-checked\\"?: ?boolean | \\"mixed\\",
-  \\"aria-disabled\\"?: ?boolean,
-  \\"aria-expanded\\"?: ?boolean,
-  \\"aria-selected\\"?: ?boolean,
-  \\"aria-hidden\\"?: ?boolean,
-  \\"aria-live\\"?: ?(\\"polite\\" | \\"assertive\\" | \\"off\\"),
-  \\"aria-label\\"?: ?Stringish,
-  children?: ?React.Node,
-  delayLongPress?: ?number,
-  delayPressIn?: ?number,
-  delayPressOut?: ?number,
-  disabled?: ?boolean,
-  focusable?: ?boolean,
-  hitSlop?: ?EdgeInsetsOrSizeProp,
-  id?: string,
-  importantForAccessibility?: ?(\\"auto\\" | \\"yes\\" | \\"no\\" | \\"no-hide-descendants\\"),
-  nativeID?: ?string,
-  onAccessibilityAction?: ?(event: AccessibilityActionEvent) => mixed,
-  onBlur?: ?(event: BlurEvent) => void,
-  onFocus?: ?(event: FocusEvent) => void,
-  onLayout?: ?(event: LayoutEvent) => mixed,
-  onLongPress?: ?(event: PressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
+"export type TouchableWithoutFeedbackPropsIOS = {
   acceptsFirstMouse?: ?boolean,
   enableFocusRing?: ?boolean,
   tooltip?: ?string,
@@ -4163,61 +3758,8 @@ exports[`public API should not change unintentionally Libraries/Components/Touch
   onDragLeave?: (event: MouseEvent) => void,
   onDrop?: (event: MouseEvent) => void,
   draggedTypes?: ?DraggedTypesType,
-  pressRetentionOffset?: ?EdgeInsetsOrSizeProp,
-  rejectResponderTermination?: ?boolean,
-  testID?: ?string,
-||||||| d4407d6f77a
-"type Props = $ReadOnly<{|
-  accessibilityActions?: ?$ReadOnlyArray<AccessibilityActionInfo>,
-  accessibilityElementsHidden?: ?boolean,
-  accessibilityHint?: ?Stringish,
-  accessibilityLanguage?: ?Stringish,
-  accessibilityIgnoresInvertColors?: ?boolean,
-  accessibilityLabel?: ?Stringish,
-  accessibilityLiveRegion?: ?(\\"none\\" | \\"polite\\" | \\"assertive\\"),
-  accessibilityRole?: ?AccessibilityRole,
-  accessibilityState?: ?AccessibilityState,
-  accessibilityValue?: ?AccessibilityValue,
-  \\"aria-valuemax\\"?: AccessibilityValue[\\"max\\"],
-  \\"aria-valuemin\\"?: AccessibilityValue[\\"min\\"],
-  \\"aria-valuenow\\"?: AccessibilityValue[\\"now\\"],
-  \\"aria-valuetext\\"?: AccessibilityValue[\\"text\\"],
-  accessibilityViewIsModal?: ?boolean,
-  \\"aria-modal\\"?: ?boolean,
-  accessible?: ?boolean,
-  \\"aria-busy\\"?: ?boolean,
-  \\"aria-checked\\"?: ?boolean | \\"mixed\\",
-  \\"aria-disabled\\"?: ?boolean,
-  \\"aria-expanded\\"?: ?boolean,
-  \\"aria-selected\\"?: ?boolean,
-  \\"aria-hidden\\"?: ?boolean,
-  \\"aria-live\\"?: ?(\\"polite\\" | \\"assertive\\" | \\"off\\"),
-  \\"aria-label\\"?: ?Stringish,
-  children?: ?React.Node,
-  delayLongPress?: ?number,
-  delayPressIn?: ?number,
-  delayPressOut?: ?number,
-  disabled?: ?boolean,
-  focusable?: ?boolean,
-  hitSlop?: ?EdgeInsetsOrSizeProp,
-  id?: string,
-  importantForAccessibility?: ?(\\"auto\\" | \\"yes\\" | \\"no\\" | \\"no-hide-descendants\\"),
-  nativeID?: ?string,
-  onAccessibilityAction?: ?(event: AccessibilityActionEvent) => mixed,
-  onBlur?: ?(event: BlurEvent) => mixed,
-  onFocus?: ?(event: FocusEvent) => mixed,
-  onLayout?: ?(event: LayoutEvent) => mixed,
-  onLongPress?: ?(event: PressEvent) => mixed,
-  onPress?: ?(event: PressEvent) => mixed,
-  onPressIn?: ?(event: PressEvent) => mixed,
-  onPressOut?: ?(event: PressEvent) => mixed,
-  pressRetentionOffset?: ?EdgeInsetsOrSizeProp,
-  rejectResponderTermination?: ?boolean,
-  testID?: ?string,
-=======
-"export type TouchableWithoutFeedbackPropsIOS = {};
+};
 export type TouchableWithoutFeedbackPropsAndroid = {
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   touchSoundDisabled?: ?boolean,
 };
 export type TouchableWithoutFeedbackProps = $ReadOnly<
@@ -4238,8 +3780,8 @@ export type TouchableWithoutFeedbackProps = $ReadOnly<
     ),
     nativeID?: ?string,
     onAccessibilityAction?: ?(event: AccessibilityActionEvent) => mixed,
-    onBlur?: ?(event: BlurEvent) => mixed,
-    onFocus?: ?(event: FocusEvent) => mixed,
+    onBlur?: ?(event: BlurEvent) => void,
+    onFocus?: ?(event: FocusEvent) => void,
     onLayout?: ?(event: LayoutChangeEvent) => mixed,
     onLongPress?: ?(event: GestureResponderEvent) => mixed,
     onPress?: ?(event: GestureResponderEvent) => mixed,
@@ -4549,33 +4091,11 @@ export type ViewLayoutEvent = LayoutChangeEvent;
 type DirectEventProps = $ReadOnly<{
   onAccessibilityAction?: ?(event: AccessibilityActionEvent) => mixed,
   onAccessibilityTap?: ?() => mixed,
-<<<<<<< HEAD
-  onInvertedDidChange?: ?() => mixed,
-  onPreferredScrollerStyleDidChange?: ?(event: ScrollEvent) => mixed,
-  onLayout?: ?(event: LayoutEvent) => mixed,
-||||||| d4407d6f77a
-  onLayout?: ?(event: LayoutEvent) => mixed,
-=======
   onLayout?: ?(event: LayoutChangeEvent) => mixed,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   onMagicTap?: ?() => mixed,
   onAccessibilityEscape?: ?() => mixed,
-<<<<<<< HEAD
-|}>;
-export type KeyboardEventProps = $ReadOnly<{|
-  onKeyDown?: ?(event: KeyEvent) => void,
-  onKeyUp?: ?(event: KeyEvent) => void,
-  keyDownEvents?: ?Array<HandledKeyEvent>,
-  keyUpEvents?: ?Array<HandledKeyEvent>,
-|}>;
-type MouseEventProps = $ReadOnly<{|
-||||||| d4407d6f77a
-|}>;
-type MouseEventProps = $ReadOnly<{|
-=======
 }>;
 type MouseEventProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   onMouseEnter?: ?(event: MouseEvent) => void,
   onMouseLeave?: ?(event: MouseEvent) => void,
 }>;
@@ -4660,46 +4180,8 @@ export type ViewPropsAndroid = $ReadOnly<{
 }>;
 export type ViewPropsIOS = $ReadOnly<{
   shouldRasterizeIOS?: ?boolean,
-<<<<<<< HEAD
-|}>;
-type MacOSViewProps = $ReadOnly<{|
-  onDragEnter?: (event: MouseEvent) => void,
-  onDragLeave?: (event: MouseEvent) => void,
-  onDrop?: (event: MouseEvent) => void,
-  tooltip?: ?string,
-  acceptsFirstMouse?: ?boolean,
-  mouseDownCanMoveWindow?: ?boolean,
-  allowsVibrancy?: ?boolean,
-  enableFocusRing?: ?boolean,
-  draggedTypes?: ?DraggedTypesType,
-  inverted?: ?boolean,
-|}>;
-export type ViewProps = $ReadOnly<{|
-  ...DirectEventProps,
-  ...GestureResponderEventProps,
-  ...MouseEventProps,
-  ...PointerEventProps,
-  ...FocusEventProps,
-  ...TouchEventProps,
-  ...KeyboardEventProps,
-  ...AndroidViewProps,
-  ...IOSViewProps,
-  ...MacOSViewProps,
-||||||| d4407d6f77a
-|}>;
-export type ViewProps = $ReadOnly<{|
-  ...DirectEventProps,
-  ...GestureResponderEventProps,
-  ...MouseEventProps,
-  ...PointerEventProps,
-  ...FocusEventProps,
-  ...TouchEventProps,
-  ...AndroidViewProps,
-  ...IOSViewProps,
-=======
 }>;
 type ViewBaseProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   children?: Node,
   style?: ?ViewStyleProp,
   collapsable?: ?boolean,
@@ -5335,14 +4817,7 @@ export type ImagePropsBase = $ReadOnly<{
   src?: ?string,
   srcSet?: ?string,
   children?: empty,
-<<<<<<< HEAD
   tooltip?: ?string,
-|}>;
-export type ImageBackgroundProps = $ReadOnly<{|
-||||||| d4407d6f77a
-|}>;
-export type ImageBackgroundProps = $ReadOnly<{|
-=======
 }>;
 export type ImageProps = $ReadOnly<{
   ...ImagePropsIOS,
@@ -5351,7 +4826,6 @@ export type ImageProps = $ReadOnly<{
   style?: ?ImageStyleProp,
 }>;
 export type ImageBackgroundProps = $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
   ...ImageProps,
   children?: Node,
   style?: ?ViewStyleProp,
@@ -5874,20 +5348,10 @@ declare export default typeof NativeLinkingManager;
 `;
 
 exports[`public API should not change unintentionally Libraries/Lists/FillRateHelper.js 1`] = `
-<<<<<<< HEAD
-"declare const FillRateHelper: FillRateHelperType;
-export type { FillRateInfo } from \\"@react-native-macos/virtualized-lists\\";
-declare module.exports: FillRateHelper;
-||||||| d4407d6f77a
-"declare const FillRateHelper: FillRateHelperType;
-export type { FillRateInfo } from \\"@react-native/virtualized-lists\\";
-declare module.exports: FillRateHelper;
-=======
 "type FillRateHelperType = typeof VirtualizedLists.FillRateHelper;
 declare const FillRateHelper: FillRateHelperType;
-export type { FillRateInfo } from \\"@react-native/virtualized-lists\\";
+export type { FillRateInfo } from \\"@react-native-macos/virtualized-lists\\";
 declare export default typeof FillRateHelper;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 "
 `;
 
@@ -6105,14 +5569,8 @@ exports[`public API should not change unintentionally Libraries/Lists/Viewabilit
   ViewToken,
   ViewabilityConfig,
   ViewabilityConfigCallbackPair,
-<<<<<<< HEAD
 } from \\"@react-native-macos/virtualized-lists\\";
-||||||| d4407d6f77a
-} from \\"@react-native/virtualized-lists\\";
-=======
-} from \\"@react-native/virtualized-lists\\";
 type ViewabilityHelperType = typeof VirtualizedLists.ViewabilityHelper;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 declare const ViewabilityHelper: ViewabilityHelperType;
 declare export default typeof ViewabilityHelper;
 "
@@ -6131,16 +5589,8 @@ export type {
   ListRenderItemInfo,
   ListRenderItem,
   Separators,
-<<<<<<< HEAD
 } from \\"@react-native-macos/virtualized-lists\\";
-declare module.exports: VirtualizedList;
-||||||| d4407d6f77a
-} from \\"@react-native/virtualized-lists\\";
-declare module.exports: VirtualizedList;
-=======
-} from \\"@react-native/virtualized-lists\\";
 declare export default typeof VirtualizedList;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 "
 `;
 
@@ -6158,16 +5608,8 @@ declare const VirtualizedSectionList: VirtualizedSectionListType;
 export type {
   SectionBase,
   ScrollToLocationParamsType,
-<<<<<<< HEAD
 } from \\"@react-native-macos/virtualized-lists\\";
-declare module.exports: VirtualizedSectionList;
-||||||| d4407d6f77a
-} from \\"@react-native/virtualized-lists\\";
-declare module.exports: VirtualizedSectionList;
-=======
-} from \\"@react-native/virtualized-lists\\";
 declare export default typeof VirtualizedSectionList;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 "
 `;
 
@@ -8790,14 +8232,6 @@ export type TextPropsIOS = {
   ),
   suppressHighlighting?: ?boolean,
   lineBreakStrategyIOS?: ?(\\"none\\" | \\"standard\\" | \\"hangul-word\\" | \\"push-out\\"),
-<<<<<<< HEAD
-  tooltip?: ?string,
-  focusable?: ?boolean,
-  enableFocusRing?: ?boolean,
-  onMouseEnter?: ?(event: MouseEvent) => void,
-  onMouseLeave?: ?(event: MouseEvent) => void,
-||||||| d4407d6f77a
-=======
 };
 export type TextPropsAndroid = {
   disabled?: ?boolean,
@@ -8806,6 +8240,13 @@ export type TextPropsAndroid = {
   textBreakStrategy?: ?(\\"balanced\\" | \\"highQuality\\" | \\"simple\\"),
   adjustsFontSizeToFit?: ?boolean,
   minimumFontScale?: ?number,
+};
+export type TextPropsMacOS = {
+  tooltip?: ?string,
+  focusable?: ?boolean,
+  enableFocusRing?: ?boolean,
+  onMouseEnter?: ?(event: MouseEvent) => void,
+  onMouseLeave?: ?(event: MouseEvent) => void,
 };
 type TextBaseProps = $ReadOnly<{
   accessible?: ?boolean,
@@ -8854,8 +8295,8 @@ export type TextProps = $ReadOnly<{
   ...PointerEventProps,
   ...TextPropsIOS,
   ...TextPropsAndroid,
+  ...TextPropsMacOS,
   ...TextBaseProps,
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 }>;
 "
 `;
@@ -9001,157 +8442,6 @@ export interface NativePointerEvent extends NativeMouseEvent {
   +pointerType: string;
   +isPrimary: boolean;
 }
-<<<<<<< HEAD
-export type PointerEvent = SyntheticEvent<NativePointerEvent>;
-export type PressEvent = ResponderSyntheticEvent<
-  $ReadOnly<{|
-    altKey?: ?boolean,
-    button?: ?number,
-    changedTouches: $ReadOnlyArray<$PropertyType<PressEvent, \\"nativeEvent\\">>,
-    ctrlKey?: ?boolean,
-    force?: number,
-    identifier: number,
-    locationX: number,
-    locationY: number,
-    metaKey?: ?boolean,
-    pageX: number,
-    pageY: number,
-    shiftKey?: ?boolean,
-    target: ?number,
-    timestamp: number,
-    touches: $ReadOnlyArray<$PropertyType<PressEvent, \\"nativeEvent\\">>,
-  |}>,
->;
-export type ScrollEvent = SyntheticEvent<
-  $ReadOnly<{|
-    contentInset: $ReadOnly<{|
-      bottom: number,
-      left: number,
-      right: number,
-      top: number,
-    |}>,
-    contentOffset: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    contentSize: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    layoutMeasurement: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    targetContentOffset?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    velocity?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    zoomScale?: number,
-    responderIgnoreScroll?: boolean,
-    preferredScrollerStyle?: string,
-  |}>,
->;
-export type BlurEvent = SyntheticEvent<
-  $ReadOnly<{|
-    target: number,
-  |}>,
->;
-export type FocusEvent = SyntheticEvent<
-  $ReadOnly<{|
-    target: number,
-  |}>,
->;
-export type KeyEvent = SyntheticEvent<
-  $ReadOnly<{|
-    capsLockKey: boolean,
-    shiftKey: boolean,
-    ctrlKey: boolean,
-    altKey: boolean,
-    metaKey: boolean,
-    numericPadKey: boolean,
-    helpKey: boolean,
-    functionKey: boolean,
-    ArrowLeft: boolean,
-    ArrowRight: boolean,
-    ArrowUp: boolean,
-    ArrowDown: boolean,
-    key: string,
-  |}>,
->;
-export type HandledKeyEvent = $ReadOnly<{|
-  altKey?: ?boolean,
-  ctrlKey?: ?boolean,
-  metaKey?: ?boolean,
-  shiftKey?: ?boolean,
-  key: string,
-|}>;
-export type MouseEvent = SyntheticEvent<
-  $ReadOnly<{|
-||||||| d4407d6f77a
-export type PointerEvent = SyntheticEvent<NativePointerEvent>;
-export type PressEvent = ResponderSyntheticEvent<
-  $ReadOnly<{|
-    changedTouches: $ReadOnlyArray<$PropertyType<PressEvent, \\"nativeEvent\\">>,
-    force?: number,
-    identifier: number,
-    locationX: number,
-    locationY: number,
-    pageX: number,
-    pageY: number,
-    target: ?number,
-    timestamp: number,
-    touches: $ReadOnlyArray<$PropertyType<PressEvent, \\"nativeEvent\\">>,
-  |}>,
->;
-export type ScrollEvent = SyntheticEvent<
-  $ReadOnly<{|
-    contentInset: $ReadOnly<{|
-      bottom: number,
-      left: number,
-      right: number,
-      top: number,
-    |}>,
-    contentOffset: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    contentSize: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    layoutMeasurement: $ReadOnly<{|
-      height: number,
-      width: number,
-    |}>,
-    targetContentOffset?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    velocity?: $ReadOnly<{|
-      y: number,
-      x: number,
-    |}>,
-    zoomScale?: number,
-    responderIgnoreScroll?: boolean,
-  |}>,
->;
-export type BlurEvent = SyntheticEvent<
-  $ReadOnly<{|
-    target: number,
-  |}>,
->;
-export type FocusEvent = SyntheticEvent<
-  $ReadOnly<{|
-    target: number,
-  |}>,
->;
-export type MouseEvent = SyntheticEvent<
-  $ReadOnly<{|
-=======
 export type PointerEvent = NativeSyntheticEvent<NativePointerEvent>;
 export type NativeTouchEvent = $ReadOnly<{
   changedTouches: $ReadOnlyArray<NativeTouchEvent>,
@@ -9203,7 +8493,6 @@ export type BlurEvent = NativeSyntheticEvent<TargetedEvent>;
 export type FocusEvent = NativeSyntheticEvent<TargetedEvent>;
 export type MouseEvent = NativeSyntheticEvent<
   $ReadOnly<{
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
     clientX: number,
     clientY: number,
     pageX: number,
@@ -9576,48 +8865,6 @@ type AndroidPlatform = {
   get isDisableAnimations(): boolean,
   select: <T>(spec: PlatformSelectSpec<T>) => T,
 };
-<<<<<<< HEAD
-type MacOSPlatform = {
-  __constants: null,
-  OS: \\"macos\\",
-  get Version(): string,
-  get constants(): {|
-    forceTouchAvailable: boolean,
-    interfaceIdiom: string,
-    isTesting: boolean,
-    isDisableAnimations?: boolean,
-    osVersion: string,
-    reactNativeVersion: {|
-      major: number,
-      minor: number,
-      patch: number,
-      prerelease: ?number,
-    |},
-    systemName: string,
-    isMacCatalyst?: boolean,
-  |},
-  get isPad(): boolean,
-  get isTV(): boolean,
-  get isVision(): boolean,
-  get isTesting(): boolean,
-  get isDisableAnimations(): boolean,
-  get isMacCatalyst(): boolean,
-  select: <T>(spec: PlatformSelectSpec<T>) => T,
-};
-export type Platform = IOSPlatform | AndroidPlatform | MacOSPlatform;
-"
-`;
-
-exports[`public API should not change unintentionally Libraries/Utilities/Platform.js.flow 1`] = `
-"declare module.exports: Platform;
-||||||| d4407d6f77a
-export type Platform = IOSPlatform | AndroidPlatform;
-"
-`;
-
-exports[`public API should not change unintentionally Libraries/Utilities/Platform.js.flow 1`] = `
-"declare module.exports: Platform;
-=======
 type WindowsPlatform = {
   OS: \\"windows\\",
   get Version(): number,
@@ -9683,7 +8930,6 @@ export type Platform =
   | WindowsPlatform
   | MacOSPlatform
   | WebPlatform;
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 "
 `;
 
@@ -10188,191 +9434,6 @@ declare export default class EventEmitter<
 "
 `;
 
-<<<<<<< HEAD
-exports[`public API should not change unintentionally index.js 1`] = `
-"export type { HostComponent, HostInstance };
-declare module.exports: {
-  get registerCallableModule(): RegisterCallableModule,
-  get AccessibilityInfo(): AccessibilityInfo,
-  get ActivityIndicator(): ActivityIndicator,
-  get Button(): Button,
-  get DrawerLayoutAndroid(): DrawerLayoutAndroid,
-  get FlatList(): FlatList,
-  get Image(): Image,
-  get ImageBackground(): ImageBackground,
-  get InputAccessoryView(): InputAccessoryView,
-  get experimental_LayoutConformance(): LayoutConformance,
-  get KeyboardAvoidingView(): KeyboardAvoidingView,
-  get Modal(): Modal,
-  get Pressable(): Pressable,
-  get ProgressBarAndroid(): ProgressBarAndroid,
-  get RefreshControl(): RefreshControl,
-  get SafeAreaView(): SafeAreaView,
-  get ScrollView(): ScrollView,
-  get SectionList(): SectionList,
-  get StatusBar(): StatusBar,
-  get Switch(): Switch,
-  get Text(): Text,
-  get TextInput(): TextInput,
-  get Touchable(): Touchable,
-  get TouchableHighlight(): TouchableHighlight,
-  get TouchableNativeFeedback(): TouchableNativeFeedback,
-  get TouchableOpacity(): TouchableOpacity,
-  get TouchableWithoutFeedback(): TouchableWithoutFeedback,
-  get View(): View,
-  get VirtualizedList(): VirtualizedList,
-  get VirtualizedSectionList(): VirtualizedSectionList,
-  get ActionSheetIOS(): ActionSheetIOS,
-  get Alert(): Alert,
-  get Animated(): { ...$Diff<AnimatedModule, { default: any }>, ...Animated },
-  get Appearance(): Appearance,
-  get AppRegistry(): AppRegistry,
-  get AppState(): AppState,
-  get BackHandler(): BackHandler,
-  get Clipboard(): Clipboard,
-  get DeviceInfo(): DeviceInfo,
-  get DevMenu(): DevMenu,
-  get DevSettings(): DevSettings,
-  get Dimensions(): Dimensions,
-  get Easing(): Easing,
-  get findNodeHandle(): $PropertyType<ReactNative, \\"findNodeHandle\\">,
-  get I18nManager(): I18nManager,
-  get InteractionManager(): InteractionManager,
-  get Keyboard(): Keyboard,
-  get LayoutAnimation(): LayoutAnimation,
-  get Linking(): Linking,
-  get LogBox(): LogBox,
-  get NativeDialogManagerAndroid(): NativeDialogManagerAndroid,
-  get NativeEventEmitter(): NativeEventEmitter,
-  get Networking(): Networking,
-  get PanResponder(): PanResponder,
-  get PermissionsAndroid(): PermissionsAndroid,
-  get PixelRatio(): PixelRatio,
-  get PushNotificationIOS(): PushNotificationIOS,
-  get Settings(): Settings,
-  get Share(): Share,
-  get StyleSheet(): StyleSheet,
-  get Systrace(): Systrace,
-  get ToastAndroid(): ToastAndroid,
-  get TurboModuleRegistry(): TurboModuleRegistry,
-  get UIManager(): UIManager,
-  get unstable_batchedUpdates(): $PropertyType<
-    ReactNative,
-    \\"unstable_batchedUpdates\\",
-  >,
-  get useAnimatedValue(): useAnimatedValue,
-  get useColorScheme(): useColorScheme,
-  get useWindowDimensions(): useWindowDimensions,
-  get UTFSequence(): UTFSequence,
-  get Vibration(): Vibration,
-  get YellowBox(): YellowBox,
-  get DeviceEventEmitter(): RCTDeviceEventEmitter,
-  get DynamicColorIOS(): DynamicColorIOS,
-  get NativeAppEventEmitter(): RCTNativeAppEventEmitter,
-  get NativeModules(): NativeModules,
-  get Platform(): Platform,
-  get PlatformColor(): PlatformColor,
-  get processColor(): processColor,
-  get DynamicColorMacOS(): DynamicColorMacOS,
-  get ColorWithSystemEffectMacOS(): ColorWithSystemEffectMacOS,
-  get requireNativeComponent(): <T: { ... }>(
-    uiViewClassName: string
-  ) => HostComponent<T>,
-  get RootTagContext(): RootTagContext,
-  get unstable_enableLogBox(): () => void,
-};
-||||||| d4407d6f77a
-exports[`public API should not change unintentionally index.js 1`] = `
-"export type { HostComponent, HostInstance };
-declare module.exports: {
-  get registerCallableModule(): RegisterCallableModule,
-  get AccessibilityInfo(): AccessibilityInfo,
-  get ActivityIndicator(): ActivityIndicator,
-  get Button(): Button,
-  get DrawerLayoutAndroid(): DrawerLayoutAndroid,
-  get FlatList(): FlatList,
-  get Image(): Image,
-  get ImageBackground(): ImageBackground,
-  get InputAccessoryView(): InputAccessoryView,
-  get experimental_LayoutConformance(): LayoutConformance,
-  get KeyboardAvoidingView(): KeyboardAvoidingView,
-  get Modal(): Modal,
-  get Pressable(): Pressable,
-  get ProgressBarAndroid(): ProgressBarAndroid,
-  get RefreshControl(): RefreshControl,
-  get SafeAreaView(): SafeAreaView,
-  get ScrollView(): ScrollView,
-  get SectionList(): SectionList,
-  get StatusBar(): StatusBar,
-  get Switch(): Switch,
-  get Text(): Text,
-  get TextInput(): TextInput,
-  get Touchable(): Touchable,
-  get TouchableHighlight(): TouchableHighlight,
-  get TouchableNativeFeedback(): TouchableNativeFeedback,
-  get TouchableOpacity(): TouchableOpacity,
-  get TouchableWithoutFeedback(): TouchableWithoutFeedback,
-  get View(): View,
-  get VirtualizedList(): VirtualizedList,
-  get VirtualizedSectionList(): VirtualizedSectionList,
-  get ActionSheetIOS(): ActionSheetIOS,
-  get Alert(): Alert,
-  get Animated(): { ...$Diff<AnimatedModule, { default: any }>, ...Animated },
-  get Appearance(): Appearance,
-  get AppRegistry(): AppRegistry,
-  get AppState(): AppState,
-  get BackHandler(): BackHandler,
-  get Clipboard(): Clipboard,
-  get DeviceInfo(): DeviceInfo,
-  get DevMenu(): DevMenu,
-  get DevSettings(): DevSettings,
-  get Dimensions(): Dimensions,
-  get Easing(): Easing,
-  get findNodeHandle(): $PropertyType<ReactNative, \\"findNodeHandle\\">,
-  get I18nManager(): I18nManager,
-  get InteractionManager(): InteractionManager,
-  get Keyboard(): Keyboard,
-  get LayoutAnimation(): LayoutAnimation,
-  get Linking(): Linking,
-  get LogBox(): LogBox,
-  get NativeDialogManagerAndroid(): NativeDialogManagerAndroid,
-  get NativeEventEmitter(): NativeEventEmitter,
-  get Networking(): Networking,
-  get PanResponder(): PanResponder,
-  get PermissionsAndroid(): PermissionsAndroid,
-  get PixelRatio(): PixelRatio,
-  get PushNotificationIOS(): PushNotificationIOS,
-  get Settings(): Settings,
-  get Share(): Share,
-  get StyleSheet(): StyleSheet,
-  get Systrace(): Systrace,
-  get ToastAndroid(): ToastAndroid,
-  get TurboModuleRegistry(): TurboModuleRegistry,
-  get UIManager(): UIManager,
-  get unstable_batchedUpdates(): $PropertyType<
-    ReactNative,
-    \\"unstable_batchedUpdates\\",
-  >,
-  get useAnimatedValue(): useAnimatedValue,
-  get useColorScheme(): useColorScheme,
-  get useWindowDimensions(): useWindowDimensions,
-  get UTFSequence(): UTFSequence,
-  get Vibration(): Vibration,
-  get YellowBox(): YellowBox,
-  get DeviceEventEmitter(): RCTDeviceEventEmitter,
-  get DynamicColorIOS(): DynamicColorIOS,
-  get NativeAppEventEmitter(): RCTNativeAppEventEmitter,
-  get NativeModules(): NativeModules,
-  get Platform(): Platform,
-  get PlatformColor(): PlatformColor,
-  get processColor(): processColor,
-  get requireNativeComponent(): <T: { ... }>(
-    uiViewClassName: string
-  ) => HostComponent<T>,
-  get RootTagContext(): RootTagContext,
-  get unstable_enableLogBox(): () => void,
-};
-=======
 exports[`public API should not change unintentionally index.js.flow 1`] = `
 "export type { HostInstance } from \\"./src/private/types/HostInstance\\";
 export type { HostComponent } from \\"./src/private/types/HostComponent\\";
@@ -10972,6 +10033,5 @@ declare export class PerformanceMeasure extends PerformanceEntry {
   ): void;
   get detail(): DetailType;
 }
->>>>>>> 81e490164fd98ea2f89ac62bceae1d0c80464bd2
 "
 `;

@@ -10,7 +10,7 @@
 
 @implementation RCTViewFinder
 
-+ (UIView *)findView:(UIView *)root withNativeId:(NSString *)nativeId
++ (RCTUIView *)findView:(RCTUIView *)root withNativeId:(NSString *)nativeId // [macOS]
 {
   if (!nativeId) {
     return nil;
@@ -21,8 +21,8 @@
     return root;
   }
 
-  for (UIView *subview in root.subviews) {
-    UIView *result = [RCTViewFinder findView:subview withNativeId:nativeId];
+  for (RCTUIView *subview in root.subviews) { // [macOS]
+    RCTUIView *result = [RCTViewFinder findView:subview withNativeId:nativeId]; // [macOS]
     if (result) {
       return result;
     }
