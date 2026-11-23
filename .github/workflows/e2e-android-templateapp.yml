@@ -51,7 +51,8 @@ jobs:
 
           # For stable branches, we want to use the stable branch of the template
           # In all the other cases, we want to use "main"
-          BRANCH=${{ github.ref_name }}
+          # On a pull request ref_name is "<number>/merge", so take the branch it targets.
+          BRANCH=${{ github.base_ref || github.ref_name }}
           if ! [[ $BRANCH == *-stable* ]]; then
             BRANCH=main
           fi

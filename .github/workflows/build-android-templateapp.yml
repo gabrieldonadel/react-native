@@ -47,7 +47,8 @@ jobs:
 
           # Stable branches use their matching template branch. All other
           # builds use the template's main branch.
-          BRANCH=${{ github.ref_name }}
+          # On a pull request ref_name is "<number>/merge", so take the branch it targets.
+          BRANCH=${{ github.base_ref || github.ref_name }}
           if ! [[ $BRANCH == *-stable* ]]; then
             BRANCH=main
           fi

@@ -96,7 +96,8 @@ jobs:
           REACT_NATIVE_PKG=$(find /tmp/react-native-tmp -type f -name "*.tgz")
           echo "React Native tgs is $REACT_NATIVE_PKG"
 
-          BRANCH=${{ github.ref_name }}
+          # On a pull request ref_name is "<number>/merge", so take the branch it targets.
+          BRANCH=${{ github.base_ref || github.ref_name }}
           if ! [[ $BRANCH == *-stable* ]]; then
             BRANCH=main
           fi
